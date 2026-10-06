@@ -81,7 +81,7 @@ export function Eyebrow({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "flex items-center gap-3 text-[11.5px] font-semibold uppercase tracking-[.2em] text-accent before:h-px before:w-7 before:bg-accent before:content-[''] mportrait:justify-center mportrait:before:hidden",
+        "flex items-center gap-3 text-[11.5px] font-semibold uppercase tracking-[.2em] text-brass before:h-px before:w-7 before:bg-brass before:content-[''] mportrait:justify-center mportrait:before:hidden",
         className,
       )}
       {...props}
@@ -122,7 +122,7 @@ export function Tabs<T extends string>({
             aria-pressed={on}
             className={cn(
               "h-[34px] border-b px-1 text-[12px] uppercase tracking-[.14em]",
-              on ? "border-accent font-semibold text-brand" : "border-transparent text-stone-500 hover:text-stone-800",
+              on ? "border-brass font-semibold text-brand" : "border-transparent text-stone-500 hover:text-stone-800",
             )}
           >
             {o}

@@ -52,7 +52,8 @@ export function SiteHeader() {
   const home = pathname === "/";
   // Pages that open with a full-width photo: the header floats over it, white, until scrolled.
   const photoTop = home || pathname === "/stays" || pathname.startsWith("/apartments/");
-  const overHero = photoTop && !scrolled;
+  // White text over a photo, and over the solid navy bar once scrolled.
+  const overHero = (photoTop && !scrolled) || scrolled;
 
   return (
     <header
@@ -60,7 +61,7 @@ export function SiteHeader() {
       className={cn(
         "group/hdr top-0 z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-300",
         photoTop ? "fixed inset-x-0" : "sticky",
-        scrolled ? "border-stone-200 bg-stone-50/85 backdrop-blur-md" : "border-transparent bg-transparent",
+        scrolled ? "border-transparent bg-brand shadow-[0_10px_30px_-18px_rgba(0,0,0,.6)]" : "border-transparent bg-transparent",
       )}
     >
       {/* The header runs wider than the page content (see w-header in globals.css). */}
@@ -93,7 +94,7 @@ export function SiteHeader() {
                 className={cn(
                   "flex h-[34px] items-center border-b-2 px-2.5 text-sm",
                   on
-                    ? "border-accent font-semibold text-brand group-data-[over=true]/hdr:border-accent group-data-[over=true]/hdr:text-stone-50"
+                    ? "border-brass font-semibold text-brand group-data-[over=true]/hdr:border-brass group-data-[over=true]/hdr:text-stone-50"
                     : "border-transparent text-stone-600 hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50/85 group-data-[over=true]/hdr:hover:text-stone-50",
                 )}
               >
@@ -108,7 +109,7 @@ export function SiteHeader() {
           <AccountMenu />
           <Link
             href="/stays"
-            className="hidden h-[38px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,18px)] text-[11.5px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 sm:inline-flex"
+            className="hidden h-[38px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,18px)] text-[11.5px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 group-data-[over=true]/hdr:bg-stone-50 group-data-[over=true]/hdr:text-brand group-data-[over=true]/hdr:hover:bg-brand-tint sm:inline-flex"
           >
             <span className="md:hidden">Book</span>
             <span className="hidden md:inline">Book a stay</span>

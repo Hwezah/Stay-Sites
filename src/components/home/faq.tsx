@@ -8,31 +8,31 @@ import { cn } from "@/lib/utils";
 export function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <div className="min-w-0 flex-[1.4_1_340px] overflow-hidden rounded-[6px] border border-stone-200 bg-white">
+    <div className="min-w-0 flex-[1.4_1_340px] border-t border-stone-300">
       {FAQS.map((f, i) => {
         const on = open === i;
         return (
           <div
             key={f.q}
-            className={cn(i < FAQS.length - 1 && "border-b border-stone-100", on ? "bg-stone-50" : "bg-white")}
+            className="border-b border-stone-300"
           >
             <button
               type="button"
               aria-expanded={on}
               onClick={() => setOpen(on ? -1 : i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-[18px] text-left text-[14.5px] font-medium"
+              className="font-display flex w-full items-center justify-between gap-4 py-[22px] text-left text-[clamp(20px,2.2vw,26px)] font-medium"
             >
               {f.q}
               <span
                 className={cn(
-                  "w-7 flex-none text-center text-[28px] font-light leading-none text-stone-500 transition-transform duration-200",
+                  "w-7 flex-none text-center font-sans text-[28px] font-light leading-none text-brass transition-transform duration-300",
                   on && "rotate-45",
                 )}
               >
                 +
               </span>
             </button>
-            {on && <div className="max-w-[62ch] px-5 pb-5 text-sm leading-[1.6] text-stone-600">{f.a}</div>}
+            {on && <div className="max-w-[62ch] pb-6 text-[15px] leading-[1.7] text-stone-600">{f.a}</div>}
           </div>
         );
       })}

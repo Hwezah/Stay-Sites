@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 
+import { QuickFacts } from "@/components/home/extras";
 import { Hero } from "@/components/home/hero";
-import { ApartmentCard } from "@/components/site/apartment-card";
+import { RoomRow } from "@/components/site/room-row";
 import { BookingBar } from "@/components/site/booking-bar";
 import { Container, CurrencyToggle, Eyebrow, Tabs } from "@/components/site/ui";
 import { useBooking } from "@/context/booking-context";
@@ -28,13 +29,15 @@ export function HomeTop() {
         </Container>
       </section>
 
+      <QuickFacts />
+
       <section data-reveal id="stays" className="scroll-mt-20">
         <Container className="pt-[clamp(44px,7vw,72px)]">
           <div data-m-center className="flex flex-wrap items-end justify-between gap-6">
             <div className="min-w-0">
               <Eyebrow>Stay with us</Eyebrow>
               <h2 className="font-display mt-2.5 text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] text-balance font-medium">
-                Our apartments
+                Our suites
               </h2>
             </div>
             <div data-m-center className="flex max-w-full min-w-0 flex-wrap items-center gap-3">
@@ -50,7 +53,7 @@ export function HomeTop() {
             </div>
           </div>
 
-          <div className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(min(100%,320px),1fr))] gap-[22px]">
+          <div className="mt-[clamp(32px,5vw,56px)] grid gap-[clamp(40px,6vw,80px)]">
             {visible.length === 0 && (
               <div className="col-span-full rounded-lg border border-stone-200 bg-white px-7 py-10 text-center">
                 <div className="text-base font-semibold">
@@ -68,7 +71,7 @@ export function HomeTop() {
               </div>
             )}
             {visible.map((a) => (
-              <ApartmentCard key={a.id} apartment={a} />
+              <RoomRow key={a.id} apartment={a} flip={APARTMENTS.indexOf(a) % 2 === 1} />
             ))}
           </div>
         </Container>

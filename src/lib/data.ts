@@ -31,6 +31,8 @@ export type Apartment = {
   id: ApartmentId;
   name: string;
   kind: string;
+  /** One-line description for listing cards. */
+  blurb: string;
   loc: string;
   price: number;
   sleeps: string;
@@ -76,8 +78,9 @@ const SHARED_PHOTOS: Photo[] = [
 export const APARTMENTS: Apartment[] = [
   {
     id: "apartment-1",
-    name: "One-Bed Apartment 1",
-    kind: "Apartment 1",
+    name: "The Linen Suite",
+    kind: "Linen Suite",
+    blurb: "Warm wood, a deep sofa and a bright open kitchen — an easy, unhurried base for two.",
     loc: SITE_PLACE,
     price: 50,
     sleeps: "Sleeps 2 · 1 bedroom",
@@ -96,8 +99,9 @@ export const APARTMENTS: Apartment[] = [
   },
   {
     id: "apartment-2",
-    name: "One-Bed Apartment 2",
-    kind: "Apartment 2",
+    name: "The Ember Suite",
+    kind: "Ember Suite",
+    blurb: "Soft neutrals, brass accents and a cosy reading corner — made for slow mornings.",
     loc: SITE_PLACE,
     price: 50,
     sleeps: "Sleeps 2 · 1 bedroom",
@@ -140,8 +144,8 @@ export const HOME_PHOTOS: Photo[] = [
   { src: "/images/hero-living.jpg", alt: `${SITE.name} living room` },
   { src: "/images/hero-balcony.jpg", alt: "Balcony" },
   { src: "/images/hero-cushions.jpg", alt: "Living room detail" },
-  { src: "/images/room1-living.jpg", alt: "One-Bed Apartment 1 living room" },
-  { src: "/images/room2-living.jpg", alt: "One-Bed Apartment 2 living room" },
+  { src: "/images/room1-living.jpg", alt: "Linen Suite living room" },
+  { src: "/images/room2-living.jpg", alt: "Ember Suite living room" },
   { src: "/images/svc-carwash.jpg", alt: "Building and secure parking" },
 ];
 
@@ -152,7 +156,7 @@ export const TOUR_VIDEO = {
   title: `A walk through ${SITE.name}`,
 };
 
-export const FILTERS = ["Both apartments", "Apartment 1", "Apartment 2"] as const;
+export const FILTERS = ["All suites", "Linen Suite", "Ember Suite"] as const;
 
 export const ICONS = {
   area: ["M3.8 3.8h16.4v16.4H3.8z", "m9.6 14.4 4.8-4.8", "M9.6 11.6v2.8h2.8", "M14.4 12.4V9.6h-2.8"],
@@ -266,7 +270,7 @@ export const SERVICES: Service[] = [
     cat: "Services",
     title: "Car Wash Service",
     meta: "Priced by vehicle size",
-    body: `Keep your vehicle spotless while you relax at ${SITE.name}. Pricing depends on the type and size of vehicle.",
+    body: `Keep your vehicle spotless while you relax at ${SITE.name}. Pricing depends on the type and size of vehicle.`,
     price: "Quoted on booking",
     image: "/images/svc-carwash.jpg",
   },
@@ -282,7 +286,7 @@ export const SERVICES: Service[] = [
     cat: "Neighbourhood",
     title: "Easy Access",
     meta: "Location · major roads nearby",
-    body: "A well-connected neighbourhood, with major roads and transport close by for ${SITE.location.area} and beyond.`,
+    body: `A well-connected neighbourhood, with major roads and transport close by for ${SITE.location.area} and beyond.`,
     price: "Nearby",
     image: "/images/svc-access.jpg",
   },
@@ -318,7 +322,7 @@ export const PERKS = [
 export const REVIEWS = [
   {
     quote:
-      "A really restful stay. The apartment was spotless and well furnished, the host was quick to help, and the neighbourhood was wonderfully quiet.",
+      "Spotless, quiet and beautifully kept. We slept better here than at home.",
     who: "Sample guest · Business traveller",
   },
 ];
