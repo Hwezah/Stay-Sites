@@ -86,7 +86,7 @@ export function NeighbourhoodTeaser() {
 export function ClosingCta() {
   return (
     <section className="relative isolate overflow-hidden bg-stone-900 text-stone-50">
-      <Image src="/images/hero-balcony.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" />
+      <Image src="https://images.pexels.com/photos/6143348/pexels-photo-6143348.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" fill sizes="100vw" className="-z-10 object-cover" />
       <div className="absolute inset-0 -z-10 bg-brand/70" />
       <Container className="py-[clamp(80px,12vw,160px)] text-center">
         <Eyebrow className="justify-center before:hidden">Your stay</Eyebrow>

@@ -14,7 +14,9 @@ off `lodge-template` and their own Vercel project.
    `src/lib/data.ts`, which also holds the apartments, amenities, services and FAQs).
 4. **`src/app/policies/page.tsx`:** the client's cancellation policy and house rules.
 
-> The room photos in `public/images/` are placeholders from a previous build. Replace them for every client.
+> Placeholder photos: living rooms and kitchens load from Pexels (`images.pexels.com` URLs in `src/lib/data.ts`
+> and the home components); bedrooms, bathroom, balcony and services are local files in `public/images/`.
+> Replace them all with the client's own photos.
 
 **Stack:** Next.js 16 (App Router) · Tailwind CSS v4 · shadcn/ui · Supabase Auth · React Context for state.
 Bookings move to the Supabase database next. No environment variables are required; auth switches on when

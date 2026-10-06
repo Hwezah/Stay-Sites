@@ -89,7 +89,7 @@ export const SITE = {
     title: "Example Lodge · Serviced apartments in Your City",
     description:
       "Quiet, fully furnished one-bed apartments with self check-in, fast Wi-Fi and a host on call — 20 minutes from the city centre.",
-    ogImage: "/images/hero-living.jpg",
+    ogImage: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
 } as const;
 
