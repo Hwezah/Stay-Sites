@@ -30,7 +30,7 @@ export function BookingBar({ overlap = false }: { overlap?: boolean }) {
 
   return (
     <>
-        <div className={`relative z-10 -mx-[clamp(16px,4vw,24px)] grid grid-cols-2 border-b border-stone-200 bg-white xl:mx-0 ${overlap ? "xl:-mt-[60px]" : ""} xl:grid-cols-[1fr_1fr_auto_minmax(180px,0.8fr)] xl:border-0 xl:shadow-panel`}>
+        <div className={`relative z-10 -mx-[clamp(16px,4vw,24px)] grid auto-rows-fr grid-cols-2 border-b border-stone-200 bg-white xl:mx-0 ${overlap ? "xl:-mt-[60px]" : ""} xl:grid-cols-[1fr_1fr_auto_minmax(180px,0.8fr)] xl:border-0 xl:shadow-panel`}>
           {(["checkIn", "checkOut"] as const).map((k) => {
             const value = k === "checkIn" ? checkIn : checkOut;
             const label = k === "checkIn" ? "Check in" : "Check out";
