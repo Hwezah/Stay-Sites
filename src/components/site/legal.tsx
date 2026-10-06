@@ -17,7 +17,7 @@ export function LegalPage({
   updated: string;
   intro: ReactNode;
   /** Optional in-page links to the sections below. */
-  jump?: { id: string; label: string }[];
+  jump?: { id: string; label: string; short?: string }[];
   children: ReactNode;
 }) {
   return (
@@ -30,14 +30,21 @@ export function LegalPage({
           <p className="mt-5 max-w-[62ch] text-[16px] leading-[1.7] text-stone-700">{intro}</p>
         </div>
         {jump && (
-          <nav aria-label="On this page" className="mx-auto mt-6 flex max-w-[760px] flex-wrap justify-center gap-2 sm:justify-start">
+          <nav data-m-row aria-label="On this page" className="mx-auto mt-6 flex max-w-[760px] flex-wrap justify-center gap-2 sm:justify-start mportrait:flex-nowrap">
             {jump.map((j) => (
               <Link
                 key={j.id}
                 href={`#${j.id}`}
-                className="rounded-full border border-stone-200 bg-white px-4 py-2 text-[13.5px] text-stone-700 hover:border-brand hover:text-brand"
+                className="whitespace-nowrap rounded-full border border-stone-200 bg-white px-4 py-2 text-[13.5px] text-stone-700 hover:border-brand hover:text-brand"
               >
-                {j.label}
+                {j.short ? (
+                  <>
+                    <span className="mportrait:hidden">{j.label}</span>
+                    <span className="hidden mportrait:inline">{j.short}</span>
+                  </>
+                ) : (
+                  j.label
+                )}
               </Link>
             ))}
           </nav>

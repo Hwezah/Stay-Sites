@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const SECTIONS = [
-  { id: "cancellation", label: "Cancellation & refunds" },
+  { id: "cancellation", label: "Cancellation & refunds", short: "Refunds" },
   { id: "house-rules", label: "House rules" },
   { id: "privacy", label: "Privacy" },
 ];

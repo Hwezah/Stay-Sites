@@ -28,7 +28,7 @@ export async function generateMetadata(props: PageProps<"/apartments/[id]">): Pr
 }
 
 function Heading({ children }: { children: React.ReactNode }) {
-  return <h2 className="font-display mt-12 text-[clamp(26px,3vw,34px)] font-medium">{children}</h2>;
+  return <h2 className="font-display mt-12 text-[clamp(26px,3vw,34px)] font-medium mportrait:text-center">{children}</h2>;
 }
 
 /** Two-column list of label / value rows with a hairline under each, like a spec sheet. */
@@ -111,7 +111,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
                 ["Parties", h.parties],
               ]}
             />
-            <p className="mt-4 text-[13.5px] leading-[1.6] text-stone-500">
+            <p className="mt-4 text-[13.5px] leading-[1.6] text-stone-500 mportrait:text-center">
               {h.note}{" "}
               <Link href="/policies" className="font-medium text-brand hover:text-brand-hover">
                 Read the policies
@@ -121,7 +121,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
             <Heading>Reviews</Heading>
             <div className="mt-4 grid gap-6">
               {REVIEWS.map((r) => (
-                <figure key={r.who} className="border-b border-stone-200 pb-6">
+                <figure key={r.who} className="border-b border-stone-200 pb-6 mportrait:text-center">
                   <div className="text-[15px] tracking-[.2em] text-brand" aria-label="5 out of 5 stars">
                     ★★★★★
                   </div>
@@ -131,7 +131,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
               ))}
             </div>
 
-            <div className="mt-10 flex items-center gap-[13px]">
+            <div className="mt-10 flex items-center gap-[13px] mportrait:flex-col mportrait:text-center">
               <HostAvatar size={54} />
               <div>
                 <div className="text-[15px] font-semibold">Hosted by {SITE.host.firstName}</div>

@@ -44,8 +44,8 @@ export function StaysResults() {
                   className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                 />
               </Link>
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+              <div data-m-center className="min-w-0">
+                <div data-m-center className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 mportrait:flex-col mportrait:gap-y-1">
                   <h2 className="font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-tight">{a.name}</h2>
                   <div className="whitespace-nowrap">
                     <span className="text-[22px] font-semibold">{money(a.price)}</span>
@@ -53,7 +53,7 @@ export function StaysResults() {
                   </div>
                 </div>
                 <p className="mt-4 line-clamp-3 text-[15px] leading-[1.7] text-stone-600">{a.desc}</p>
-                <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-[14px]">
+                <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-[14px] mportrait:justify-center">
                   {[
                     ["Area", a.specs.area],
                     ["Bedrooms", a.specs.beds.replace(/\D+/g, "")],
