@@ -1,7 +1,20 @@
-# Selah Lodges
+# Lodge template
 
-Booking site for Selah Lodges, two one-bed serviced apartments in Komamboga | Kyanja, Kampala.
-Rebuilt from the high-fidelity prototype in [`docs/handoff/`](docs/handoff/README.md).
+A booking site template for lodges, guesthouses and serviced apartments. Each client gets their own branch
+off `lodge-template` and their own Vercel project.
+
+## Setting it up for a client
+
+1. **`content/site.ts`:** name, wordmark, logo, tagline, hero text, location, phones, WhatsApp, emails,
+   host, mobile money and bank details, socials, brand colours and SEO text. Nothing else holds business
+   details.
+2. **`public/brand/logo.svg`:** the client's logo (square, drawn in their brand colour). Update
+   `src/app/icon.svg` and `src/app/apple-icon.png` to match.
+3. **`public/images/`:** swap in the client's photos, keeping the file names (or update the paths in
+   `src/lib/data.ts`, which also holds the apartments, amenities, services and FAQs).
+4. **`src/app/policies/page.tsx`:** the client's cancellation policy and house rules.
+
+> The room photos in `public/images/` are placeholders from a previous build. Replace them for every client.
 
 **Stack:** Next.js 16 (App Router) · Tailwind CSS v4 · shadcn/ui · Supabase Auth · React Context for state.
 Bookings move to the Supabase database next. No environment variables are required; auth switches on when

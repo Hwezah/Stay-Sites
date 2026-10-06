@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useUI } from "@/context/ui-context";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
+import { SITE } from "@site";
 
 export type AuthMode = "signin" | "signup" | "forgot" | "reset" | "check-email";
 
@@ -91,7 +92,7 @@ export function AuthDialog({
     const status = (error ? null : data) as EmailStatus | null;
     if (status === "none")
       return {
-        text: `There's no Selah account for ${address} yet.`,
+        text: `There's no ${SITE.name} account for ${address} yet.`,
         action: { label: "Create an account", run: () => switchMode("signup") },
       };
     if (status === "oauth")
@@ -145,7 +146,7 @@ export function AuthDialog({
           }
           throw error;
         }
-        toast("ok", "Signed in", "Welcome back to Selah Lodges.");
+        toast("ok", "Signed in", `Welcome back to ${SITE.name}.`);
         onSignedIn();
       } else if (mode === "signup") {
         const { data, error } = await supabase.auth.signUp({
@@ -195,8 +196,8 @@ export function AuthDialog({
         onOpenAutoFocus={(e) => mode === "check-email" && e.preventDefault()}>
         <div className="px-[clamp(20px,5vw,28px)] pt-[clamp(22px,5vw,28px)]">
           <div className="flex items-center gap-[9px]">
-            <Image src="/images/selah-mark.png" alt="" width={26} height={26} className="size-[26px] object-contain" />
-            <span className="font-display text-[19px]">Selah Lodges</span>
+            <Image src={SITE.logo} alt="" width={26} height={26} className="size-[26px] object-contain" />
+            <span className="font-display text-[19px]">{SITE.wordmark}</span>
           </div>
           <DialogHeader className="mt-5">
             <DialogTitle>{copy.title}</DialogTitle>
@@ -217,7 +218,7 @@ export function AuthDialog({
                 type="button"
                 onClick={google}
                 disabled={busy !== null}
-                className="flex h-[46px] items-center justify-center gap-2.5 rounded-xl border border-stone-200 bg-white text-[14.5px] font-medium text-stone-900 transition-colors hover:bg-stone-50 disabled:opacity-60"
+                className="flex h-[46px] items-center justify-center gap-2.5 rounded-md border border-stone-200 bg-white text-[14.5px] font-medium text-stone-900 transition-colors hover:bg-stone-50 disabled:opacity-60"
               >
                 {busy === "google" ? <Spinner /> : <GoogleLogo />}
                 Continue with Google
@@ -227,13 +228,13 @@ export function AuthDialog({
                 type="button"
                 disabled
                 aria-describedby="apple-soon"
-                className="flex h-[46px] cursor-not-allowed items-center justify-center gap-2.5 rounded-xl border border-stone-200 bg-stone-50 text-[14.5px] font-medium text-stone-400"
+                className="flex h-[46px] cursor-not-allowed items-center justify-center gap-2.5 rounded-md border border-stone-200 bg-stone-50 text-[14.5px] font-medium text-stone-400"
               >
                 <AppleLogo />
                 Continue with Apple
                 <span
                   id="apple-soon"
-                  className="rounded-full bg-gold-tint px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[.08em] text-gold"
+                  className="rounded-full bg-brand-tint px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[.08em] text-brand"
                 >
                   Coming soon
                 </span>
@@ -250,7 +251,7 @@ export function AuthDialog({
             <button
               type="button"
               onClick={() => switchMode("signin")}
-              className="h-[46px] rounded-xl bg-gold text-[15px] font-medium text-stone-50 hover:bg-gold-hover"
+              className="h-[46px] rounded-md bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover"
             >
               Back to sign in
             </button>
@@ -282,7 +283,7 @@ export function AuthDialog({
                         <button
                           type="button"
                           onClick={() => switchMode("forgot")}
-                          className="text-[12.5px] font-normal text-gold hover:text-gold-hover"
+                          className="text-[12.5px] font-normal text-brand hover:text-brand-hover"
                         >
                           Forgot password?
                         </button>
@@ -315,7 +316,7 @@ export function AuthDialog({
               <button
                 type="submit"
                 disabled={busy !== null}
-                className="flex h-[46px] items-center justify-center gap-2 rounded-xl bg-gold text-[15px] font-medium text-stone-50 hover:bg-gold-hover disabled:opacity-70"
+                className="flex h-[46px] items-center justify-center gap-2 rounded-md bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover disabled:opacity-70"
               >
                 {busy === "form" && <Spinner />}
                 {{ signin: "Sign in", signup: "Create account", forgot: "Send reset link", reset: "Update password" }[mode]}
@@ -332,13 +333,13 @@ export function AuthDialog({
 
 function FooterSwitch({ mode, onSwitch }: { mode: AuthMode; onSwitch: (m: AuthMode) => void }) {
   const link = (label: string, to: AuthMode): ReactNode => (
-    <button type="button" onClick={() => onSwitch(to)} className="font-medium text-gold hover:text-gold-hover">
+    <button type="button" onClick={() => onSwitch(to)} className="font-medium text-brand hover:text-brand-hover">
       {label}
     </button>
   );
   const text =
     mode === "signin" ? (
-      <>New to Selah? {link("Create an account", "signup")}</>
+      <>New here? {link("Create an account", "signup")}</>
     ) : mode === "signup" ? (
       <>Already have an account? {link("Sign in", "signin")}</>
     ) : mode === "forgot" ? (

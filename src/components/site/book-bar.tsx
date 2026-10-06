@@ -18,13 +18,13 @@ export function BookBar() {
   const { panel, closePanels } = useUI();
   const atRooms = useRoomsInView(pathname);
   if (!showsBookBar(pathname)) return null;
-  const gold = panel === "drawer";
+  const onBrand = panel === "drawer";
 
   return (
     <div
       className={cn(
         "fixed inset-x-0 bottom-0 z-85 border-t px-3.5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-md sm:hidden",
-        gold ? "border-stone-50/20 bg-gold" : "border-stone-200 bg-stone-50/95",
+        onBrand ? "border-stone-50/20 bg-brand" : "border-stone-200 bg-stone-50/95",
       )}
       data-keep-open
     >
@@ -34,8 +34,8 @@ export function BookBar() {
         onClick={closePanels}
         data-m-btn
         className={cn(
-          "flex min-h-12 w-full items-center justify-center rounded-xl text-[15px] font-medium",
-          gold ? "bg-stone-50 text-gold" : "bg-gold text-stone-50",
+          "flex min-h-12 w-full items-center justify-center rounded-md text-[15px] font-medium",
+          onBrand ? "bg-stone-50 text-brand" : "bg-brand text-stone-50",
         )}
       >
         {pathname !== "/" ? "Back To Rooms" : atRooms ? "Pick A Room To Stay" : "Book A Room"}

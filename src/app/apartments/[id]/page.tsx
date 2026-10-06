@@ -6,8 +6,9 @@ import { BookingCard } from "@/components/booking/booking-card";
 import { AlbumChip } from "@/components/site/album-chip";
 import { SpecIcon } from "@/components/site/icon";
 import { PhotoButton } from "@/components/site/lightbox";
-import { BackLink, Container } from "@/components/site/ui";
+import { BackLink, Container, HostAvatar } from "@/components/site/ui";
 import { APARTMENTS, CONFIG, fullSpecs, listedAmenities } from "@/lib/data";
+import { SITE } from "@site";
 
 export function generateStaticParams() {
   return APARTMENTS.map((a) => ({ id: a.id }));
@@ -43,15 +44,15 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
         </div>
 
         <div className="mt-[22px] flex flex-wrap gap-2.5">
-          <PhotoButton album={a.gallery} index={0} className="relative h-[clamp(230px,32vw,420px)] min-w-0 flex-[2_1_320px] overflow-hidden rounded-2xl bg-stone-100">
+          <PhotoButton album={a.gallery} index={0} className="relative h-[clamp(230px,32vw,420px)] min-w-0 flex-[2_1_320px] overflow-hidden rounded-lg bg-stone-100">
             <Image src={a.images[0]} alt={`${a.name} living room`} fill priority sizes="(min-width: 640px) 66vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             <AlbumChip count={a.gallery.length} />
           </PhotoButton>
           <div className="flex h-[clamp(230px,32vw,420px)] min-w-0 flex-[1_1_200px] flex-col gap-2.5 overflow-hidden">
-            <PhotoButton album={a.gallery} index={1} className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-stone-100">
+            <PhotoButton album={a.gallery} index={1} className="relative min-h-0 flex-1 overflow-hidden rounded-lg bg-stone-100">
               <Image src={a.images[1]} alt={`${a.name} bedroom`} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             </PhotoButton>
-            <PhotoButton album={a.gallery} index={2} className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-stone-100">
+            <PhotoButton album={a.gallery} index={2} className="relative min-h-0 flex-1 overflow-hidden rounded-lg bg-stone-100">
               <Image src={a.images[2]} alt={`${a.name} kitchen`} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             </PhotoButton>
           </div>
@@ -78,20 +79,20 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
             <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-3">
               {listedAmenities(a).map((x) => (
                 <div key={x} className="flex items-center gap-2.5 text-[14.5px] text-stone-700">
-                  <span className="size-1.5 flex-none rounded-full bg-gold" />
+                  <span className="size-1.5 flex-none rounded-full bg-brand" />
                   {x}
                 </div>
               ))}
             </div>
             <div className="my-8 h-px bg-stone-200" />
-            <div className="flex items-center gap-[13px] rounded-[14px] border border-stone-200 bg-white p-[clamp(12px,3vw,18px)]">
-              <Image src="/images/penny.jpg" alt="Penny Baluti" width={54} height={54} className="size-[54px] flex-none rounded-full object-cover object-top" />
+            <div className="flex items-center gap-[13px] rounded-[6px] border border-stone-200 bg-white p-[clamp(12px,3vw,18px)]">
+              <HostAvatar size={54} />
               <div>
-                <div className="text-[15px] font-semibold">Hosted by Penny</div>
-                <div className="mt-[3px] text-[13.5px] text-stone-500">Founder &amp; Managing Director · replies on WhatsApp</div>
+                <div className="text-[15px] font-semibold">Hosted by {SITE.host.firstName}</div>
+                <div className="mt-[3px] text-[13.5px] text-stone-500">{SITE.host.role} · replies on WhatsApp</div>
                 <a
                   href={`mailto:${CONFIG.founderEmail}`}
-                  className="mt-1 inline-block break-all text-[13.5px] font-medium text-gold hover:text-gold-hover"
+                  className="mt-1 inline-block break-all text-[13.5px] font-medium text-brand hover:text-brand-hover"
                 >
                   {CONFIG.founderEmail}
                 </a>

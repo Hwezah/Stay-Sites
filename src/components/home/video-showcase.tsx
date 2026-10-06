@@ -45,15 +45,15 @@ export function VideoShowcase({
             <Image src={poster} alt="" fill sizes="100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <span className="absolute inset-0 bg-stone-900/40 transition-colors group-hover:bg-stone-900/30" />
             <span className="absolute top-1/2 left-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center">
-              <span className="absolute size-[clamp(72px,9vw,124px)] animate-ping rounded-full bg-gold/40 [animation-duration:2.4s]" />
-              <span className="relative grid size-[clamp(72px,9vw,124px)] place-items-center rounded-full bg-gold text-stone-50 shadow-[0_18px_40px_-12px_rgba(28,25,23,.55)] transition-transform duration-300 group-hover:scale-105">
+              <span className="absolute size-[clamp(72px,9vw,124px)] animate-ping rounded-full bg-brand/40 [animation-duration:2.4s]" />
+              <span className="relative grid size-[clamp(72px,9vw,124px)] place-items-center rounded-full bg-brand text-stone-50 shadow-[0_18px_40px_-12px_rgba(28,25,23,.55)] transition-transform duration-300 group-hover:scale-105">
                 <svg viewBox="0 0 24 24" className="size-[38%]" fill="currentColor" aria-hidden="true">
                   <path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" />
                 </svg>
               </span>
             </span>
             <span className="absolute inset-x-0 bottom-[clamp(18px,4vw,40px)] px-4 text-center">
-              <span className="block text-xs font-semibold uppercase tracking-[.12em] text-gold-soft">Take a tour</span>
+              <span className="block text-xs font-semibold uppercase tracking-[.12em] text-brand-soft">Take a tour</span>
               <span className="font-display mt-2 block text-[clamp(22px,3.6vw,38px)] text-stone-50">{title}</span>
             </span>
           </button>
@@ -128,7 +128,7 @@ function Slideshow({ slides, onClose }: { slides: Photo[]; onClose: () => void }
       </div>
 
       <div className="absolute inset-x-0 bottom-0 px-[clamp(16px,4vw,40px)] pb-[clamp(16px,3.5vw,36px)] text-stone-50">
-        <div className="text-xs font-semibold uppercase tracking-[.12em] text-gold-soft">
+        <div className="text-xs font-semibold uppercase tracking-[.12em] text-brand-soft">
           {index + 1} / {count}
         </div>
         <div className="font-display mt-1.5 text-[clamp(20px,3vw,32px)]">{slides[index].alt}</div>

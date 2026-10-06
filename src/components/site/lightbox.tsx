@@ -211,7 +211,7 @@ function Viewer({
               aria-current={i === index}
               className={cn(
                 "relative h-14 w-20 flex-none overflow-hidden rounded-lg ring-2 transition-opacity",
-                i === index ? "opacity-100 ring-gold" : "opacity-50 ring-transparent hover:opacity-80",
+                i === index ? "opacity-100 ring-brand" : "opacity-50 ring-transparent hover:opacity-80",
               )}
             >
               <Image src={p.src} alt="" fill sizes="80px" className="object-cover" />

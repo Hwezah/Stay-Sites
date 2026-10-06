@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Marcellus } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
+import type { CSSProperties } from "react";
 
 import { BookBar, ShellPadding } from "@/components/site/book-bar";
 import { SiteFooter } from "@/components/site/footer";
@@ -8,12 +9,21 @@ import { RevealObserver } from "@/components/site/reveal-observer";
 import { Toaster } from "@/components/site/toaster";
 import { AppProviders } from "@/context/app-providers";
 import "./globals.css";
+import { SITE } from "@site";
 
-const jost = Jost({ variable: "--font-jost", subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
-const marcellus = Marcellus({ variable: "--font-marcellus", subsets: ["latin"], weight: "400" });
+const body = Manrope({ variable: "--font-body", subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
+const heading = Cormorant_Garamond({ variable: "--font-heading", subsets: ["latin"], weight: ["500", "600"] });
 
-const description =
-  "Beautifully furnished one-bed serviced apartments in Komamboga | Kyanja, Kampala. A sanctuary to reflect, reset and rise.";
+// Brand colours from content/site.ts, applied over the defaults in globals.css.
+const themeVars = {
+  "--color-brand": SITE.theme.brand,
+  "--color-brand-hover": SITE.theme.brandHover,
+  "--color-brand-tint": SITE.theme.brandTint,
+  "--color-brand-soft": SITE.theme.brandSoft,
+  "--color-page": SITE.theme.page,
+} as CSSProperties;
+
+const description = SITE.seo.description;
 
 // Absolute base for Open Graph URLs. Blank env vars are skipped, and on Vercel
 // the deployment's own domain is used when NEXT_PUBLIC_SITE_URL isn't set.
@@ -33,25 +43,23 @@ function siteUrl(): URL {
 
 export const metadata: Metadata = {
   metadataBase: siteUrl(),
-  title: { default: "Selah Lodges · Serviced apartments in Kyanja, Kampala", template: "%s · Selah Lodges" },
+  title: { default: SITE.seo.title, template: `%s · ${SITE.name}` },
   description,
   openGraph: {
-    title: "Selah Lodges",
+    title: SITE.name,
     description,
-    siteName: "Selah Lodges",
+    siteName: SITE.name,
     type: "website",
-    images: [{ url: "/images/hero-living.jpg", width: 1024, height: 768, alt: "Selah Lodges living room" }],
+    images: [{ url: SITE.seo.ogImage, width: 1024, height: 768, alt: SITE.name }],
   },
-  twitter: { card: "summary_large_image", title: "Selah Lodges", description, images: ["/images/hero-living.jpg"] },
-  // Google Search Console ownership check (needed for Google sign-in branding).
-  verification: { google: "NDPiNzjbIsabrPEITKdOiCoP19or2HgdurQwtfgFUEY" },
+  twitter: { card: "summary_large_image", title: SITE.name, description, images: [SITE.seo.ogImage] },
 };
 
-export const viewport: Viewport = { themeColor: "#B9975B" };
+export const viewport: Viewport = { themeColor: SITE.theme.brand };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${jost.variable} ${marcellus.variable}`}>
+    <html lang="en" className={`${body.variable} ${heading.variable}`} style={themeVars}>
       <body>
         <AppProviders>
           <ShellPadding>

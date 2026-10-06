@@ -13,7 +13,7 @@ export function ApartmentCard({ apartment: a }: { apartment: Apartment }) {
     <Link
       href={`/apartments/${a.id}`}
       data-reveal
-      className="block overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-card transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:text-stone-900 hover:shadow-card-hover"
+      className="block overflow-hidden rounded-lg border border-stone-200 bg-white text-stone-900 shadow-card transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:text-stone-900 hover:shadow-card-hover"
     >
       <div className="relative aspect-[4/3]">
         <Image src={a.images[0]} alt={a.name} fill sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />

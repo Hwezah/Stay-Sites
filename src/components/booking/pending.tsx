@@ -6,6 +6,7 @@ import { useBooking } from "@/context/booking-context";
 import { fmtDate, whatsappUrl } from "@/lib/booking";
 import { Phones } from "@/components/site/ui";
 import { CONFIG } from "@/lib/data";
+import { SITE } from "@site";
 
 export function PendingClaim() {
   const { lastOrder, orders, hydrated } = useBooking();
@@ -31,7 +32,7 @@ export function PendingClaim() {
     { label: "Amount claimed", value: order.amountLabel },
   ];
   const nudge = whatsappUrl([
-    `Hello Penny — I've paid for booking ${order.ref} (${order.apartment}).`,
+    `Hello ${SITE.host.firstName} — I've paid for booking ${order.ref} (${order.apartment}).`,
     `Amount: ${order.amountLabel} by ${order.method}${order.phone ? ` from ${order.phone}` : ""}.`,
     `Name: ${order.name}`,
   ]);
@@ -46,7 +47,7 @@ export function PendingClaim() {
         <p className="mt-2.5 text-base leading-[1.6] text-stone-600">
           Thanks {order.name.split(" ")[0]} — your booking is recorded as <strong>pending</strong>. Please call us on{" "}
           <Phones />, or email{" "}
-          <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-gold hover:text-gold-hover">
+          <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-brand hover:text-brand-hover">
             {CONFIG.reservationsEmail}
           </a>
           , after payment. Your booking will be confirmed, and you&apos;ll get an
@@ -54,7 +55,7 @@ export function PendingClaim() {
           your support!
         </p>
       </div>
-      <div className="mt-[26px] overflow-hidden rounded-2xl border border-stone-200 bg-white">
+      <div className="mt-[26px] overflow-hidden rounded-lg border border-stone-200 bg-white">
         <div className="flex items-center justify-between gap-3 border-b border-stone-100 px-5 py-4">
           <span className="text-[13px] font-semibold">Reference {order.ref}</span>
           <span className="rounded-full bg-amber-100 px-[9px] py-[5px] text-[11px] font-semibold uppercase tracking-[.06em] text-amber-800">
@@ -81,14 +82,14 @@ export function PendingClaim() {
           href={nudge}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 items-center rounded-xl border border-gold bg-white px-[18px] text-sm font-medium text-gold hover:bg-gold-tint"
+          className="inline-flex h-11 items-center rounded-md border border-brand bg-white px-[18px] text-sm font-medium text-brand hover:bg-brand-tint"
         >
-          <span className="sm:hidden">WhatsApp Penny</span>
-          <span className="hidden sm:inline">Nudge Penny on WhatsApp</span>
+          <span className="sm:hidden">WhatsApp {SITE.host.firstName}</span>
+          <span className="hidden sm:inline">Nudge {SITE.host.firstName} on WhatsApp</span>
         </a>
         <Link
           href="/trips"
-          className="inline-flex h-11 items-center rounded-xl border border-stone-200 bg-white px-[18px] text-sm text-stone-900 hover:bg-stone-100 hover:text-stone-900"
+          className="inline-flex h-11 items-center rounded-md border border-stone-200 bg-white px-[18px] text-sm text-stone-900 hover:bg-stone-100 hover:text-stone-900"
         >
           <span className="sm:hidden">Your trips</span>
           <span className="hidden sm:inline">View your trips</span>

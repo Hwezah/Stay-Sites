@@ -47,7 +47,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-100 grid max-h-[calc(100dvh-24px)] w-full max-w-[calc(100%-24px)] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-y-auto rounded-[18px] border border-stone-200 bg-white p-6 shadow-[0_30px_70px_-20px_rgba(28,25,23,.5)] duration-200 outline-none sm:max-w-md",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-100 grid max-h-[calc(100dvh-24px)] w-full max-w-[calc(100%-24px)] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-y-auto rounded-[8px] border border-stone-200 bg-white p-6 shadow-[0_30px_70px_-20px_rgba(28,25,23,.5)] duration-200 outline-none sm:max-w-md",
           className,
         )}
         {...props}
@@ -57,7 +57,7 @@ function DialogContent({
           <DialogPrimitive.Close
             data-slot="dialog-close"
             className={cn(
-              "absolute top-3 right-3 grid size-14 place-items-center rounded-full text-stone-700 transition-colors hover:text-stone-900 focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none",
+              "absolute top-3 right-3 grid size-14 place-items-center rounded-full text-stone-700 transition-colors hover:text-stone-900 focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:outline-none",
               closeClassName,
             )}
           >

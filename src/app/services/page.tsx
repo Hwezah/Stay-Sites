@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 
 import { ServicesGrid } from "@/components/services/services-grid";
 import { Container, Eyebrow } from "@/components/site/ui";
+import { SITE } from "@site";
 
 export const metadata: Metadata = {
   title: "Services & neighbourhood",
-  description: "Laundry, cleaning and car wash services at Selah Lodges, plus the best of Komamboga–Kyanja nearby.",
+  description: `Laundry, cleaning and car wash services at ${SITE.name}, plus the best of ${SITE.location.area} nearby.`,
 };
 
 export default function ServicesPage() {
@@ -19,7 +20,7 @@ export default function ServicesPage() {
           </h1>
           <p className="mt-4 max-w-[58ch] text-[16.5px] leading-[1.6] text-stone-600">
             Enhance your stay with laundry, cleaning and car wash services — pricing is provided when you book. Then
-            step out and enjoy the best of Komamboga–Kyanja.
+            step out and enjoy the best of {SITE.location.area}.
           </p>
         </div>
         <ServicesGrid />

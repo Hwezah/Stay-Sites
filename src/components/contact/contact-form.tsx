@@ -25,7 +25,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="min-w-0 flex-[1.5_1_340px] rounded-[18px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,28px)]">
+    <div className="min-w-0 flex-[1.5_1_340px] rounded-[8px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,28px)]">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,190px),1fr))] gap-4">
         <Field label="Name">
           <TextInput value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" autoComplete="name" />
@@ -51,7 +51,7 @@ export function ContactForm() {
       <button
         type="button"
         onClick={submit}
-        className="mt-5 min-h-12 w-full rounded-xl bg-gold px-[26px] text-[15px] font-medium text-stone-50 hover:bg-gold-hover"
+        className="mt-5 min-h-12 w-full rounded-md bg-brand px-[26px] text-[15px] font-medium text-stone-50 hover:bg-brand-hover"
       >
         Submit
       </button>

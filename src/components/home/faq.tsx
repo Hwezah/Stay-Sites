@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <div className="min-w-0 flex-[1.4_1_340px] overflow-hidden rounded-[14px] border border-stone-200 bg-white">
+    <div className="min-w-0 flex-[1.4_1_340px] overflow-hidden rounded-[6px] border border-stone-200 bg-white">
       {FAQS.map((f, i) => {
         const on = open === i;
         return (

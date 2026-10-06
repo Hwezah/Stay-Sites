@@ -30,6 +30,7 @@ import {
   type PayMethod,
   type Service,
 } from "@/lib/data";
+import { SITE } from "@site";
 
 // Orders and the trip draft live in browser storage until Supabase is wired up.
 const KEYS = {
@@ -248,7 +249,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     };
     saveOrders([order, ...orders].slice(0, 20));
     setLastRef(order.ref);
-    toast("ok", "Booking recorded as pending", "Penny verifies the payment, then confirms.");
+    toast("ok", "Booking recorded as pending", `${SITE.host.firstName} verifies the payment, then confirms.`);
     return order;
   }, [form, payMethod, momoPhone, apartment, trip, totals.n, amountDue, money, orders, saveOrders, toast]);
 
@@ -272,7 +273,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const cancelOrder = useCallback(
     (ref: string) => {
       saveOrders(orders.map((o) => (o.ref === ref ? { ...o, status: "cancelled" as const } : o)));
-      toast("warn", "Cancellation requested", "Penny will confirm any refund in line with the cancellation policy.");
+      toast("warn", "Cancellation requested", `${SITE.host.firstName} will confirm any refund in line with the cancellation policy.`);
     },
     [orders, saveOrders, toast],
   );
@@ -280,7 +281,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const whatsappLines = useCallback(
     () =>
       [
-        `Hello Selah Lodges — I'd like to book ${apartment.name}.`,
+        `Hello ${SITE.name} — I'd like to book ${apartment.name}.`,
         `Dates: ${fmtDate(trip.checkIn, true) || "TBD"} → ${fmtDate(trip.checkOut, true) || "TBD"} (${totals.n} ${totals.n === 1 ? "night" : "nights"})`,
         `Guests: ${trip.guests}`,
         `Total: ${money(grandTotal)}`,

@@ -1,16 +1,13 @@
-// Content and configuration lifted from the design prototype
-// (`docs/handoff/Selah Lodges.dc.html`). Copy is final unless noted.
+// Site content and booking configuration. Business details (name, contacts, location, host) come from
+// content/site.ts; the copy below is written around them.
+import { SITE, SITE_PLACE } from "@site";
 
 export const CONFIG = {
-  // Mobile money numbers to pay into (both registered to Peninah Baluti).
-  momo: [
-    { network: "MTN", number: "0776 401100", tel: "+256776401100" },
-    { network: "Airtel", number: "0751 401198", tel: "+256751401198" },
-  ],
-  momoName: "Peninah Baluti",
-  // WhatsApp goes to the second line only.
-  adminWhatsApp: "256751401198",
-  whatsappDisplay: "+256 751 401 198",
+  momo: SITE.payments.momo,
+  momoName: SITE.payments.momoName,
+  // WhatsApp goes to this number only.
+  adminWhatsApp: SITE.contact.whatsapp.replace(/[^0-9]/g, ""),
+  whatsappDisplay: SITE.contact.whatsapp,
   ugxRate: 3800,
   cleaningFee: 10,
   serviceFeePct: 11,
@@ -18,12 +15,12 @@ export const CONFIG = {
   enableSplitPay: true,
   // Placeholder availability until bookings live in a database.
   showBlockedDates: true,
-  phones: ["+256 776 401 100", "+256 751 401 198"],
-  email: "info@selahlodges.com",
+  phones: SITE.contact.phones,
+  email: SITE.contact.email,
   // Booking questions: shown next to booking, checkout and payment steps.
-  reservationsEmail: "reservations@selahlodges.com",
-  // Penny Baluti's personal address, shown where the site talks about the founder.
-  founderEmail: "pennybaluti@gmail.com",
+  reservationsEmail: SITE.contact.reservationsEmail,
+  // The host's address, shown where the site talks about them.
+  founderEmail: SITE.host.email,
 } as const;
 
 export type ApartmentId = "apartment-1" | "apartment-2";
@@ -81,7 +78,7 @@ export const APARTMENTS: Apartment[] = [
     id: "apartment-1",
     name: "One-Bed Apartment 1",
     kind: "Apartment 1",
-    loc: "Komamboga | Kyanja, Kampala",
+    loc: SITE_PLACE,
     price: 50,
     sleeps: "Sleeps 2 · 1 bedroom",
     tag: "USD 50/night",
@@ -101,7 +98,7 @@ export const APARTMENTS: Apartment[] = [
     id: "apartment-2",
     name: "One-Bed Apartment 2",
     kind: "Apartment 2",
-    loc: "Komamboga | Kyanja, Kampala",
+    loc: SITE_PLACE,
     price: 50,
     sleeps: "Sleeps 2 · 1 bedroom",
     tag: "USD 50/night",
@@ -140,7 +137,7 @@ export function getApartment(id: string | null | undefined): Apartment {
 
 /** Album behind the home page photo collage. */
 export const HOME_PHOTOS: Photo[] = [
-  { src: "/images/hero-living.jpg", alt: "Selah Lodges living room" },
+  { src: "/images/hero-living.jpg", alt: `${SITE.name} living room` },
   { src: "/images/hero-balcony.jpg", alt: "Balcony" },
   { src: "/images/hero-cushions.jpg", alt: "Living room detail" },
   { src: "/images/room1-living.jpg", alt: "One-Bed Apartment 1 living room" },
@@ -152,7 +149,7 @@ export const HOME_PHOTOS: Photo[] = [
 export const TOUR_VIDEO = {
   src: "/videos/selah-tour.mp4",
   poster: "/images/room2-tv.jpg",
-  title: "A walk through Selah Lodges",
+  title: `A walk through ${SITE.name}`,
 };
 
 export const FILTERS = ["Both apartments", "Apartment 1", "Apartment 2"] as const;
@@ -269,7 +266,7 @@ export const SERVICES: Service[] = [
     cat: "Services",
     title: "Car Wash Service",
     meta: "Priced by vehicle size",
-    body: "Keep your vehicle spotless while you relax at Selah Lodges. Pricing depends on the type and size of vehicle.",
+    body: `Keep your vehicle spotless while you relax at ${SITE.name}. Pricing depends on the type and size of vehicle.",
     price: "Quoted on booking",
     image: "/images/svc-carwash.jpg",
   },
@@ -285,7 +282,7 @@ export const SERVICES: Service[] = [
     cat: "Neighbourhood",
     title: "Easy Access",
     meta: "Location · major roads nearby",
-    body: "A well-connected neighbourhood, with major roads and transport close by for Komamboga, Kyanja and beyond.",
+    body: "A well-connected neighbourhood, with major roads and transport close by for ${SITE.location.area} and beyond.`,
     price: "Nearby",
     image: "/images/svc-access.jpg",
   },
@@ -312,17 +309,17 @@ export const NAV_ITEMS = [
 
 export const PERKS = [
   { mark: "01", title: "Hotel-grade linens", body: "Percale sheets, six towels per guest, laundered off-site between every stay." },
-  { mark: "02", title: "Stocked kitchen", body: "Ugandan coffee, tea, sugar, oil and breakfast basics waiting when you arrive." },
+  { mark: "02", title: "Stocked kitchen", body: "Local coffee, tea, sugar, oil and breakfast basics waiting when you arrive." },
   { mark: "03", title: "Self check-in", body: "A gate and door code that is yours alone, active from 2pm on arrival day." },
   { mark: "04", title: "Host on call", body: "A real person, one text away, from 7am to 10pm every day of your stay." },
 ];
 
-// Only the review supplied by the client; add more as they come in.
+// Sample review: replace with real guest reviews.
 export const REVIEWS = [
   {
     quote:
-      "A truly relaxing stay. The rooms are spotless and beautifully furnished. The staff make you feel right at home, and the surroundings are wonderfully peaceful.",
-    who: "Elaine · Lecturer",
+      "A really restful stay. The apartment was spotless and well furnished, the host was quick to help, and the neighbourhood was wonderfully quiet.",
+    who: "Sample guest · Business traveller",
   },
 ];
 
@@ -341,7 +338,7 @@ export const FAQS = [
   },
   {
     q: "What are the house rules?",
-    a: "Selah is intentionally quiet and reflective: no parties or loud gatherings, please respect other guests and the environment, and observe check-in/check-out times and any pet or smoking rules.",
+    a: "We are intentionally quiet and reflective: no parties or loud gatherings, please respect other guests and the environment, and observe check-in/check-out times and any pet or smoking rules.",
   },
 ];
 
@@ -374,31 +371,31 @@ export const TIMELINE = [
 export const CONTACT_CARDS: { label: string; value: string; note: string; email?: string; phones?: boolean }[] = [
   {
     label: "Direct reservations",
-    value: "+256 776 401 100 · +256 751 401 198",
+    value: SITE.contact.phones.join(" · "),
     phones: true,
-    note: "Call either line to book. WhatsApp +256 751 401 198, or email us.",
+    note: `Call to book, WhatsApp ${SITE.contact.whatsapp}, or email us.`,
     email: CONFIG.reservationsEmail,
   },
   { label: "Email", value: CONFIG.email, note: "For general enquiries and group stays.", email: CONFIG.email },
-  { label: "Selah address", value: "Komamboga | Kyanja — Proximity", note: "Selah Lodges, Kampala." },
+  { label: "Address", value: SITE_PLACE, note: `${SITE.name}, ${SITE.location.country}.` },
   {
     label: "Approximate travel time",
-    value: "30 minutes from Kampala City",
-    note: "Even with traffic — the perfect escape from the hustle and bustle.",
+    value: SITE.location.travel,
+    note: "Close enough to get around, far enough to switch off.",
   },
 ];
 
 export const BANK_ROWS = [
-  { label: "Bank", value: "To confirm with Selah" },
-  { label: "Account name", value: "Selah Lodges Ltd" },
-  { label: "Account number", value: "To confirm" },
-  { label: "Branch / SWIFT", value: "To confirm" },
+  { label: "Bank", value: SITE.payments.bank.name },
+  { label: "Account name", value: SITE.payments.bank.accountName },
+  { label: "Account number", value: SITE.payments.bank.accountNumber },
+  { label: "Branch / SWIFT", value: SITE.payments.bank.branch },
 ];
 
 export type PayMethod = "Mobile Money" | "Bank transfer" | "Card" | "Apple Pay" | "PayPal";
 
 export const PAY_METHODS: { label: PayMethod; note: string; tag?: string; off?: boolean }[] = [
-  { label: "Mobile Money", note: "MTN 0776 401100 or Airtel 0751 401198 — Peninah Baluti", tag: "Recommended" },
+  { label: "Mobile Money", note: `${SITE.payments.momo.map((m) => `${m.network} ${m.number}`).join(" or ")} — ${SITE.payments.momoName}`, tag: "Recommended" },
   { label: "Bank transfer", note: "Direct bank transfer — details below" },
   { label: "Card", note: "DPO Pay (Visa & Mastercard) — coming soon", off: true },
   { label: "Apple Pay", note: "Coming soon", off: true },

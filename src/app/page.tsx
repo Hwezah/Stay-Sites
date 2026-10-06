@@ -27,8 +27,8 @@ export default function HomePage() {
           </div>
           <div className="mt-[30px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4">
             {PERKS.map((k) => (
-              <div key={k.mark} data-reveal className="rounded-[14px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,22px)]">
-                <div className="grid size-9 place-items-center rounded-[10px] bg-gold-tint text-[15px] font-semibold text-gold">
+              <div key={k.mark} data-reveal className="rounded-[6px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,22px)]">
+                <div className="grid size-9 place-items-center rounded-[10px] bg-brand-tint text-[15px] font-semibold text-brand">
                   {k.mark}
                 </div>
                 <div className="mt-3.5 text-[15px] font-semibold">{k.title}</div>
@@ -41,7 +41,7 @@ export default function HomePage() {
 
       <section data-reveal id="reviews">
         <Container className="pt-[clamp(48px,8vw,84px)]">
-          <div className="overflow-hidden rounded-[20px] bg-stone-900 p-[clamp(24px,4vw,48px)] text-stone-50">
+          <div className="overflow-hidden rounded-[8px] bg-stone-900 p-[clamp(24px,4vw,48px)] text-stone-50">
             <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
               <div className="font-display text-[52px] leading-none">94%</div>
               <div className="text-sm text-stone-300">guest satisfaction · 400 clients · 1K+ nights</div>
@@ -65,11 +65,11 @@ export default function HomePage() {
               <h2 className="font-display text-[clamp(27px,5.2vw,40px)] tracking-[-.015em]">Good to know</h2>
               <p className="mt-3 text-[15px] leading-[1.6] text-stone-600">
                 Still deciding? Call <Phones />, WhatsApp{" "}
-                <a href={whatsappUrl([])} target="_blank" rel="noopener" className="whitespace-nowrap font-medium text-gold hover:text-gold-hover">
+                <a href={whatsappUrl([])} target="_blank" rel="noopener" className="whitespace-nowrap font-medium text-brand hover:text-brand-hover">
                   {CONFIG.whatsappDisplay}
                 </a>
                 , or email{" "}
-                <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-gold hover:text-gold-hover">
+                <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-brand hover:text-brand-hover">
                   {CONFIG.reservationsEmail}
                 </a>
                 .

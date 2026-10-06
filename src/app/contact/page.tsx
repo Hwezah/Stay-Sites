@@ -26,13 +26,13 @@ export default function ContactPage() {
           <ContactForm />
           <div className="grid min-w-0 flex-[1_1_280px] gap-4 md:sticky md:top-[92px]">
             {CONTACT_CARDS.map((c) => (
-              <div key={c.label} className="rounded-[14px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,22px)]">
+              <div key={c.label} className="rounded-[6px] border border-stone-200 bg-white p-[clamp(14px,3.4vw,22px)]">
                 <div className="text-[11px] font-semibold uppercase tracking-[.07em] text-stone-500">{c.label}</div>
                 <div className="mt-2 text-[15.5px] font-medium">
                   {c.phones ? (
-                    <Phones sep=" · " className="text-stone-900 hover:text-gold" />
+                    <Phones sep=" · " className="text-stone-900 hover:text-brand" />
                   ) : c.email && c.value === c.email ? (
-                    <a href={`mailto:${c.email}`} className="text-stone-900 hover:text-gold">
+                    <a href={`mailto:${c.email}`} className="text-stone-900 hover:text-brand">
                       {c.value}
                     </a>
                   ) : (
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 {c.email && c.value !== c.email && (
                   <a
                     href={`mailto:${c.email}`}
-                    className="mt-1.5 inline-block break-all text-[13.5px] font-medium text-gold hover:text-gold-hover"
+                    className="mt-1.5 inline-block break-all text-[13.5px] font-medium text-brand hover:text-brand-hover"
                   >
                     {c.email}
                   </a>

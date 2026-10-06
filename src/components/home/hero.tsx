@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 import { PhotoButton } from "@/components/site/lightbox";
 import { HOME_PHOTOS } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { SITE, SITE_PLACE } from "@site";
 
 const SLIDES = [
-  { src: "/images/hero-living.jpg", alt: "Selah Lodges living room" },
+  { src: "/images/hero-living.jpg", alt: `${SITE.name} living room` },
   { src: "/images/room1-bedroom.jpg", alt: "Bedroom" },
   { src: "/images/room1-living.jpg", alt: "One-Bed Apartment 1 living room" },
   { src: "/images/room2-kitchen.jpg", alt: "Kitchen and dining nook" },
@@ -35,7 +36,7 @@ export function Hero() {
 
   return (
     <section
-      aria-label="Welcome to Selah Lodges"
+      aria-label={`Welcome to ${SITE.name}`}
       className="relative isolate flex h-[80svh] min-h-[520px] flex-col justify-end overflow-hidden bg-stone-900 text-stone-50 sm:h-svh"
     >
       {SLIDES.map((s, i) => {
@@ -72,24 +73,25 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-stone-900/80 via-stone-900/35 to-stone-900/25 lg:bg-gradient-to-r lg:from-stone-900/70 lg:via-stone-900/35 lg:to-stone-900/10" />
 
       <div data-m-center className="mx-auto w-full max-w-[1400px] px-[clamp(16px,4vw,24px)] pb-[clamp(16px,2.5vw,28px)]">
-        <div className="text-[11.5px] font-semibold uppercase tracking-[.14em] text-stone-50/85 sm:text-xs">
-          Selah Lodges · Komamboga | Kyanja, Kampala
+        <div className="flex items-center gap-3 text-[11.5px] font-semibold uppercase tracking-[.2em] mportrait:justify-center mportrait:text-[10.5px] mportrait:tracking-[.14em] text-stone-50/85 sm:text-xs">
+          <span aria-hidden="true" className="h-px w-8 bg-stone-50/70 mportrait:hidden" />
+          {SITE.name} · {SITE_PLACE}
         </div>
-        <h1 className="font-display mt-3 max-w-[16ch] text-[clamp(38px,7vw,96px)] leading-[1.02] tracking-[-.02em] text-pretty">
-          A sanctuary to reflect, reset and rise.
+        <h1 className="font-display mt-3 max-w-[16ch] text-[clamp(38px,7vw,96px)] font-medium leading-[1] tracking-[-.01em] text-pretty">
+          {SITE.hero.headline}
         </h1>
       </div>
 
 
       <div data-m-center className="mx-auto w-full max-w-[1400px] px-[clamp(16px,4vw,24px)] pb-[112px] lg:pb-[168px]">
         <p className="max-w-[48ch] text-[15px] leading-[1.6] text-stone-50/90 sm:text-[17px]">
-          Beautifully furnished one-bed apartments — modern design in serene surroundings, 30 minutes from Kampala.
+          {SITE.hero.intro}
         </p>
         {/* Hidden on phones in portrait, where the sticky "Book a room" bar takes over. */}
         <div className="mt-8 hidden flex-nowrap items-center gap-4 whitespace-nowrap sm:flex">
           <Link
             href="/#stays"
-            className="inline-flex h-14 flex-none items-center gap-2.5 rounded-full bg-white px-8 text-[15px] font-medium text-stone-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,.5)] transition-colors hover:bg-gold-tint hover:text-stone-900"
+            className="inline-flex h-14 flex-none items-center gap-2.5 rounded-[4px] bg-white px-8 text-[12.5px] font-semibold uppercase tracking-[.14em] text-stone-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,.5)] transition-colors hover:bg-brand-tint hover:text-stone-900"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
               <path d="M7 17 17 7" />
@@ -100,7 +102,7 @@ export function Hero() {
           <span aria-hidden="true" className="h-8 w-px bg-stone-50/60" />
           <Link
             href="/services"
-            className="inline-flex h-14 flex-none items-center rounded-full bg-gold px-8 text-[15px] font-medium text-stone-50 shadow-[0_10px_30px_-12px_rgba(0,0,0,.5)] transition-colors hover:bg-gold-hover hover:text-stone-50"
+            className="inline-flex h-14 flex-none items-center rounded-[4px] bg-brand px-8 text-[12.5px] font-semibold uppercase tracking-[.14em] text-stone-50 shadow-[0_10px_30px_-12px_rgba(0,0,0,.5)] transition-colors hover:bg-brand-hover hover:text-stone-50"
           >
             Explore Services
           </Link>

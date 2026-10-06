@@ -14,6 +14,7 @@ import { useUI } from "@/context/ui-context";
 import { datesLabel, guestsLabel, whatsappUrl } from "@/lib/booking";
 import { BANK_ROWS, CONFIG, PAY_METHODS } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { SITE } from "@site";
 
 const STEPS = ["Trip", "Details", "Payment"];
 
@@ -36,7 +37,7 @@ export function Checkout() {
         <Link
           href={detailHref}
           data-m-btn
-          className="mt-6 inline-flex h-11 items-center rounded-xl bg-gold px-5 text-sm font-medium text-stone-50 hover:bg-gold-hover hover:text-stone-50"
+          className="mt-6 inline-flex h-11 items-center rounded-md bg-brand px-5 text-sm font-medium text-stone-50 hover:bg-brand-hover hover:text-stone-50"
         >
           Choose dates for {b.apartment.name}
         </Link>
@@ -63,7 +64,7 @@ export function Checkout() {
 
   const bookWhatsApp = () => {
     window.open(whatsappUrl(b.whatsappLines()), "_blank", "noopener");
-    toast("ok", "Opening WhatsApp", `Send the message and Penny will confirm ${b.apartment.name}.`);
+    toast("ok", "Opening WhatsApp", `Send the message and ${SITE.host.firstName} will confirm ${b.apartment.name}.`);
   };
 
   return (
@@ -79,7 +80,7 @@ export function Checkout() {
             <span
               className={cn(
                 "grid size-6 place-items-center rounded-full text-xs font-semibold",
-                i < 2 ? "bg-gold text-stone-50" : "border border-stone-200 bg-white text-stone-500",
+                i < 2 ? "bg-brand text-stone-50" : "border border-stone-200 bg-white text-stone-500",
               )}
             >
               {i + 1}
@@ -102,7 +103,7 @@ export function Checkout() {
                   <div className="text-sm font-medium">Dates</div>
                   <div className="mt-0.5 whitespace-nowrap text-[13.5px] text-stone-500">{datesLabel(b.checkIn, b.checkOut)}</div>
                 </div>
-                <Link href={detailHref} className="text-[13px] text-gold underline">
+                <Link href={detailHref} className="text-[13px] text-brand underline">
                   Edit
                 </Link>
               </div>
@@ -178,21 +179,21 @@ export function Checkout() {
                       b.setPayMethod(m.label);
                     }}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-xl border px-4 py-[13px] text-left",
+                      "flex w-full items-center gap-3 rounded-md border px-4 py-[13px] text-left",
                       m.off
                         ? "cursor-not-allowed border-stone-200 bg-stone-50 text-stone-400 opacity-65"
                         : on
-                          ? "border-gold bg-gold-tint"
+                          ? "border-brand bg-brand-tint"
                           : "border-stone-200 bg-white",
                     )}
                   >
                     <span
                       className={cn(
                         "grid size-[18px] flex-none place-items-center rounded-full border",
-                        m.off ? "border-stone-200" : on ? "border-gold" : "border-stone-300",
+                        m.off ? "border-stone-200" : on ? "border-brand" : "border-stone-300",
                       )}
                     >
-                      <span className={cn("size-[9px] rounded-full", on && "bg-gold")} />
+                      <span className={cn("size-[9px] rounded-full", on && "bg-brand")} />
                     </span>
                     <span className="min-w-0">
                       <span className="block text-sm font-medium">{m.label}</span>
@@ -201,7 +202,7 @@ export function Checkout() {
                     <span
                       className={cn(
                         "ml-auto text-[11px] font-semibold uppercase tracking-[.06em]",
-                        m.off ? "text-stone-400" : "text-gold",
+                        m.off ? "text-stone-400" : "text-brand",
                       )}
                     >
                       {m.off ? "Unavailable" : m.tag}
@@ -212,19 +213,19 @@ export function Checkout() {
             </div>
 
             {isMomo && (
-              <div className="mt-[18px] overflow-hidden rounded-xl border border-stone-200">
-                <div className="border-b border-stone-200 bg-gold-tint px-[18px] py-4">
-                  <div className="text-[11px] font-semibold uppercase tracking-[.07em] text-gold">Send payment to</div>
+              <div className="mt-[18px] overflow-hidden rounded-md border border-stone-200">
+                <div className="border-b border-stone-200 bg-brand-tint px-[18px] py-4">
+                  <div className="text-[11px] font-semibold uppercase tracking-[.07em] text-brand">Send payment to</div>
                   <div className="mt-[7px] flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                     {CONFIG.momo.map((m, i) => (
                       <span key={m.tel} className="flex items-baseline gap-x-2.5">
-                        {i > 0 && <span className="text-[13.5px] text-gold">or</span>}
-                        <a href={`tel:${m.tel}`} className="text-[22px] font-semibold tracking-[-.01em] text-stone-900 hover:text-gold">
+                        {i > 0 && <span className="text-[13.5px] text-brand">or</span>}
+                        <a href={`tel:${m.tel}`} className="text-[22px] font-semibold tracking-[-.01em] text-stone-900 hover:text-brand">
                           {m.network} {m.number}
                         </a>
                       </span>
                     ))}
-                    <span className="text-[13.5px] text-gold">{CONFIG.momoName}</span>
+                    <span className="text-[13.5px] text-brand">{CONFIG.momoName}</span>
                   </div>
                   <div className="mt-2 text-[13.5px] text-stone-700">
                     Send exactly <strong>{due}</strong> from your phone, then submit the form below.
@@ -244,7 +245,7 @@ export function Checkout() {
                     />
                   </Field>
                   <div className="text-[12.5px] leading-[1.55] text-stone-500">
-                    No account needed. Submitting records your booking as <strong>pending</strong> — Penny checks the
+                    No account needed. Submitting records your booking as <strong>pending</strong> — {SITE.host.firstName} checks the
                     Mobile Money account and confirms it, and you get an SMS either way.
                   </div>
                 </div>
@@ -252,7 +253,7 @@ export function Checkout() {
             )}
 
             {isBank && (
-              <div className="mt-[18px] grid gap-2.5 rounded-xl border border-stone-200 p-[18px]">
+              <div className="mt-[18px] grid gap-2.5 rounded-md border border-stone-200 p-[18px]">
                 {BANK_ROWS.map((r) => (
                   <div key={r.label} className="flex justify-between gap-4 text-[13.5px]">
                     <span className="text-stone-500">{r.label}</span>
@@ -276,7 +277,7 @@ export function Checkout() {
                   onClick={() => b.setSplit(!b.split)}
                   className={cn(
                     "mt-px grid size-5 flex-none place-items-center rounded-md border text-xs leading-none",
-                    b.split ? "border-gold bg-gold text-stone-50" : "border-stone-300 bg-white text-transparent",
+                    b.split ? "border-brand bg-brand text-stone-50" : "border-stone-300 bg-white text-transparent",
                   )}
                 >
                   ✓
@@ -289,9 +290,9 @@ export function Checkout() {
           </Card>
         </div>
 
-        <div className="sticky top-[92px] min-w-0 flex-[1_1_300px] rounded-[18px] border border-stone-200 bg-white p-[clamp(13px,3.2vw,22px)] shadow-sticky">
+        <div className="sticky top-[92px] min-w-0 flex-[1_1_300px] rounded-[8px] border border-stone-200 bg-white p-[clamp(13px,3.2vw,22px)] shadow-sticky">
           <div className="flex gap-3.5">
-            <Image src={b.apartment.images[0]} alt={b.apartment.name} width={78} height={78} className="size-[78px] flex-none rounded-xl object-cover" />
+            <Image src={b.apartment.images[0]} alt={b.apartment.name} width={78} height={78} className="size-[78px] flex-none rounded-md object-cover" />
             <div className="min-w-0">
               <div className="text-[14.5px] font-semibold">{b.apartment.name}</div>
               <div className="mt-[3px] text-[13px] text-stone-500">{b.apartment.loc}</div>
@@ -308,7 +309,7 @@ export function Checkout() {
             type="button"
             onClick={submit}
             disabled={submitting}
-            className="mt-[18px] h-[46px] w-full rounded-xl bg-gold text-[15px] font-medium text-stone-50 hover:bg-gold-hover disabled:cursor-wait disabled:bg-stone-700"
+            className="mt-[18px] h-[46px] w-full rounded-md bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover disabled:cursor-wait disabled:bg-stone-700"
           >
             {submitting ? "Processing…" : isMomo ? `I've sent ${due} — submit` : `I've transferred ${due} — submit`}
           </button>
@@ -320,18 +321,18 @@ export function Checkout() {
           <button
             type="button"
             onClick={bookWhatsApp}
-            className="flex h-[46px] w-full items-center justify-center gap-[9px] rounded-xl border border-gold bg-white text-[14.5px] font-medium text-gold hover:bg-gold-tint"
+            className="flex h-[46px] w-full items-center justify-center gap-[9px] rounded-md border border-brand bg-white text-[14.5px] font-medium text-brand hover:bg-brand-tint"
           >
             <WhatsAppIcon size={18} />
             Request booking on WhatsApp
           </button>
           <div className="mt-2 text-xs leading-[1.5] text-stone-500">
-            Sends your dates, guests and total straight to Penny on WhatsApp ({CONFIG.whatsappDisplay}) — she confirms and holds the apartment.
+            Sends your dates, guests and total straight to {SITE.host.firstName} on WhatsApp ({CONFIG.whatsappDisplay}), who confirms and holds the apartment.
             Or call <Phones className="font-normal" />.
           </div>
           <div className="mt-2 text-xs leading-[1.5] text-stone-500">
             Prefer email? Write to{" "}
-            <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-gold hover:text-gold-hover">
+            <a href={`mailto:${CONFIG.reservationsEmail}`} className="font-medium text-brand hover:text-brand-hover">
               {CONFIG.reservationsEmail}
             </a>
             .

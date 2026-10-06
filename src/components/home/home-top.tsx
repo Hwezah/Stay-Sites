@@ -11,6 +11,7 @@ import { useUI } from "@/context/ui-context";
 import { CONFIG, APARTMENTS, FILTERS } from "@/lib/data";
 import { datesLabel, fmtDate, guestsLabel } from "@/lib/booking";
 import { cn } from "@/lib/utils";
+import { SITE_PLACE } from "@site";
 
 type Filter = (typeof FILTERS)[number];
 
@@ -80,24 +81,24 @@ export function HomeTop() {
 
       <section>
         <Container>
-          <div className="relative z-10 -mt-12 hidden flex-wrap items-stretch gap-1 rounded-2xl border border-stone-200 bg-white p-2 shadow-panel lg:flex">
+          <div className="relative z-10 -mt-12 hidden flex-wrap items-stretch gap-1 rounded-lg border border-stone-200 bg-white p-2 shadow-panel lg:flex">
             {/* Fixed location: both apartments are in the same place, so there's nothing to type. */}
             <div className="min-w-0 flex-[1_1_190px] px-3.5 py-3">
               <FieldLabel>Where</FieldLabel>
-              <div className="mt-1.5 text-[14.5px] text-stone-900">Komamboga, Kyanja</div>
+              <div className="mt-1.5 text-[14.5px] text-stone-900">{SITE_PLACE}</div>
             </div>
             <button
               type="button"
               data-keep-open
               onClick={() => togglePanel("cal-hero")}
-              className="min-w-0 flex-[1_1_150px] rounded-xl px-3.5 py-3 text-left hover:bg-stone-50"
+              className="min-w-0 flex-[1_1_150px] rounded-md px-3.5 py-3 text-left hover:bg-stone-50"
             >
               <FieldLabel>Dates</FieldLabel>
               <div className={cn("mt-1.5 text-[14.5px]", checkIn ? "text-stone-900" : "text-stone-400")}>
                 {datesLabel(checkIn, checkOut)}
               </div>
             </button>
-            <div className="flex min-w-0 flex-[1_1_210px] items-center justify-between gap-2 rounded-xl px-3.5 py-3">
+            <div className="flex min-w-0 flex-[1_1_210px] items-center justify-between gap-2 rounded-md px-3.5 py-3">
               <div className="min-w-0">
                 <FieldLabel>Guests</FieldLabel>
                 <div className="mt-1.5 whitespace-nowrap text-[14.5px]">{guestsLabel(guests)}</div>
@@ -108,7 +109,7 @@ export function HomeTop() {
               type="button"
               onClick={search}
               aria-label="Search"
-              className="mx-1.5 grid size-16 flex-none place-items-center self-center rounded-full bg-gold text-stone-50 shadow-[0_10px_24px_-10px_rgba(185,151,91,.9)] transition-colors hover:bg-gold-hover"
+              className="mx-1.5 grid size-16 flex-none place-items-center self-center rounded-full bg-brand text-stone-50 shadow-[0_10px_24px_-10px_rgba(185,151,91,.9)] transition-colors hover:bg-brand-hover"
             >
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="7" />
@@ -119,7 +120,7 @@ export function HomeTop() {
 
           {panel === "cal-hero" && (
             <div className="mt-4 flex justify-center" data-keep-open>
-              <div className="w-full max-w-[380px] animate-sheet-in rounded-2xl border border-stone-200 bg-white p-4 shadow-panel">
+              <div className="w-full max-w-[380px] animate-sheet-in rounded-lg border border-stone-200 bg-white p-4 shadow-panel">
                 <Calendar onDone={closePanels} />
               </div>
             </div>
@@ -131,7 +132,7 @@ export function HomeTop() {
         <Container className="pt-[clamp(44px,7vw,72px)]">
           <div data-m-center className="flex flex-wrap items-end justify-between gap-6">
             <div className="min-w-0">
-              <Eyebrow>Selah accommodations</Eyebrow>
+              <Eyebrow>Our accommodations</Eyebrow>
               <h2 className="font-display mt-2.5 text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] text-balance">
                 {fromBooking ? "Available Accommodations — Pick Where To Stay" : "Accommodation types"}
               </h2>
@@ -151,7 +152,7 @@ export function HomeTop() {
 
           <div className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(min(100%,320px),1fr))] gap-[22px]">
             {visible.length === 0 && (
-              <div className="col-span-full rounded-2xl border border-stone-200 bg-white px-7 py-10 text-center">
+              <div className="col-span-full rounded-lg border border-stone-200 bg-white px-7 py-10 text-center">
                 <div className="text-base font-semibold">
                   No apartments match this filter.
                 </div>
@@ -160,7 +161,7 @@ export function HomeTop() {
                   onClick={() => {
                     setFilter(FILTERS[0]);
                   }}
-                  className="mt-[18px] h-10 rounded-[10px] bg-gold px-5 text-[13.5px] font-medium text-stone-50 hover:bg-gold-hover"
+                  className="mt-[18px] h-10 rounded-[10px] bg-brand px-5 text-[13.5px] font-medium text-stone-50 hover:bg-brand-hover"
                 >
                   Show all apartments
                 </button>

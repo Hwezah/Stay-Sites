@@ -23,7 +23,7 @@ export function AdminConsole() {
 
       <div className="mt-[26px] grid gap-3">
         {hydrated && orders.length === 0 && (
-          <div className="rounded-2xl border border-stone-200 bg-white px-[clamp(16px,4vw,24px)] py-[clamp(26px,5vw,36px)] text-center text-[14.5px] text-stone-500">
+          <div className="rounded-lg border border-stone-200 bg-white px-[clamp(16px,4vw,24px)] py-[clamp(26px,5vw,36px)] text-center text-[14.5px] text-stone-500">
             No orders yet. Orders are stored in this browser until the database is connected, so only bookings made on
             this device appear here.
           </div>
@@ -31,7 +31,7 @@ export function AdminConsole() {
         {orders.map((o) => (
           <div
             key={o.ref}
-            className="grid gap-3.5 rounded-2xl border border-stone-200 bg-white px-[clamp(13px,3.2vw,20px)] py-[clamp(13px,3.2vw,18px)]"
+            className="grid gap-3.5 rounded-lg border border-stone-200 bg-white px-[clamp(13px,3.2vw,20px)] py-[clamp(13px,3.2vw,18px)]"
           >
             <div className="flex flex-wrap items-start gap-3.5">
               <div className="min-w-0 flex-1">
@@ -55,7 +55,7 @@ export function AdminConsole() {
                 <button
                   type="button"
                   onClick={() => settleOrder(o.ref, "confirmed")}
-                  className="h-10 rounded-[10px] bg-gold px-[18px] text-[13.5px] font-medium text-stone-50 hover:bg-gold-hover"
+                  className="h-10 rounded-[10px] bg-brand px-[18px] text-[13.5px] font-medium text-stone-50 hover:bg-brand-hover"
                 >
                   Confirm payment
                 </button>

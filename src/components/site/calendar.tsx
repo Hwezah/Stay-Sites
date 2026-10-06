@@ -64,9 +64,9 @@ export function Calendar({ onDone, compact = false }: { onDone: () => void; comp
               className={cn(
                 "h-[38px] text-[13.5px] disabled:cursor-not-allowed",
                 d.selected
-                  ? "rounded-[10px] bg-gold font-semibold text-stone-50"
+                  ? "rounded-[10px] bg-brand font-semibold text-stone-50"
                   : d.inRange
-                    ? "rounded-[9px] bg-gold-tint"
+                    ? "rounded-[9px] bg-brand-tint"
                     : "rounded-[9px] hover:bg-stone-100 disabled:hover:bg-transparent",
                 d.disabled && !d.selected && "text-stone-300",
                 d.blocked && "line-through",

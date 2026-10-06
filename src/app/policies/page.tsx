@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
+import { SITE, SITE_PLACE } from "@site";
 import { LegalPage } from "@/components/site/legal";
 import { Phones } from "@/components/site/ui";
 import { CONFIG } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Policies",
-  description: "Cancellation and refund policy, house rules and privacy policy for Selah Lodges.",
+  description: `Cancellation and refund policy, house rules and privacy policy for ${SITE.name}.`,
 };
 
 const SECTIONS = [
@@ -21,12 +22,12 @@ export default function PoliciesPage() {
       eyebrow="Our promise"
       title="Policies & house rules"
       updated="5 October 2026"
-      intro="We truly value your choice to stay with us at Selah Lodges. Our policies are designed with care — to ensure that every guest experience remains tranquil, fair, and memorable for all who visit."
+      intro={`We truly value your choice to stay with us at ${SITE.name}. Our policies are designed with care — to ensure that every guest experience remains tranquil, fair, and memorable for all who visit.`}
       jump={SECTIONS}
     >
       <h2 id="cancellation" className="scroll-mt-28">1. Cancellation &amp; refund policy</h2>
       <p>
-        At Selah Lodges, every reservation is personal. With only a limited number of carefully curated spaces, each
+        At {SITE.name}, every reservation is personal. With only a limited number of carefully curated spaces, each
         booking is both a commitment from us and a valued intention from you. While we understand that plans may
         change, our policies are designed to balance flexibility for our guests with the responsibility of keeping our
         retreat running smoothly.
@@ -110,14 +111,13 @@ export default function PoliciesPage() {
 
       <h2 id="privacy" className="scroll-mt-28">3. Privacy policy</h2>
       <p>
-        Every reservation at Selah Lodges is personal, and so is the information you share with us. This section
+        Every reservation at {SITE.name} is personal, and so is the information you share with us. This section
         explains what we collect when you use our website or stay with us, and how we look after it.
       </p>
 
       <h3>Who we are</h3>
       <p>
-        Selah Lodges, Komamboga | Kyanja, Kampala, Uganda. Our website address is{" "}
-        <a href="https://www.selahlodges.com">https://www.selahlodges.com</a>.
+        {SITE.name}, {SITE_PLACE}, {SITE.location.country}.
       </p>
 
       <h3>What we collect</h3>

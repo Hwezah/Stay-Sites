@@ -12,6 +12,7 @@ import { useUI } from "@/context/ui-context";
 import { fmtDate, guestsLabel, whatsappUrl } from "@/lib/booking";
 import type { ApartmentId } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { SITE } from "@site";
 
 export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
   const router = useRouter();
@@ -39,11 +40,11 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
 
   const bookWhatsApp = () => {
     window.open(whatsappUrl(b.whatsappLines()), "_blank", "noopener");
-    toast("ok", "Opening WhatsApp", `Send the message and Penny will confirm ${b.apartment.name}.`);
+    toast("ok", "Opening WhatsApp", `Send the message and ${SITE.host.firstName} will confirm ${b.apartment.name}.`);
   };
 
   return (
-    <div className="sticky top-[92px] min-w-0 flex-[1_1_320px] rounded-[18px] border border-stone-200 bg-white p-[clamp(13px,3.2vw,22px)] shadow-sticky">
+    <div className="sticky top-[92px] min-w-0 flex-[1_1_320px] rounded-[8px] border border-stone-200 bg-white p-[clamp(13px,3.2vw,22px)] shadow-sticky">
       <div className="flex flex-nowrap items-center justify-between gap-2.5">
         <div className="flex min-w-0 items-baseline gap-[5px]">
           <span className="whitespace-nowrap text-[clamp(19px,5vw,24px)] font-semibold tracking-[-.02em]">
@@ -54,7 +55,7 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
         <CurrencyToggle />
       </div>
 
-      <div className="mt-4 overflow-hidden rounded-xl border border-stone-200">
+      <div className="mt-4 overflow-hidden rounded-md border border-stone-200">
         <button
           type="button"
           data-keep-open
@@ -80,7 +81,7 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
       </div>
 
       {panel === "cal-detail" && (
-        <div className="mt-3 rounded-xl border border-stone-200 p-3.5" data-keep-open>
+        <div className="mt-3 rounded-md border border-stone-200 p-3.5" data-keep-open>
           <Calendar compact onDone={closePanels} />
         </div>
       )}
@@ -88,14 +89,14 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
       <button
         type="button"
         onClick={reserve}
-        className="mt-4 h-[46px] w-full rounded-xl bg-gold text-[15px] font-medium text-stone-50 hover:bg-gold-hover"
+        className="mt-4 h-[46px] w-full rounded-md bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover"
       >
         Reserve
       </button>
       <button
         type="button"
         onClick={bookWhatsApp}
-        className="mt-2.5 flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-stone-200 bg-white text-sm font-medium text-gold hover:border-gold hover:bg-gold-tint"
+        className="mt-2.5 flex h-11 w-full items-center justify-center gap-2 rounded-md border border-stone-200 bg-white text-sm font-medium text-brand hover:border-brand hover:bg-brand-tint"
       >
         <WhatsAppIcon />
         Book on WhatsApp instead

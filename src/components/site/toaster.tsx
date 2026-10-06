@@ -22,14 +22,14 @@ export function Toaster() {
         <div
           key={t.id}
           role="status"
-          className="pointer-events-auto flex w-[min(336px,100%)] animate-toast-in items-start gap-[11px] rounded-[14px] border border-stone-200 bg-white p-3.5 shadow-toast"
+          className="pointer-events-auto flex w-[min(336px,100%)] animate-toast-in items-start gap-[11px] rounded-[6px] border border-stone-200 bg-white p-3.5 shadow-toast"
         >
           <div
             className={cn(
               "grid size-[22px] flex-none place-items-center rounded-full text-xs font-bold",
               t.tone === "warn" && "bg-amber-100 text-amber-800",
               t.tone === "hint" && "bg-stone-100 text-stone-600",
-              t.tone === "ok" && "bg-gold-tint text-gold",
+              t.tone === "ok" && "bg-brand-tint text-brand",
             )}
           >
             {t.tone === "warn" ? "!" : t.tone === "hint" ? "i" : "✓"}

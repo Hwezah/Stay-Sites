@@ -6,22 +6,43 @@ import type { ComponentProps, ReactNode } from "react";
 import { ChevronLeft } from "@/components/site/icon";
 import { useBooking } from "@/context/booking-context";
 import { CONFIG } from "@/lib/data";
+import { SITE } from "@site";
+import Image from "next/image";
 import type { Currency } from "@/lib/booking";
 import { cn } from "@/lib/utils";
+
+/** The host's photo, or their initials on the brand colour when no photo is set (content/site.ts). */
+export function HostAvatar({ size = 40 }: { size?: number }) {
+  const style = { width: size, height: size };
+  if (SITE.host.photo)
+    return (
+      <Image src={SITE.host.photo} alt={SITE.host.name} width={size} height={size} style={style} className="flex-none rounded-full object-cover object-top" />
+    );
+  const initials = SITE.host.name.split(" ").map((w) => w[0]).join("").slice(0, 2);
+  return (
+    <span
+      aria-hidden="true"
+      style={{ ...style, fontSize: size * 0.38 }}
+      className="grid flex-none place-items-center rounded-full bg-brand font-medium uppercase text-stone-50"
+    >
+      {initials}
+    </span>
+  );
+}
 
 /** "+256 776 401 100" → "tel:+256776401100". */
 export function telHref(phone: string) {
   return `tel:${phone.replace(/[^+\d]/g, "")}`;
 }
 
-/** Both Selah phone numbers as tap-to-call links, joined by `sep`. */
+/** All site phone numbers as tap-to-call links, joined by `sep`. */
 export function Phones({ sep = " or ", className }: { sep?: ReactNode; className?: string }) {
   return (
     <>
       {CONFIG.phones.map((p, i) => (
         <span key={p}>
           {i > 0 && sep}
-          <a href={telHref(p)} className={cn("whitespace-nowrap font-medium text-gold hover:text-gold-hover", className)}>
+          <a href={telHref(p)} className={cn("whitespace-nowrap font-medium text-brand hover:text-brand-hover", className)}>
             {p}
           </a>
         </span>
@@ -37,7 +58,7 @@ export function Container({ className, ...props }: ComponentProps<"div">) {
 
 export function Eyebrow({ className, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("text-xs font-semibold uppercase tracking-[.08em] text-gold", className)} {...props} />
+    <div className={cn("text-xs font-semibold uppercase tracking-[.08em] text-brand", className)} {...props} />
   );
 }
 
@@ -74,7 +95,7 @@ export function Tabs<T extends string>({
             aria-pressed={on}
             className={cn(
               "h-[34px] border-b-2 px-1 text-[13px]",
-              on ? "border-gold font-semibold text-gold" : "border-transparent text-stone-500 hover:text-stone-800",
+              on ? "border-brand font-semibold text-brand" : "border-transparent text-stone-500 hover:text-stone-800",
             )}
           >
             {o}
@@ -158,7 +179,7 @@ export function BackLink({ href, children }: { href: string; children: ReactNode
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-[7px] whitespace-nowrap text-[13.5px] text-stone-600 hover:text-gold"
+      className="inline-flex items-center gap-[7px] whitespace-nowrap text-[13.5px] text-stone-600 hover:text-brand"
     >
       <ChevronLeft />
       {children}
@@ -169,7 +190,7 @@ export function BackLink({ href, children }: { href: string; children: ReactNode
 export function StatusBadge({ status }: { status: "pending" | "confirmed" | "declined" | "cancelled" }) {
   const styles = {
     pending: "bg-amber-100 text-amber-800",
-    confirmed: "bg-gold-tint text-gold",
+    confirmed: "bg-brand-tint text-brand",
     declined: "bg-red-50 text-red-700",
     cancelled: "bg-stone-100 text-stone-500",
   }[status];

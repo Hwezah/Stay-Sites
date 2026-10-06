@@ -1,4 +1,5 @@
 import type { Order } from "@/context/booking-context";
+import { SITE, SITE_PLACE } from "@site";
 
 const stamp = (iso: string) => iso.replace(/-/g, "");
 
@@ -8,15 +9,15 @@ export function downloadIcs(order: Order) {
   const body = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Selah Lodges//Booking//EN",
+    `PRODID:-//${SITE.name}//Booking//EN`,
     "BEGIN:VEVENT",
-    `UID:${order.ref}@selahlodges.com`,
+    `UID:${order.ref}@${SITE.contact.email.split("@")[1]}`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`,
     `DTSTART;VALUE=DATE:${stamp(order.checkIn)}`,
     `DTEND;VALUE=DATE:${stamp(order.checkOut)}`,
-    `SUMMARY:Selah Lodges · ${order.apartment}`,
-    "LOCATION:Komamboga | Kyanja\\, Kampala",
-    `DESCRIPTION:Booking ${order.ref}. Check in after 2pm\\, check out by 11am. +256 776 401 100 / +256 751 401 198`,
+    `SUMMARY:${SITE.name} · ${order.apartment}`,
+    `LOCATION:${SITE_PLACE.replace(/,/g, "\\,")}`,
+    `DESCRIPTION:Booking ${order.ref}. Check in after 2pm\\, check out by 11am. ${SITE.contact.phones.join(" / ")}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
