@@ -257,7 +257,7 @@ export const SERVICES: Service[] = [
     meta: "Priced by quantity",
     body: "Keep your wardrobe fresh without the hassle during your stay. Pricing is provided when you book.",
     price: "Quoted on booking",
-    image: "/images/svc-laundry.jpg",
+    image: "https://images.pexels.com/photos/6492065/pexels-photo-6492065.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     cat: "Services",
