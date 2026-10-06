@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import type { CSSProperties } from "react";
 
 import { BookBar, ShellPadding } from "@/components/site/book-bar";
@@ -11,8 +11,14 @@ import { AppProviders } from "@/context/app-providers";
 import "./globals.css";
 import { SITE } from "@site";
 
-const body = Manrope({ variable: "--font-body", subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
-const heading = Cormorant_Garamond({ variable: "--font-heading", subsets: ["latin"], weight: ["500", "600"] });
+// Fonts are bundled in ./fonts (Latin, variable weight) so builds never depend on downloading them.
+const body = localFont({ src: "./fonts/manrope-latin.woff2", variable: "--font-body", weight: "200 800", display: "swap" });
+const heading = localFont({
+  src: "./fonts/cormorant-garamond-latin.woff2",
+  variable: "--font-heading",
+  weight: "300 700",
+  display: "swap",
+});
 
 // Brand colours from content/site.ts, applied over the defaults in globals.css.
 const themeVars = {
