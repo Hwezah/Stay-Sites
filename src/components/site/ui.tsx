@@ -167,7 +167,7 @@ export function StepperButton({ className, ...props }: ComponentProps<"button">)
     <button
       type="button"
       className={cn(
-        "grid size-7 place-items-center rounded-full border border-stone-200 bg-white leading-none text-stone-700 hover:bg-stone-100",
+        "grid size-7 place-items-center rounded-full border border-stone-300 bg-white leading-none text-stone-800 transition-colors hover:border-brand hover:text-brand",
         className,
       )}
       {...props}
@@ -178,10 +178,10 @@ export function StepperButton({ className, ...props }: ComponentProps<"button">)
 export function GuestStepper({ size = "sm" }: { size?: "sm" | "lg" }) {
   const { incGuests, decGuests } = useBooking();
   const lg = size === "lg";
-  const cls = lg ? "size-[38px]" : "";
-  const icon = lg ? 22 : 18;
+  const cls = lg ? "size-12" : "size-10";
+  const icon = lg ? 24 : 20;
   return (
-    <div className="flex flex-none gap-1.5">
+    <div className="flex flex-none gap-2">
       <StepperButton className={cls} onClick={decGuests} aria-label="Fewer guests">
         <StepIcon size={icon} />
       </StepperButton>
@@ -195,7 +195,7 @@ export function GuestStepper({ size = "sm" }: { size?: "sm" | "lg" }) {
 /** Thin-stroke minus / plus, drawn rather than typed so the weight is even. */
 function StepIcon({ size, plus = false }: { size: number; plus?: boolean }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" aria-hidden="true">
       <path d="M5 12h14" />
       {plus && <path d="M12 5v14" />}
     </svg>
