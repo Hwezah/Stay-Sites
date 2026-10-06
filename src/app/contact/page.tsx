@@ -27,7 +27,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="grid lg:min-h-[calc(100svh-68px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+    <main className="grid lg:min-h-[calc(100svh-80px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
       <section className="bg-brand px-[clamp(20px,5vw,72px)] py-[clamp(48px,8vw,96px)] text-stone-50">
         <div data-m-center>
           <div className="text-[11.5px] font-semibold uppercase tracking-[.2em] text-stone-50/70">Contact</div>

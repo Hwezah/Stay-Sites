@@ -34,10 +34,10 @@ export default function AboutPage() {
             </p>
           </div>
           <PhotoButton
-            album={[{ src: "/images/hero-balcony.jpg", alt: `${SITE.name}` }]}
+            album={[{ src: "https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name}` }]}
             className="relative h-[clamp(240px,34vw,440px)] w-full min-w-0 flex-[1_1_300px] overflow-hidden rounded-[8px] bg-stone-100"
           >
-            <Image src="/images/hero-balcony.jpg" alt={SITE.name} fill priority sizes="(min-width: 640px) 45vw, 100vw" className="object-cover" />
+            <Image src="https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600" alt={SITE.name} fill priority sizes="(min-width: 640px) 45vw, 100vw" className="object-cover" />
           </PhotoButton>
         </div>
 

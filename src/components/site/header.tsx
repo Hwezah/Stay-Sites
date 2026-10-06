@@ -65,7 +65,7 @@ export function SiteHeader() {
       )}
     >
       {/* The header runs wider than the page content (see w-header in globals.css). */}
-      <div className="mx-auto flex min-h-[68px] w-header items-center gap-[clamp(10px,2vw,28px)]">
+      <div className="mx-auto flex min-h-[80px] w-header items-center gap-[clamp(10px,2vw,28px)] mportrait:min-h-[68px]">
         <Link
           href="/"
           className="mr-1 flex min-w-0 items-center gap-[9px] text-stone-900 transition-colors hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50"
@@ -75,10 +75,10 @@ export function SiteHeader() {
             alt=""
             width={26}
             height={26}
-            className="size-[26px] object-contain group-data-[over=true]/hdr:brightness-0 group-data-[over=true]/hdr:invert"
+            className="size-[30px] object-contain group-data-[over=true]/hdr:brightness-0 group-data-[over=true]/hdr:invert mportrait:size-[26px]"
             priority
           />
-          <span className="font-display whitespace-nowrap text-[clamp(17px,3.4vw,22px)] tracking-[-.01em] font-medium">
+          <span className="font-display whitespace-nowrap text-[clamp(20px,2.4vw,26px)] tracking-[-.01em] font-medium mportrait:text-[clamp(17px,3.4vw,22px)]">
             {SITE.wordmark}
           </span>
         </Link>
@@ -92,7 +92,7 @@ export function SiteHeader() {
                 href={n.href}
                 aria-current={on ? "page" : undefined}
                 className={cn(
-                  "flex h-[34px] items-center border-b-2 px-2.5 text-sm",
+                  "flex h-[38px] items-center border-b-2 px-2 text-[14px] 2xl:px-3 2xl:text-[15px]",
                   on
                     ? "border-brass font-semibold text-brand group-data-[over=true]/hdr:border-brass group-data-[over=true]/hdr:text-stone-50"
                     : "border-transparent text-stone-600 hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50/85 group-data-[over=true]/hdr:hover:text-stone-50",
@@ -109,7 +109,7 @@ export function SiteHeader() {
           <AccountMenu />
           <Link
             href="/stays"
-            className="hidden h-[38px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,18px)] text-[11.5px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 group-data-[over=true]/hdr:bg-stone-50 group-data-[over=true]/hdr:text-brand group-data-[over=true]/hdr:hover:bg-brand-tint sm:inline-flex"
+            className="hidden h-[42px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,22px)] text-[12px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 group-data-[over=true]/hdr:bg-stone-50 group-data-[over=true]/hdr:text-brand group-data-[over=true]/hdr:hover:bg-brand-tint sm:inline-flex"
           >
             <span className="md:hidden">Book</span>
             <span className="hidden md:inline">Book a stay</span>
@@ -182,7 +182,7 @@ function AccountMenu() {
             <>
               {/* Photo banner with the guest's initial overlapping it. */}
               <div className="relative h-[190px] overflow-hidden">
-                <Image src="/images/hero-balcony.jpg" alt="" fill sizes="400px" className="object-cover" />
+                <Image src="https://images.pexels.com/photos/6143348/pexels-photo-6143348.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" fill sizes="400px" className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/10 to-stone-900/25" />
                 <div className="absolute top-3 right-3.5 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[.14em] text-stone-50/90">
                   <Image src={SITE.logo} alt="" width={16} height={16} className="size-4 object-contain brightness-0 invert" />
@@ -430,8 +430,8 @@ function Drawer() {
               so the white logo and close button read on top of it. */}
           <div className="relative -mx-[clamp(20px,5vw,34px)] -mt-[clamp(22px,5vw,36px)] h-[clamp(300px,46svh,440px)] overflow-hidden bg-stone-900">
             <Image
-              src="/images/room1-bedroom.jpg"
-              alt={`A ${SITE.name} bedroom`}
+              src="https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt={`A ${SITE.name} living room`}
               fill
               priority
               sizes="(max-width: 600px) and (orientation: portrait) 100vw, (min-width: 1000px) 35vw, 50vw"

@@ -68,11 +68,7 @@ const SPECS = { area: "560 ft²", guests: "2 Guests", beds: "1 Bed", baths: "1 B
 
 
 // Shared spaces appear at the end of both apartment albums.
-const SHARED_PHOTOS: Photo[] = [
-  { src: "/images/svc-cleaning.jpg", alt: "Bathroom" },
-  { src: "/images/hero-balcony.jpg", alt: "Balcony" },
-  { src: "/images/svc-carwash.jpg", alt: "Building and secure parking" },
-];
+const SHARED_PHOTOS: Photo[] = [];
 
 // The bedroom photos are deliberately swapped between the apartments.
 export const APARTMENTS: Apartment[] = [
@@ -87,10 +83,9 @@ export const APARTMENTS: Apartment[] = [
     tag: "USD 50/night",
     desc: DESC,
     amenities: AMENITIES,
-    images: ["https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", "/images/room2-bedroom.jpg", "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600"],
+    images: ["https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6438748/pexels-photo-6438748.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600"],
     gallery: [
       { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
-      { src: "/images/room2-bedroom.jpg", alt: "Bedroom" },
       { src: "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen and dining" },
       { src: "https://images.pexels.com/photos/7546719/pexels-photo-7546719.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen" },
       { src: "https://images.pexels.com/photos/6438748/pexels-photo-6438748.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Lounge chair and TV" },
@@ -109,10 +104,9 @@ export const APARTMENTS: Apartment[] = [
     tag: "USD 50/night",
     desc: DESC,
     amenities: AMENITIES,
-    images: ["https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", "/images/room1-bedroom.jpg", "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600"],
+    images: ["https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600"],
     gallery: [
       { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
-      { src: "/images/room1-bedroom.jpg", alt: "Bedroom" },
       { src: "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen and dining" },
       { src: "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Lounge" },
       { src: "https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "TV wall and dining nook" },
@@ -143,11 +137,9 @@ export function getApartment(id: string | null | undefined): Apartment {
 /** Album behind the home page photo collage. */
 export const HOME_PHOTOS: Photo[] = [
   { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name} living room` },
-  { src: "/images/hero-balcony.jpg", alt: "Balcony" },
   { src: "https://images.pexels.com/photos/6143348/pexels-photo-6143348.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room detail" },
   { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Linen Space living room" },
   { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Ember Space living room" },
-  { src: "/images/svc-carwash.jpg", alt: "Building and secure parking" },
 ];
 
 /** Home page tour video. Drop the file at public/videos/selah-tour.mp4. */
