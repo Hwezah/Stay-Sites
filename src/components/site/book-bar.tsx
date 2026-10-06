@@ -29,7 +29,7 @@ export function BookBar() {
       data-keep-open
     >
       <Link
-        href="/#stays"
+        href="/stays"
         // Close the menu (it stays open over the page on a same-page jump) before heading to the rooms.
         onClick={closePanels}
         data-m-btn
@@ -38,7 +38,7 @@ export function BookBar() {
           onBrand ? "bg-stone-50 text-brand" : "bg-brand text-stone-50",
         )}
       >
-        {pathname !== "/" ? "Back To Rooms" : atRooms ? "Choose Your Apartment" : "Book Your Stay"}
+        {pathname === "/stays" ? "Choose Your Apartment" : pathname === "/" && !atRooms ? "Book Your Stay" : pathname === "/" ? "Choose Your Apartment" : "Back To Apartments"}
       </Link>
     </div>
   );

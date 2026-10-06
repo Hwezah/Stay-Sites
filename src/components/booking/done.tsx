@@ -66,7 +66,7 @@ export function BookingDone() {
       </div>
       <div data-m-row className="mt-6 flex flex-nowrap gap-2.5">
         <Link
-          href="/#stays"
+          href="/stays"
           className="inline-flex h-11 items-center rounded-[11px] bg-brand px-5 text-[14.5px] font-medium text-stone-50 hover:bg-brand-hover hover:text-stone-50"
         >
           <span className="sm:hidden">More stays</span>

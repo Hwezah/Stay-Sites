@@ -18,7 +18,7 @@ export function PendingClaim() {
       <main data-m-center className="mx-auto w-full max-w-[720px] px-[clamp(16px,4vw,24px)] pt-[clamp(40px,7vw,72px)] pb-[120px]">
         <h1 className="font-display text-[clamp(26px,4.8vw,46px)] tracking-[-.02em]">No pending booking</h1>
         <p className="mt-2.5 text-base text-stone-600">
-          Start from an apartment to make a booking. <Link href="/#stays">Browse apartments</Link>
+          Start from an apartment to make a booking. <Link href="/stays">Browse apartments</Link>
         </p>
       </main>
     );

@@ -50,14 +50,16 @@ export function SiteHeader() {
   const pathname = usePathname();
   const scrolled = useScrolled();
   const home = pathname === "/";
-  const overHero = home && !scrolled;
+  // Pages that open with a full-width photo: the header floats over it, white, until scrolled.
+  const photoTop = home || pathname === "/stays" || pathname.startsWith("/apartments/");
+  const overHero = photoTop && !scrolled;
 
   return (
     <header
       data-over={overHero}
       className={cn(
         "group/hdr top-0 z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-300",
-        home ? "fixed inset-x-0" : "sticky",
+        photoTop ? "fixed inset-x-0" : "sticky",
         scrolled ? "border-stone-200 bg-stone-50/85 backdrop-blur-md" : "border-transparent bg-transparent",
       )}
     >
@@ -105,7 +107,7 @@ export function SiteHeader() {
           <CartMenu />
           <AccountMenu />
           <Link
-            href="/#stays"
+            href="/stays"
             className="hidden h-[38px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,18px)] text-[11.5px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 sm:inline-flex"
           >
             <span className="md:hidden">Book</span>
@@ -209,7 +211,7 @@ function AccountMenu() {
                 </Link>
               ) : (
                 <Link
-                  href="/#stays"
+                  href="/stays"
                   onClick={closePanels}
                   className="mx-3 mt-4 block rounded-md border border-brand-soft bg-brand-tint px-3.5 py-3 hover:border-brand"
                 >

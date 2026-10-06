@@ -6,11 +6,11 @@ import { useEffect } from "react";
 import { PriceRows } from "@/components/booking/price-rows";
 import { Calendar } from "@/components/site/calendar";
 import { WhatsAppIcon } from "@/components/site/icon";
-import { CurrencyToggle, FieldLabel, GuestStepper } from "@/components/site/ui";
+import { FieldLabel, GuestStepper } from "@/components/site/ui";
 import { useBooking } from "@/context/booking-context";
 import { useUI } from "@/context/ui-context";
 import { fmtDate, guestsLabel, whatsappUrl } from "@/lib/booking";
-import type { ApartmentId } from "@/lib/data";
+import { SERVICES, type ApartmentId } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { SITE } from "@site";
 
@@ -43,75 +43,76 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
     toast("ok", "Opening WhatsApp", `Send the message and ${SITE.host.firstName} will confirm ${b.apartment.name}.`);
   };
 
+  const extras = SERVICES.filter((x) => x.cat === "Services");
+
   return (
-    <div className="sticky top-[92px] min-w-0 flex-[1_1_320px] rounded-[8px] border border-stone-200 bg-white p-[clamp(13px,3.2vw,22px)] shadow-sticky">
-      <div className="flex flex-nowrap items-center justify-between gap-2.5">
-        <div className="flex min-w-0 items-baseline gap-[5px]">
-          <span className="whitespace-nowrap text-[clamp(19px,5vw,24px)] font-semibold tracking-[-.02em]">
-            {b.money(b.apartment.price)}
-          </span>
-          <span className="text-[13px] text-stone-500">night</span>
-        </div>
-        <CurrencyToggle />
-      </div>
+    <div className="min-w-0 border border-stone-200 bg-white p-[clamp(18px,3.4vw,32px)] lg:sticky lg:top-[104px]">
+      <h2 className="font-display text-center text-[clamp(26px,3vw,34px)] font-medium">Booking inquiry</h2>
+      <p className="mt-1.5 text-center text-[13.5px] text-stone-500">Pick your dates — you won&apos;t be charged yet.</p>
 
-      <div className="mt-4 overflow-hidden rounded-md border border-stone-200">
-        <button
-          type="button"
-          data-keep-open
-          onClick={() => togglePanel("cal-detail")}
-          className="grid w-full grid-cols-2 text-left"
-        >
-          <div className="border-r border-stone-200 px-3.5 py-3">
-            <FieldLabel className="text-[10.5px]">Check in</FieldLabel>
-            <div className={cn("mt-1 text-sm", dateColor)}>{fmtDate(b.checkIn) || "Add date"}</div>
+      <button type="button" data-keep-open onClick={() => togglePanel("cal-detail")} className="mt-6 grid w-full grid-cols-2 gap-5 text-left">
+        {(["checkIn", "checkOut"] as const).map((k) => (
+          <div key={k} className="border-b border-stone-200 pb-2.5">
+            <FieldLabel className="text-[10.5px]">{k === "checkIn" ? "Check in" : "Check out"}</FieldLabel>
+            <div className={cn("font-display mt-1 text-[20px]", dateColor)}>{fmtDate(b[k]) || "Select date"}</div>
           </div>
-          <div className="px-3.5 py-3">
-            <FieldLabel className="text-[10.5px]">Check out</FieldLabel>
-            <div className={cn("mt-1 text-sm", dateColor)}>{fmtDate(b.checkOut) || "Add date"}</div>
-          </div>
-        </button>
-        <div className="flex items-center justify-between border-t border-stone-200 px-3.5 py-3">
-          <div>
-            <FieldLabel className="text-[10.5px]">Guests</FieldLabel>
-            <div className="mt-1 text-sm">{guestsLabel(b.guests)}</div>
-          </div>
-          <GuestStepper />
-        </div>
-      </div>
-
+        ))}
+      </button>
       {panel === "cal-detail" && (
-        <div className="mt-3 rounded-md border border-stone-200 p-3.5" data-keep-open>
+        <div className="mt-3 border border-stone-200 p-3.5" data-keep-open>
           <Calendar compact onDone={closePanels} />
         </div>
+      )}
+
+      <div className="mt-5 flex items-end justify-between border-b border-stone-200 pb-2.5">
+        <div>
+          <FieldLabel className="text-[10.5px]">Guests</FieldLabel>
+          <div className="font-display mt-1 text-[20px]">{guestsLabel(b.guests)}</div>
+        </div>
+        <GuestStepper />
+      </div>
+
+      <FieldLabel className="mt-6 text-[10.5px]">Additional services</FieldLabel>
+      <div className="mt-2 grid gap-2.5 border-b border-stone-200 pb-5">
+        {extras.map((x) => {
+          const on = b.cartItems.some((c) => c.title === x.title);
+          return (
+            <label key={x.title} className="flex cursor-pointer items-center gap-3 text-[14.5px] text-stone-700">
+              <input type="checkbox" checked={on} onChange={() => b.toggleCartItem(x.title)} className="size-[18px] accent-brand" />
+              {x.title}
+            </label>
+          );
+        })}
+      </div>
+
+      <div className="mt-5 flex items-baseline justify-between">
+        <span className="font-display text-[24px]">Total price</span>
+        <span className="text-[20px] font-semibold">{hasDates ? b.money(b.grandTotal) : b.money(0)}</span>
+      </div>
+      {hasDates && (
+        <div className="mt-3 grid gap-2">
+          <PriceRows />
+        </div>
+      )}
+      {b.cartItems.length > 0 && (
+        <p className="mt-2 text-[12.5px] text-stone-500">Extra services are priced when you book.</p>
       )}
 
       <button
         type="button"
         onClick={reserve}
-        className="mt-4 h-[46px] w-full rounded-md bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover"
+        className="mt-5 h-[52px] w-full bg-brand text-[15px] font-medium text-stone-50 hover:bg-brand-hover"
       >
-        Reserve
+        Book a Stay
       </button>
       <button
         type="button"
         onClick={bookWhatsApp}
-        className="mt-2.5 flex h-11 w-full items-center justify-center gap-2 rounded-md border border-stone-200 bg-white text-sm font-medium text-brand hover:border-brand hover:bg-brand-tint"
+        className="mt-2.5 flex h-11 w-full items-center justify-center gap-2 text-sm font-medium text-brand hover:text-brand-hover"
       >
         <WhatsAppIcon />
-        Book on WhatsApp instead
+        Or book on WhatsApp
       </button>
-      <div className="mt-2.5 text-center text-[12.5px] text-stone-400">You won&apos;t be charged yet</div>
-
-      {hasDates && (
-        <div className="mt-[18px] grid gap-2.5 border-t border-stone-100 pt-[18px]">
-          <PriceRows />
-          <div className="flex justify-between border-t border-stone-100 pt-3 text-[15px] font-semibold">
-            <span>Total</span>
-            <span>{b.money(b.grandTotal)}</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

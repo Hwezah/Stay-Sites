@@ -33,7 +33,7 @@ export function Trips() {
                   Pick dates on any apartment and your reservation shows up here.
                 </div>
                 <Link
-                  href="/#stays"
+                  href="/stays"
                   className="mt-5 inline-flex h-[42px] items-center rounded-[11px] bg-brand px-5 text-sm font-medium text-stone-50 hover:bg-brand-hover hover:text-stone-50"
                 >
                   Browse stays

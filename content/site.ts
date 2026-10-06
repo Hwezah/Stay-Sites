@@ -45,6 +45,17 @@ export const SITE = {
       "We built this place for travellers who want a quiet, comfortable base — somewhere that feels looked after from the moment you arrive.",
   },
 
+  // House details shown on every apartment page under "Good to know".
+  house: {
+    checkIn: "From 2:00 pm",
+    checkOut: "By 11:00 am",
+    pets: "On request",
+    smoking: "No",
+    children: "Welcome",
+    parties: "No",
+    note: "Free cancellation up to 7 days before arrival. See our policies for the full terms.",
+  },
+
   // Mobile money numbers guests pay into, and the registered name.
   payments: {
     momo: [
@@ -64,11 +75,11 @@ export const SITE = {
 
   // Brand colours. `brand` is the main accent (buttons, links, highlights).
   theme: {
-    brand: "#2F5D50",
-    brandHover: "#244A3F",
-    brandTint: "#E6EEE9",
-    brandSoft: "#C7D9CF",
-    page: "#F3F0E9",
+    brand: "#1B2A4A",
+    brandHover: "#121D35",
+    brandTint: "#E8EBF2",
+    brandSoft: "#C3CADB",
+    page: "#F4F4F1",
   },
 
   // Search engines and link previews
