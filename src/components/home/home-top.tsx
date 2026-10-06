@@ -9,9 +9,8 @@ import { Container, CurrencyToggle, Eyebrow, FieldLabel, GuestStepper, Tabs } fr
 import { useBooking } from "@/context/booking-context";
 import { useUI } from "@/context/ui-context";
 import { CONFIG, APARTMENTS, FILTERS } from "@/lib/data";
-import { datesLabel, fmtDate, guestsLabel } from "@/lib/booking";
+import { fmtDate, guestsLabel } from "@/lib/booking";
 import { cn } from "@/lib/utils";
-import { SITE_PLACE } from "@site";
 
 type Filter = (typeof FILTERS)[number];
 
@@ -81,40 +80,39 @@ export function HomeTop() {
 
       <section>
         <Container>
-          <div className="relative z-10 -mt-12 hidden flex-wrap items-stretch gap-1 rounded-lg border border-stone-200 bg-white p-2 shadow-panel lg:flex">
-            {/* Fixed location: both apartments are in the same place, so there's nothing to type. */}
-            <div className="min-w-0 flex-[1_1_190px] px-3.5 py-3">
-              <FieldLabel>Where</FieldLabel>
-              <div className="mt-1.5 text-[14.5px] text-stone-900">{SITE_PLACE}</div>
-            </div>
-            <button
-              type="button"
-              data-keep-open
-              onClick={() => togglePanel("cal-hero")}
-              className="min-w-0 flex-[1_1_150px] rounded-md px-3.5 py-3 text-left hover:bg-stone-50"
-            >
-              <FieldLabel>Dates</FieldLabel>
-              <div className={cn("mt-1.5 text-[14.5px]", checkIn ? "text-stone-900" : "text-stone-400")}>
-                {datesLabel(checkIn, checkOut)}
-              </div>
-            </button>
-            <div className="flex min-w-0 flex-[1_1_210px] items-center justify-between gap-2 rounded-md px-3.5 py-3">
+          {/* Booking bar: a 2×2 grid right under the photo on small screens; one row overlapping the photo's
+              bottom edge from 1000px. */}
+          <div className="relative z-10 -mx-[clamp(16px,4vw,24px)] grid grid-cols-2 border-b border-stone-200 bg-white xl:mx-0 xl:-mt-[60px] xl:grid-cols-[1fr_1fr_1fr_minmax(220px,auto)] xl:border-0 xl:shadow-panel">
+            {(["checkIn", "checkOut"] as const).map((k) => {
+              const value = k === "checkIn" ? checkIn : checkOut;
+              return (
+                <button
+                  key={k}
+                  type="button"
+                  data-keep-open
+                  onClick={() => togglePanel("cal-hero")}
+                  className="min-w-0 border-r border-b border-stone-200 px-[clamp(16px,3vw,32px)] py-[clamp(16px,2.4vw,26px)] text-left transition-colors hover:bg-stone-50 xl:border-b-0"
+                >
+                  <FieldLabel>{k === "checkIn" ? "Check in" : "Check out"}</FieldLabel>
+                  <div className={cn("font-display mt-1.5 truncate text-[clamp(19px,2vw,24px)]", value ? "text-stone-900" : "text-stone-500")}>
+                    {value ? fmtDate(value) : "Select date"}
+                  </div>
+                </button>
+              );
+            })}
+            <div className="flex min-w-0 items-center justify-between gap-2 border-r border-stone-200 px-[clamp(16px,3vw,32px)] py-[clamp(16px,2.4vw,26px)]">
               <div className="min-w-0">
                 <FieldLabel>Guests</FieldLabel>
-                <div className="mt-1.5 whitespace-nowrap text-[14.5px]">{guestsLabel(guests)}</div>
+                <div className="font-display mt-1.5 whitespace-nowrap text-[clamp(19px,2vw,24px)] text-stone-900">{guestsLabel(guests)}</div>
               </div>
-              <GuestStepper size="lg" />
+              <GuestStepper />
             </div>
             <button
               type="button"
               onClick={search}
-              aria-label="Search"
-              className="mx-1.5 grid size-16 flex-none place-items-center self-center rounded-full bg-brand text-stone-50 shadow-[0_10px_24px_-10px_rgba(185,151,91,.9)] transition-colors hover:bg-brand-hover"
+              className="flex items-center justify-center bg-brand px-8 text-[15px] font-medium tracking-[.02em] text-stone-50 transition-colors hover:bg-brand-hover"
             >
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m20 20-3.5-3.5" />
-              </svg>
+              Book a Stay
             </button>
           </div>
 
@@ -132,9 +130,9 @@ export function HomeTop() {
         <Container className="pt-[clamp(44px,7vw,72px)]">
           <div data-m-center className="flex flex-wrap items-end justify-between gap-6">
             <div className="min-w-0">
-              <Eyebrow>Our accommodations</Eyebrow>
+              <Eyebrow>Stay with us</Eyebrow>
               <h2 className="font-display mt-2.5 text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] text-balance">
-                {fromBooking ? "Available Accommodations — Pick Where To Stay" : "Accommodation types"}
+                {fromBooking ? "Choose your apartment" : "Our apartments"}
               </h2>
             </div>
             <div data-m-center className="flex max-w-full min-w-0 flex-wrap items-center gap-3">

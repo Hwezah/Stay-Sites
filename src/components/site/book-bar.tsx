@@ -38,7 +38,7 @@ export function BookBar() {
           onBrand ? "bg-stone-50 text-brand" : "bg-brand text-stone-50",
         )}
       >
-        {pathname !== "/" ? "Back To Rooms" : atRooms ? "Pick A Room To Stay" : "Book A Room"}
+        {pathname !== "/" ? "Back To Rooms" : atRooms ? "Choose Your Apartment" : "Book Your Stay"}
       </Link>
     </div>
   );

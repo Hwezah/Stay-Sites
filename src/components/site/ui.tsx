@@ -6,10 +6,31 @@ import type { ComponentProps, ReactNode } from "react";
 import { ChevronLeft } from "@/components/site/icon";
 import { useBooking } from "@/context/booking-context";
 import { CONFIG } from "@/lib/data";
-import { SITE } from "@site";
+import { SITE, SITE_PLACE } from "@site";
 import Image from "next/image";
 import type { Currency } from "@/lib/booking";
 import { cn } from "@/lib/utils";
+
+/** Phone (tap to call) and location, each with an icon. Used in the header and over the hero. */
+export function ContactLines({ className }: { className?: string }) {
+  const phone = SITE.contact.phones[0];
+  return (
+    <div className={cn("grid gap-1.5 text-[13px] leading-tight", className)}>
+      <a href={telHref(phone)} className="flex items-center gap-2.5 text-current hover:text-current hover:opacity-80">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" />
+        </svg>
+        {phone}
+      </a>
+      <span className="flex items-center gap-2.5">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+        </svg>
+        {SITE_PLACE}
+      </span>
+    </div>
+  );
+}
 
 /** The host's photo, or their initials on the brand colour when no photo is set (content/site.ts). */
 export function HostAvatar({ size = 40 }: { size?: number }) {

@@ -9,12 +9,11 @@ export const SITE = {
   wordmark: "Example Lodge",
   // Square line icon, drawn in the brand colour. Rendered white over photos.
   logo: "/brand/logo.svg",
-  tagline: "A calm place to rest, recharge and explore.",
+  tagline: "Quiet, beautifully kept apartments — close to the city, far from the noise.",
 
-  // Home page hero
+  // Home page hero: one short line, it's set very large.
   hero: {
-    headline: "Your calm, comfortable base in the city.",
-    intro: "Fully furnished one-bed apartments in a quiet neighbourhood — 20 minutes from the city centre.",
+    headline: "Rest easy. Stay a while.",
   },
 
   // Location
@@ -76,7 +75,7 @@ export const SITE = {
   seo: {
     title: "Example Lodge · Serviced apartments in Your City",
     description:
-      "Comfortable, fully furnished one-bed apartments in a quiet neighbourhood — 20 minutes from the city centre.",
+      "Quiet, fully furnished one-bed apartments with self check-in, fast Wi-Fi and a host on call — 20 minutes from the city centre.",
     ogImage: "/images/hero-living.jpg",
   },
 } as const;
