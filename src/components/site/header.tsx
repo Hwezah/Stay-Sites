@@ -34,7 +34,7 @@ function useScrolled(threshold = 8) {
 // from 640px up.
 const panelCls = cn(
   "fixed top-[72px] left-1/2 z-90 max-h-[calc(100vh-96px)] -translate-x-1/2 animate-sheet-in overflow-y-auto rounded-[6px] border border-stone-200 bg-white shadow-panel",
-  "sm:absolute sm:top-[46px] sm:right-0 sm:left-auto sm:z-50 sm:max-h-none sm:translate-x-0 sm:overflow-hidden",
+  "sm:absolute sm:top-[46px] sm:right-auto sm:left-0 sm:z-50 xl:right-0 xl:left-auto sm:max-h-none sm:translate-x-0 sm:overflow-hidden",
 );
 
 function isActive(href: string, pathname: string) {
@@ -64,26 +64,27 @@ export function SiteHeader() {
         scrolled ? "border-transparent bg-brand shadow-[0_10px_30px_-18px_rgba(0,0,0,.6)]" : "border-transparent bg-transparent",
       )}
     >
-      {/* The header runs wider than the page content (see w-header in globals.css). */}
-      <div className="mx-auto flex min-h-[80px] w-header items-center gap-[clamp(10px,2vw,28px)] mportrait:min-h-[68px]">
+      {/* The header runs wider than the page content (see w-header in globals.css). The logo is centred;
+          desktop: links left, icons + Book right. Smaller screens: cart + account left, Book + menu right. */}
+      <div className="relative mx-auto flex min-h-[80px] w-header items-center gap-[clamp(6px,1.5vw,24px)] mportrait:min-h-[68px]">
         <Link
           href="/"
-          className="mr-1 flex min-w-0 items-center gap-[9px] text-stone-900 transition-colors hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50"
+          className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-[9px] text-stone-900 transition-colors hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50"
         >
           <Image
             src={SITE.logo}
             alt=""
             width={26}
             height={26}
-            className="size-[30px] object-contain group-data-[over=true]/hdr:brightness-0 group-data-[over=true]/hdr:invert mportrait:size-[26px]"
+            className="size-[30px] object-contain group-data-[over=true]/hdr:brightness-0 group-data-[over=true]/hdr:invert mportrait:size-[24px]"
             priority
           />
-          <span className="font-display whitespace-nowrap text-[clamp(20px,2.4vw,26px)] tracking-[-.01em] font-medium mportrait:text-[clamp(17px,3.4vw,22px)]">
+          <span className="font-display whitespace-nowrap text-[clamp(20px,2.4vw,28px)] tracking-[-.01em] font-medium mportrait:text-[clamp(17px,4.6vw,20px)]">
             {SITE.wordmark}
           </span>
         </Link>
 
-        <nav className="ml-auto hidden flex-nowrap gap-1.5 overflow-hidden xl:flex" aria-label="Main">
+        <nav className="hidden flex-nowrap gap-1 xl:flex 2xl:gap-1.5" aria-label="Main">
           {NAV_ITEMS.map((n) => {
             const on = isActive(n.href, pathname);
             return (
@@ -92,7 +93,7 @@ export function SiteHeader() {
                 href={n.href}
                 aria-current={on ? "page" : undefined}
                 className={cn(
-                  "flex h-[38px] items-center border-b-2 px-2 text-[14px] 2xl:px-3 2xl:text-[15px]",
+                  "flex h-[38px] items-center border-b-2 px-1.5 text-[13px] 2xl:px-3 2xl:text-[15px]",
                   on
                     ? "border-brass font-semibold text-brand group-data-[over=true]/hdr:border-brass group-data-[over=true]/hdr:text-stone-50"
                     : "border-transparent text-stone-600 hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50/85 group-data-[over=true]/hdr:hover:text-stone-50",
@@ -104,15 +105,17 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="ml-auto flex flex-none items-center gap-[clamp(2px,1.5vw,10px)]">
+        <div className="flex flex-none items-center gap-[clamp(2px,1.5vw,10px)] xl:ml-auto">
           <CartMenu />
           <AccountMenu />
+        </div>
+
+        <div className="ml-auto flex flex-none items-center gap-[clamp(2px,1.5vw,10px)] xl:ml-0">
           <Link
             href="/stays"
-            className="hidden h-[42px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,22px)] text-[12px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 group-data-[over=true]/hdr:bg-stone-50 group-data-[over=true]/hdr:text-brand group-data-[over=true]/hdr:hover:bg-brand-tint sm:inline-flex"
+            className="hidden h-[42px] flex-none items-center whitespace-nowrap rounded-[4px] bg-brand px-[clamp(12px,3vw,22px)] text-[12px] font-semibold uppercase tracking-[.14em] text-stone-50 hover:bg-brand-hover hover:text-stone-50 group-data-[over=true]/hdr:bg-stone-50 group-data-[over=true]/hdr:text-brand group-data-[over=true]/hdr:hover:bg-brand-tint md:inline-flex"
           >
-            <span className="md:hidden">Book</span>
-            <span className="hidden md:inline">Book a stay</span>
+            Book a stay
           </Link>
           <Drawer />
         </div>
