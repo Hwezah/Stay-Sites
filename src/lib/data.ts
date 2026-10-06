@@ -273,7 +273,7 @@ export const SERVICES: Service[] = [
     meta: "Priced by vehicle size",
     body: `Keep your vehicle spotless while you relax at ${SITE.name}. Pricing depends on the type and size of vehicle.`,
     price: "Quoted on booking",
-    image: "/images/svc-carwash.jpg",
+    image: "https://images.pexels.com/photos/4870724/pexels-photo-4870724.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     cat: "Neighbourhood",
