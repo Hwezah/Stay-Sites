@@ -178,9 +178,9 @@ export function StepperButton({ className, ...props }: ComponentProps<"button">)
 export function GuestStepper({ size = "sm" }: { size?: "sm" | "lg" }) {
   const { incGuests, decGuests } = useBooking();
   const lg = size === "lg";
-  // Smaller on phones (below 640px), full size from tablets up.
-  const cls = lg ? "size-9 sm:size-12" : "size-8 sm:size-10";
-  const icon = lg ? 24 : 20;
+  // 32px on phones, 36px from tablets up.
+  const cls = lg ? "size-8 sm:size-10" : "size-8 sm:size-9";
+  const icon = lg ? 20 : 18;
   return (
     <div className="flex flex-none gap-1.5 sm:gap-2">
       <StepperButton className={cls} onClick={decGuests} aria-label="Fewer guests">
