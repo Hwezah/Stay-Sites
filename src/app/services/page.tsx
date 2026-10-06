@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <Container className="pt-[clamp(28px,5vw,48px)] pb-24">
         <div data-m-center>
           <Eyebrow>Local guide</Eyebrow>
-          <h1 className="font-display mt-3 max-w-[20ch] text-[clamp(28px,5.4vw,58px)] tracking-[-.02em]">
+          <h1 className="font-display mt-3 max-w-[20ch] text-[clamp(28px,5.4vw,58px)] tracking-[-.02em] font-medium">
             Exclusive additions &amp; the neighbourhood
           </h1>
           <p className="mt-4 max-w-[58ch] text-[16.5px] leading-[1.6] text-stone-600">

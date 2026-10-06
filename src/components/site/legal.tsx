@@ -25,7 +25,7 @@ export function LegalPage({
       <Container className="pt-[clamp(28px,5vw,48px)] pb-24">
         <div data-m-center className="mx-auto max-w-[760px]">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="font-display mt-3 text-[clamp(28px,5.4vw,52px)] tracking-[-.02em]">{title}</h1>
+          <h1 className="font-display mt-3 text-[clamp(28px,5.4vw,52px)] tracking-[-.02em] font-medium">{title}</h1>
           <p className="mt-3 text-[13.5px] text-stone-500">Last updated {updated}</p>
           <p className="mt-5 max-w-[62ch] text-[16px] leading-[1.7] text-stone-700">{intro}</p>
         </div>

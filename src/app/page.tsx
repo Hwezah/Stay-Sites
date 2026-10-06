@@ -21,7 +21,7 @@ export default function HomePage() {
       <section data-reveal id="experience">
         <Container className="pt-[clamp(48px,8vw,84px)]">
           <div data-m-center>
-            <h2 className="font-display max-w-[22ch] text-[clamp(27px,5.2vw,40px)] tracking-[-.015em]">
+            <h2 className="font-display max-w-[22ch] text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] font-medium">
               Every One-Bed Apartment includes
             </h2>
           </div>
@@ -41,7 +41,7 @@ export default function HomePage() {
 
       <section data-reveal id="reviews">
         <Container className="pt-[clamp(48px,8vw,84px)]">
-          <div className="overflow-hidden rounded-[8px] bg-stone-900 p-[clamp(24px,4vw,48px)] text-stone-50">
+          <div className="overflow-hidden rounded-[8px] bg-brand p-[clamp(24px,4vw,48px)] text-stone-50">
             <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
               <div className="font-display text-[52px] leading-none">94%</div>
               <div className="text-sm text-stone-300">guest satisfaction · 400 clients · 1K+ nights</div>
@@ -62,7 +62,7 @@ export default function HomePage() {
         <Container className="pt-[clamp(48px,8vw,84px)] pb-[clamp(40px,7vw,72px)]">
           <div className="flex flex-wrap items-start gap-[clamp(24px,4vw,48px)]">
             <div data-m-center className="min-w-0 flex-[1_1_260px] md:sticky md:top-[92px]">
-              <h2 className="font-display text-[clamp(27px,5.2vw,40px)] tracking-[-.015em]">Good to know</h2>
+              <h2 className="font-display text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] font-medium">Good to know</h2>
               <p className="mt-3 text-[15px] leading-[1.6] text-stone-600">
                 Still deciding? Call <Phones />, WhatsApp{" "}
                 <a href={whatsappUrl([])} target="_blank" rel="noopener" className="whitespace-nowrap font-medium text-brand hover:text-brand-hover">

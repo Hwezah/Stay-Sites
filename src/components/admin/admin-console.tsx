@@ -12,7 +12,7 @@ export function AdminConsole() {
     <main className="mx-auto w-full max-w-[1040px] px-[clamp(16px,4vw,24px)] pt-[clamp(28px,5vw,48px)] pb-[120px]">
       <div data-m-center className="flex flex-wrap items-baseline justify-between gap-4">
         <div>
-          <h1 className="font-display text-[clamp(26px,4.8vw,46px)] tracking-[-.02em]">Admin console</h1>
+          <h1 className="font-display text-[clamp(26px,4.8vw,46px)] tracking-[-.02em] font-medium">Admin console</h1>
           <p className="mt-2 text-[14.5px] text-stone-600">
             Verify the payment in the Mobile Money or bank account first, then confirm here. Only this screen can mark
             an order paid.

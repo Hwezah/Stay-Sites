@@ -26,7 +26,7 @@ export function ServicesGrid() {
         {visible.map((s, i) => {
           const on = cart.includes(s.title);
           return (
-            <div key={s.title} data-reveal className="flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white">
+            <div key={s.title} data-reveal className="group flex flex-col overflow-hidden border border-stone-200 bg-white transition-colors hover:border-stone-400">
               <PhotoButton album={album} index={i} className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
                 <Image
                   src={s.image}
@@ -38,7 +38,7 @@ export function ServicesGrid() {
               </PhotoButton>
               <div className="flex flex-1 flex-col px-5 pt-[18px] pb-5">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="flex-none whitespace-nowrap rounded-full bg-brand-tint px-[9px] py-[3px] text-[11.5px] font-semibold text-brand">
+                  <span className="flex-none whitespace-nowrap bg-brand px-[9px] py-[3px] text-[10.5px] font-semibold uppercase tracking-[.1em] text-stone-50">
                     {s.cat}
                   </span>
                   <span className="whitespace-nowrap text-[12.5px] text-stone-400">{s.meta}</span>

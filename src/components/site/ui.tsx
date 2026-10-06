@@ -79,14 +79,20 @@ export function Container({ className, ...props }: ComponentProps<"div">) {
 
 export function Eyebrow({ className, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("text-xs font-semibold uppercase tracking-[.08em] text-brand", className)} {...props} />
+    <div
+      className={cn(
+        "flex items-center gap-3 text-[11.5px] font-semibold uppercase tracking-[.2em] text-accent before:h-px before:w-7 before:bg-accent before:content-[''] mportrait:justify-center mportrait:before:hidden",
+        className,
+      )}
+      {...props}
+    />
   );
 }
 
 export function FieldLabel({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("text-[11px] font-semibold uppercase tracking-[.06em] text-stone-500", className)}
+      className={cn("text-[10.5px] font-semibold uppercase tracking-[.16em] text-stone-500", className)}
       {...props}
     />
   );
@@ -115,8 +121,8 @@ export function Tabs<T extends string>({
             onClick={() => onChange(o)}
             aria-pressed={on}
             className={cn(
-              "h-[34px] border-b-2 px-1 text-[13px]",
-              on ? "border-brand font-semibold text-brand" : "border-transparent text-stone-500 hover:text-stone-800",
+              "h-[34px] border-b px-1 text-[12px] uppercase tracking-[.14em]",
+              on ? "border-accent font-semibold text-brand" : "border-transparent text-stone-500 hover:text-stone-800",
             )}
           >
             {o}
@@ -134,7 +140,7 @@ export function CurrencyToggle() {
     { c: "UGX", label: "UGX USh" },
   ];
   return (
-    <div className="flex flex-none gap-1 rounded-[9px] bg-stone-100 p-[3px]" role="group" aria-label="Currency">
+    <div className="flex flex-none gap-1 rounded-full border border-stone-200 bg-white p-[3px]" role="group" aria-label="Currency">
       {opts.map(({ c, label }) => (
         <button
           key={c}
@@ -145,8 +151,8 @@ export function CurrencyToggle() {
             setCurrency(c);
           }}
           className={cn(
-            "h-[26px] whitespace-nowrap rounded-[7px] px-[9px] text-[11.5px]",
-            currency === c ? "bg-white font-semibold text-stone-900 shadow-[0_1px_2px_rgba(28,25,23,.1)]" : "text-stone-500",
+            "h-[26px] whitespace-nowrap rounded-full px-[11px] text-[11.5px]",
+            currency === c ? "bg-brand font-semibold text-stone-50" : "text-stone-500 hover:text-stone-900",
           )}
         >
           {label}

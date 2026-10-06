@@ -13,11 +13,11 @@ export function ApartmentCard({ apartment: a }: { apartment: Apartment }) {
     <Link
       href={`/apartments/${a.id}`}
       data-reveal
-      className="block overflow-hidden rounded-lg border border-stone-200 bg-white text-stone-900 shadow-card transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:text-stone-900 hover:shadow-card-hover"
+      className="group block overflow-hidden border border-stone-200 bg-white text-stone-900 transition-colors duration-200 hover:border-stone-400 hover:text-stone-900"
     >
-      <div className="relative aspect-[4/3]">
-        <Image src={a.images[0]} alt={a.name} fill sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
-        <div className="absolute top-3 left-3 whitespace-nowrap rounded-full bg-white/95 px-2.5 py-[5px] text-[11.5px] font-semibold">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image src={a.images[0]} alt={a.name} fill sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+        <div className="absolute top-3 left-3 whitespace-nowrap bg-brand px-2.5 py-[5px] text-[11px] font-semibold uppercase tracking-[.1em] text-stone-50">
           {a.tag}
         </div>
         <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-center gap-x-4 gap-y-1.5 bg-gradient-to-t from-stone-900/80 to-stone-900/0 px-3.5 pt-[30px] pb-3">
@@ -30,7 +30,7 @@ export function ApartmentCard({ apartment: a }: { apartment: Apartment }) {
         </div>
       </div>
       <div className="px-[18px] pt-4 pb-[18px]">
-        <div className="text-base font-semibold tracking-[-.01em]">{a.name}</div>
+        <div className="font-display text-[24px] font-medium leading-tight">{a.name}</div>
         <div className="mt-1 text-[13.5px] text-stone-500">
           {a.loc} · {a.sleeps}
         </div>

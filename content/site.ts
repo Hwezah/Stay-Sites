@@ -80,6 +80,8 @@ export const SITE = {
     brandTint: "#E8EBF2",
     brandSoft: "#C3CADB",
     page: "#F4F4F1",
+    // Second, sparing accent: eyebrows, stars, active underlines and small rules.
+    accent: "#B08D57",
   },
 
   // Search engines and link previews

@@ -77,7 +77,7 @@ export function SiteHeader() {
             className="size-[26px] object-contain group-data-[over=true]/hdr:brightness-0 group-data-[over=true]/hdr:invert"
             priority
           />
-          <span className="font-display whitespace-nowrap text-[clamp(17px,3.4vw,22px)] tracking-[-.01em]">
+          <span className="font-display whitespace-nowrap text-[clamp(17px,3.4vw,22px)] tracking-[-.01em] font-medium">
             {SITE.wordmark}
           </span>
         </Link>
@@ -93,7 +93,7 @@ export function SiteHeader() {
                 className={cn(
                   "flex h-[34px] items-center border-b-2 px-2.5 text-sm",
                   on
-                    ? "border-brand font-semibold text-brand group-data-[over=true]/hdr:border-brand-soft group-data-[over=true]/hdr:text-brand-soft"
+                    ? "border-accent font-semibold text-brand group-data-[over=true]/hdr:border-accent group-data-[over=true]/hdr:text-stone-50"
                     : "border-transparent text-stone-600 hover:text-stone-900 group-data-[over=true]/hdr:text-stone-50/85 group-data-[over=true]/hdr:hover:text-stone-50",
                 )}
               >
@@ -402,12 +402,20 @@ function Drawer() {
         onClick={() => togglePanel("drawer")}
         aria-label={`About ${SITE.name}`}
         aria-expanded={open}
-        className="ml-[clamp(2px,1vw,8px)] grid h-11 w-[clamp(34px,8vw,70px)] flex-none place-items-center text-stone-700 transition-colors hover:text-brand group-data-[over=true]/hdr:text-stone-50 group-data-[over=true]/hdr:hover:text-brand-soft"
+        className="group/burger ml-[clamp(2px,1vw,8px)] flex h-11 w-12 flex-none items-center justify-center text-stone-700 transition-colors hover:text-brand group-data-[over=true]/hdr:text-stone-50 group-data-[over=true]/hdr:hover:text-brand-soft"
       >
-        <svg width="100%" height="26" viewBox="0 0 66 26" preserveAspectRatio="none" fill="none" stroke="currentColor" strokeWidth="0.9">
-          <path d="M0 7h66" vectorEffect="non-scaling-stroke" />
-          <path d="M0 19h66" vectorEffect="non-scaling-stroke" />
-        </svg>
+        {/* Three tall lines; they spread apart while the menu is open. */}
+        <span
+          aria-hidden="true"
+          className={cn(
+            "flex h-[30px] items-stretch transition-[gap] duration-300 ease-out",
+            open ? "gap-[13px]" : "gap-[7px] group-hover/burger:gap-[9px]",
+          )}
+        >
+          <span className="w-px bg-current" />
+          <span className="w-px bg-current" />
+          <span className="w-px bg-current" />
+        </span>
       </button>
       {open &&
         createPortal(
@@ -433,12 +441,14 @@ function Drawer() {
               type="button"
               onClick={closePanels}
               aria-label="Close"
-              className="absolute top-[clamp(14px,3vw,24px)] right-[clamp(12px,3vw,24px)] z-10 grid size-11 place-items-center text-stone-50 hover:text-brand-soft"
+              className="absolute top-[clamp(14px,3vw,24px)] right-[clamp(12px,3vw,24px)] z-10 flex h-11 w-12 items-center justify-center text-stone-50 hover:text-brand-soft"
             >
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="0.9">
-                <path d="M6 6 34 34" />
-                <path d="M34 6 6 34" />
-              </svg>
+              {/* The menu icon again, splitting wide as the panel opens. */}
+              <span aria-hidden="true" className="flex h-[30px] animate-burger-split items-stretch gap-[13px]">
+                <span className="w-px bg-current" />
+                <span className="w-px bg-current" />
+                <span className="w-px bg-current" />
+              </span>
             </button>
             {/* The mark is gold artwork, rendered white so it shows on the dark photo. */}
             <Link
@@ -454,7 +464,7 @@ function Drawer() {
                 className="size-[clamp(56px,9vw,80px)] object-contain brightness-0 invert mportrait:size-[76px]"
               />
               {/* The panel's width follows the screen, so the name scales with it. */}
-              <span className="font-display whitespace-nowrap text-[clamp(20px,2.6vw,30px)] mportrait:text-[30px]">{SITE.wordmark}</span>
+              <span className="font-display whitespace-nowrap text-[clamp(20px,2.6vw,30px)] mportrait:text-[30px] font-medium">{SITE.wordmark}</span>
             </Link>
           </div>
 

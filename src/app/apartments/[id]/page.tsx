@@ -122,7 +122,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
             <div className="mt-4 grid gap-6">
               {REVIEWS.map((r) => (
                 <figure key={r.who} className="border-b border-stone-200 pb-6 mportrait:text-center">
-                  <div className="text-[15px] tracking-[.2em] text-brand" aria-label="5 out of 5 stars">
+                  <div className="text-[15px] tracking-[.2em] text-accent" aria-label="5 out of 5 stars">
                     ★★★★★
                   </div>
                   <blockquote className="mt-2 text-[15px] leading-[1.7] text-stone-700">“{r.quote}”</blockquote>

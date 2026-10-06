@@ -51,7 +51,7 @@ export function BookingBar({ overlap = false }: { overlap?: boolean }) {
           <div className="flex min-w-0 items-center justify-between gap-2 border-r border-stone-200 px-[clamp(16px,3vw,32px)] py-[clamp(16px,2.4vw,26px)]">
             <div className="min-w-0">
               <FieldLabel>Guests</FieldLabel>
-              <div className="font-display mt-1.5 whitespace-nowrap text-[clamp(19px,2vw,24px)] text-stone-900">{guestsLabel(guests)}</div>
+              <div className="font-display mt-1.5 whitespace-nowrap text-[clamp(19px,2vw,24px)] text-stone-900 font-medium">{guestsLabel(guests)}</div>
             </div>
             <GuestStepper />
           </div>

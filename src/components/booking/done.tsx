@@ -18,7 +18,7 @@ export function BookingDone() {
   if (!order) {
     return (
       <main data-m-center className="mx-auto w-full max-w-[720px] px-[clamp(16px,4vw,24px)] pt-[clamp(40px,7vw,72px)] pb-[120px]">
-        <h1 className="font-display text-[clamp(29px,5.6vw,44px)] tracking-[-.02em]">No confirmed booking yet</h1>
+        <h1 className="font-display text-[clamp(29px,5.6vw,44px)] tracking-[-.02em] font-medium">No confirmed booking yet</h1>
         <p className="mt-3 text-base text-stone-600">
           Bookings paid by Mobile Money or bank transfer show here once {SITE.host.firstName} confirms them. <Link href="/trips">See your trips</Link>
         </p>
@@ -35,7 +35,7 @@ export function BookingDone() {
           <path d="m5 13 4 4L19 7" />
         </svg>
       </div>
-      <h1 className="font-display mt-[22px] text-[clamp(29px,5.6vw,44px)] tracking-[-.02em]">
+      <h1 className="font-display mt-[22px] text-[clamp(29px,5.6vw,44px)] tracking-[-.02em] font-medium">
         You&apos;re booked, {order.name.split(" ")[0]}.
       </h1>
       <p className="mt-3 text-[16.5px] leading-[1.6] text-stone-600">

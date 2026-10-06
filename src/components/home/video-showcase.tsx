@@ -54,7 +54,7 @@ export function VideoShowcase({
             </span>
             <span className="absolute inset-x-0 bottom-[clamp(18px,4vw,40px)] px-4 text-center">
               <span className="block text-xs font-semibold uppercase tracking-[.12em] text-brand-soft">Take a tour</span>
-              <span className="font-display mt-2 block text-[clamp(22px,3.6vw,38px)] text-stone-50">{title}</span>
+              <span className="font-display mt-2 block text-[clamp(22px,3.6vw,38px)] text-stone-50 font-medium">{title}</span>
             </span>
           </button>
         )}
@@ -131,7 +131,7 @@ function Slideshow({ slides, onClose }: { slides: Photo[]; onClose: () => void }
         <div className="text-xs font-semibold uppercase tracking-[.12em] text-brand-soft">
           {index + 1} / {count}
         </div>
-        <div className="font-display mt-1.5 text-[clamp(20px,3vw,32px)]">{slides[index].alt}</div>
+        <div className="font-display mt-1.5 text-[clamp(20px,3vw,32px)] font-medium">{slides[index].alt}</div>
         <div className="mt-4 flex gap-1.5" role="tablist" aria-label="Choose photo">
           {slides.map((s, i) => (
             <button

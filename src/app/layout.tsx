@@ -27,6 +27,7 @@ const themeVars = {
   "--color-brand-tint": SITE.theme.brandTint,
   "--color-brand-soft": SITE.theme.brandSoft,
   "--color-page": SITE.theme.page,
+  "--color-accent": SITE.theme.accent,
 } as CSSProperties;
 
 const description = SITE.seo.description;

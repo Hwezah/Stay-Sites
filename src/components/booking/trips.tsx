@@ -21,7 +21,7 @@ export function Trips() {
     <main>
       <Container className="pt-[clamp(28px,5vw,48px)] pb-24">
         <div data-m-center>
-          <h1 className="font-display text-[clamp(27px,5vw,52px)] tracking-[-.02em]">Your trips</h1>
+          <h1 className="font-display text-[clamp(27px,5vw,52px)] tracking-[-.02em] font-medium">Your trips</h1>
         </div>
 
         <div className="mt-7 flex flex-wrap items-start gap-[clamp(24px,3.5vw,44px)]">
