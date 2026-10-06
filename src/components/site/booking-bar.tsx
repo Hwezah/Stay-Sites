@@ -30,29 +30,42 @@ export function BookingBar({ overlap = false }: { overlap?: boolean }) {
 
   return (
     <>
-        <div className={`relative z-10 -mx-[clamp(16px,4vw,24px)] grid grid-cols-2 border-b border-stone-200 bg-white xl:mx-0 ${overlap ? "xl:-mt-[60px]" : ""} xl:grid-cols-[1fr_1fr_1fr_minmax(220px,auto)] xl:border-0 xl:shadow-panel`}>
+        <div className={`relative z-10 -mx-[clamp(16px,4vw,24px)] grid grid-cols-2 border-b border-stone-200 bg-white xl:mx-0 ${overlap ? "xl:-mt-[60px]" : ""} xl:grid-cols-[1fr_1fr_auto_minmax(180px,0.8fr)] xl:border-0 xl:shadow-panel`}>
           {(["checkIn", "checkOut"] as const).map((k) => {
             const value = k === "checkIn" ? checkIn : checkOut;
+            const label = k === "checkIn" ? "Check in" : "Check out";
             return (
               <button
                 key={k}
                 type="button"
                 data-keep-open
                 onClick={() => togglePanel("cal-hero")}
-                className="min-w-0 border-r border-b border-stone-200 px-[clamp(16px,3vw,32px)] py-[clamp(16px,2.4vw,26px)] text-left transition-colors hover:bg-stone-50 xl:border-b-0"
+                className="flex min-w-0 items-center justify-center border-r border-b border-stone-200 px-4 py-[clamp(18px,2.4vw,28px)] transition-colors hover:bg-stone-50 xl:border-b-0 mportrait:px-2.5"
               >
-                <FieldLabel>{k === "checkIn" ? "Check in" : "Check out"}</FieldLabel>
-                <div className={cn("font-display mt-1.5 truncate text-[clamp(19px,2vw,24px)]", value ? "text-stone-900" : "text-stone-500")}>
-                  {value ? fmtDate(value) : "Select date"}
-                </div>
+                {/* One line, centred in the cell, reading left to right: CHECK IN → Select date. */}
+                <span className="flex min-w-0 items-center gap-3 text-left xl:gap-2.5 2xl:gap-3 mportrait:hidden">
+                  <FieldLabel className="whitespace-nowrap">{label}</FieldLabel>
+                  <Arrow />
+                  <span className={cn("font-display truncate text-[clamp(19px,1.9vw,23px)]", value ? "text-stone-900" : "text-stone-500")}>
+                    {value ? fmtDate(value) : "Select Date"}
+                  </span>
+                </span>
+                {/* Phones held upright: one combined phrase. */}
+                <span className={cn("font-display hidden truncate text-[clamp(15px,4.3vw,17px)] mportrait:inline", value ? "text-stone-900" : "text-stone-600")}>
+                  {value ? `${label}: ${fmtDate(value)}` : `Select ${k === "checkIn" ? "Check In" : "Check Out"} Date`}
+                </span>
               </button>
             );
           })}
-          <div className="flex min-w-0 items-center justify-between gap-2 border-r border-stone-200 px-[clamp(16px,3vw,32px)] py-[clamp(16px,2.4vw,26px)]">
-            <div className="min-w-0">
-              <FieldLabel>Guests</FieldLabel>
-              <div className="font-display mt-1.5 whitespace-nowrap text-[clamp(19px,2vw,24px)] text-stone-900 font-medium">{guestsLabel(guests)}</div>
-            </div>
+          <div className="flex min-w-0 items-center justify-center gap-3 border-r border-stone-200 px-4 py-[clamp(18px,2.4vw,28px)] xl:px-6">
+            <span className="flex min-w-0 items-center gap-3 text-left xl:gap-2.5 2xl:gap-3 mportrait:hidden">
+              <FieldLabel className="whitespace-nowrap">Guests</FieldLabel>
+              <Arrow />
+              <span className="font-display whitespace-nowrap text-[clamp(19px,1.9vw,23px)] font-medium text-stone-900">{guestsLabel(guests)}</span>
+            </span>
+            <span className="font-display hidden whitespace-nowrap text-[17px] font-medium text-stone-900 mportrait:inline">
+              {guests} {guests === 1 ? "Guest" : "Guests"}
+            </span>
             <GuestStepper />
           </div>
           <button
@@ -72,5 +85,14 @@ export function BookingBar({ overlap = false }: { overlap?: boolean }) {
           </div>
         )}
     </>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" className="flex-none text-brass" aria-hidden="true">
+      <path d="M4 12h16" />
+      <path d="m14 6 6 6-6 6" />
+    </svg>
   );
 }

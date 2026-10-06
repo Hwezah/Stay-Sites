@@ -11,7 +11,7 @@ import { SITE } from "@site";
 const SLIDES = [
   { src: "/images/hero-living.jpg", alt: `${SITE.name} living room` },
   { src: "/images/room1-bedroom.jpg", alt: "Bedroom" },
-  { src: "/images/room1-living.jpg", alt: "Linen Suite living room" },
+  { src: "/images/room1-living.jpg", alt: "Linen Space living room" },
   { src: "/images/room2-kitchen.jpg", alt: "Kitchen and dining nook" },
   { src: "/images/hero-balcony.jpg", alt: "Balcony" },
 ];

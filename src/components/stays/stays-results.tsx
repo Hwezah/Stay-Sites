@@ -20,7 +20,7 @@ export function StaysResults() {
         <Image src="/images/hero-balcony.jpg" alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-stone-900/50" />
         <div data-m-center className="mx-auto w-full max-w-[1400px] px-[clamp(16px,4vw,24px)] pb-[clamp(28px,5vw,96px)] text-center">
-          <h1 className="font-display text-[clamp(38px,6vw,76px)] font-medium leading-none">Our suites</h1>
+          <h1 className="font-display text-[clamp(38px,6vw,76px)] font-medium leading-none">Our spaces</h1>
           <p className="mt-3 text-[14px] uppercase tracking-[.16em] text-stone-50/85">
             {picked ? `${datesLabel(checkIn, checkOut)} · ${guestsLabel(guests)}` : "Pick your dates to see your total"}
           </p>

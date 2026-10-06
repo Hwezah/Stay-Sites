@@ -78,8 +78,8 @@ const SHARED_PHOTOS: Photo[] = [
 export const APARTMENTS: Apartment[] = [
   {
     id: "apartment-1",
-    name: "The Linen Suite",
-    kind: "Linen Suite",
+    name: "The Linen Space",
+    kind: "Linen Space",
     blurb: "Warm wood, a deep sofa and a bright open kitchen — an easy, unhurried base for two.",
     loc: SITE_PLACE,
     price: 50,
@@ -99,8 +99,8 @@ export const APARTMENTS: Apartment[] = [
   },
   {
     id: "apartment-2",
-    name: "The Ember Suite",
-    kind: "Ember Suite",
+    name: "The Ember Space",
+    kind: "Ember Space",
     blurb: "Soft neutrals, brass accents and a cosy reading corner — made for slow mornings.",
     loc: SITE_PLACE,
     price: 50,
@@ -144,8 +144,8 @@ export const HOME_PHOTOS: Photo[] = [
   { src: "/images/hero-living.jpg", alt: `${SITE.name} living room` },
   { src: "/images/hero-balcony.jpg", alt: "Balcony" },
   { src: "/images/hero-cushions.jpg", alt: "Living room detail" },
-  { src: "/images/room1-living.jpg", alt: "Linen Suite living room" },
-  { src: "/images/room2-living.jpg", alt: "Ember Suite living room" },
+  { src: "/images/room1-living.jpg", alt: "Linen Space living room" },
+  { src: "/images/room2-living.jpg", alt: "Ember Space living room" },
   { src: "/images/svc-carwash.jpg", alt: "Building and secure parking" },
 ];
 
@@ -156,7 +156,7 @@ export const TOUR_VIDEO = {
   title: `A walk through ${SITE.name}`,
 };
 
-export const FILTERS = ["All suites", "Linen Suite", "Ember Suite"] as const;
+export const FILTERS = ["All spaces", "Linen Space", "Ember Space"] as const;
 
 export const ICONS = {
   area: ["M3.8 3.8h16.4v16.4H3.8z", "m9.6 14.4 4.8-4.8", "M9.6 11.6v2.8h2.8", "M14.4 12.4V9.6h-2.8"],
