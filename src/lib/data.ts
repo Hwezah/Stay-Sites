@@ -265,7 +265,7 @@ export const SERVICES: Service[] = [
     meta: "Priced by room size & frequency",
     body: "A fresh, tidy space throughout your stay, so your room is always comfortable and well-maintained.",
     price: "Quoted on booking",
-    image: "/images/svc-cleaning.jpg",
+    image: "https://images.pexels.com/photos/29006838/pexels-photo-29006838.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     cat: "Services",
