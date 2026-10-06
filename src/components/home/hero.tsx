@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { PhotoButton } from "@/components/site/lightbox";
-import { ContactLines } from "@/components/site/ui";
 import { HOME_PHOTOS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { SITE } from "@site";
@@ -72,8 +71,6 @@ export function Hero() {
       <div className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-stone-900/55 to-transparent" />
       <div className="absolute inset-0 -z-10 bg-stone-900/40" />
 
-      {/* Phone and location just under the header. */}
-      <ContactLines className="absolute top-[84px] left-[clamp(16px,4vw,24px)] text-stone-50/90 mportrait:inset-x-0 mportrait:left-0 mportrait:justify-items-center" />
 
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col items-center justify-center px-[clamp(16px,4vw,24px)] pt-24 text-center lg:pb-16">
         <h1 className="font-display max-w-[13ch] text-[clamp(46px,8.4vw,128px)] font-medium leading-[.98] tracking-[-.01em] text-balance">
