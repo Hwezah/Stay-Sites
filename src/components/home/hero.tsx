@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { PhotoButton } from "@/components/site/lightbox";
+import { Container } from "@/components/site/ui";
 import { HOME_PHOTOS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { SITE } from "@site";
@@ -20,11 +21,12 @@ const HOLD_MS = 5500;
 
 /**
  * Full-bleed home hero: room photos crossfade with a slow zoom behind the
- * headline and calls to action. 80% of the screen height on phones (portrait),
- * full height on wider screens. The next photo is mounted ahead of time so each
- * change is a smooth fade, never a blank frame.
+ * headline. It fills the screen, and `children` (the booking strip) sits along
+ * its bottom edge, so the strip is in view on load and the hero ends where it
+ * ends. The next photo is mounted ahead of time so each change is a smooth fade,
+ * never a blank frame.
  */
-export function Hero() {
+export function Hero({ children }: { children?: React.ReactNode }) {
   const [index, setIndex] = useState(0);
   const count = SLIDES.length;
 
@@ -36,7 +38,7 @@ export function Hero() {
   return (
     <section
       aria-label={`Welcome to ${SITE.name}`}
-      className="relative isolate flex h-[80svh] min-h-[520px] flex-col overflow-hidden bg-stone-900 text-stone-50 sm:h-svh"
+      className="relative isolate flex min-h-svh flex-col overflow-hidden bg-stone-900 text-stone-50"
     >
       {SLIDES.map((s, i) => {
         const active = i === index;
@@ -72,7 +74,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-stone-900/40" />
 
 
-      <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col items-center justify-center px-[clamp(16px,4vw,24px)] pt-24 text-center lg:pb-16">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col items-center justify-center px-[clamp(16px,4vw,24px)] pt-24 pb-8 text-center">
         <h1 className="font-display max-w-[13ch] text-[clamp(46px,8.4vw,128px)] font-medium leading-[.98] tracking-[-.01em] text-balance">
           {SITE.hero.headline}
         </h1>
@@ -84,6 +86,7 @@ export function Hero() {
           View photos
         </PhotoButton>
       </div>
+      {children && <Container className="text-left text-stone-900">{children}</Container>}
     </section>
   );
 }
