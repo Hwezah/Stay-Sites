@@ -83,12 +83,11 @@ export const APARTMENTS: Apartment[] = [
     tag: "USD 50/night",
     desc: DESC,
     amenities: AMENITIES,
-    images: ["https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6438748/pexels-photo-6438748.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600"],
+    images: ["https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600"],
     gallery: [
-      { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
-      { src: "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen and dining" },
-      { src: "https://images.pexels.com/photos/7546719/pexels-photo-7546719.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen" },
-      { src: "https://images.pexels.com/photos/6438748/pexels-photo-6438748.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Lounge chair and TV" },
+      { src: "https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
+      { src: "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room and kitchen" },
+      { src: "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Sofa by the kitchen counter" },
       ...SHARED_PHOTOS,
     ],
     specs: SPECS,
@@ -104,13 +103,10 @@ export const APARTMENTS: Apartment[] = [
     tag: "USD 50/night",
     desc: DESC,
     amenities: AMENITIES,
-    images: ["https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600"],
+    images: ["https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600"],
     gallery: [
-      { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
-      { src: "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen and dining" },
-      { src: "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Lounge" },
-      { src: "https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "TV wall and dining nook" },
-      { src: "https://images.pexels.com/photos/7546715/pexels-photo-7546715.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Coffee table detail" },
+      { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
+      { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Couch and round coffee table" },
       ...SHARED_PHOTOS,
     ],
     specs: SPECS,
@@ -136,10 +132,10 @@ export function getApartment(id: string | null | undefined): Apartment {
 
 /** Album behind the home page photo collage. */
 export const HOME_PHOTOS: Photo[] = [
-  { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name} living room` },
-  { src: "https://images.pexels.com/photos/6143348/pexels-photo-6143348.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room detail" },
-  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Linen Space living room" },
-  { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Ember Space living room" },
+  { src: "https://images.pexels.com/photos/6782353/pexels-photo-6782353.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name} living room` },
+  { src: "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room and kitchen" },
+  { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room" },
+  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Couch and round coffee table" },
 ];
 
 /** Home page tour video. Drop the file at public/videos/selah-tour.mp4. */
