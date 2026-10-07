@@ -48,7 +48,7 @@ export function NeighbourhoodTeaser() {
     <section data-reveal className="bg-white">
       <Container className="py-[clamp(56px,9vw,112px)]">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div data-m-center className="min-w-0">
+          <div data-m-center className="min-w-0 mportrait:w-full">
             <Eyebrow>The neighbourhood</Eyebrow>
             <h2 className="font-display mt-3 max-w-[16ch] text-[clamp(34px,5vw,56px)] font-medium leading-[1.05]">
               Step outside into {SITE.location.area}.
