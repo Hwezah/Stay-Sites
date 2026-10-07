@@ -343,7 +343,7 @@ function CartMenu() {
           <circle cx="17.2" cy="19.2" r="1.5" />
         </svg>
         {count > 0 && (
-          <span aria-hidden="true" className="absolute -top-[5px] left-1/2 -translate-x-1/2 text-[12px] leading-none font-semibold tabular-nums">
+          <span aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 text-[12px] leading-none font-semibold tabular-nums">
             {count}
           </span>
         )}
@@ -369,7 +369,7 @@ function CartMenu() {
                 type="button"
                 onClick={() => toggleCartItem(c.title)}
                 aria-label={`Remove ${c.title}`}
-                className="px-0.5 text-[15px] leading-none text-stone-400 hover:text-stone-900"
+                className="-mt-1 -mr-1.5 grid size-9 flex-none place-items-center rounded-full text-[24px] leading-none text-stone-400 hover:bg-stone-100 hover:text-stone-900"
               >
                 ×
               </button>
