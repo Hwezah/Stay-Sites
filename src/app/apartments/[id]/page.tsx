@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { BookingCard } from "@/components/booking/booking-card";
 import { PhotoButton } from "@/components/site/lightbox";
+import { RoomReviews } from "@/components/reviews/room-reviews";
 import { PhotoCarousel } from "@/components/site/photo-carousel";
 import { Container, HostAvatar } from "@/components/site/ui";
 import { APARTMENTS, CONFIG, REVIEWS, fullSpecs, listedAmenities } from "@/lib/data";
@@ -119,17 +120,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
             </p>
 
             <Heading>Reviews</Heading>
-            <div className="mt-4 grid gap-6">
-              {REVIEWS.map((r) => (
-                <figure key={r.who} className="border-b border-stone-200 pb-6 mportrait:text-center">
-                  <div className="text-[15px] tracking-[.2em] text-brass" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <blockquote className="mt-2 text-[15px] leading-[1.7] text-stone-700">“{r.quote}”</blockquote>
-                  <figcaption className="mt-2 text-[13.5px] font-medium text-stone-500">{r.who}</figcaption>
-                </figure>
-              ))}
-            </div>
+            <RoomReviews apartmentId={a.id} apartmentName={a.name} samples={REVIEWS} />
 
             <div className="mt-10 flex items-center gap-[13px] mportrait:flex-col mportrait:text-center">
               <HostAvatar size={54} />
