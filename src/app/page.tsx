@@ -19,7 +19,7 @@ export default function HomePage() {
 
       <VideoShowcase {...TOUR_VIDEO} available={videoReady} slides={TOUR_SLIDES} />
 
-      <section data-reveal id="experience" className="mt-[clamp(48px,8vw,84px)] bg-brand text-stone-50">
+      <section data-reveal id="experience" className="bg-brand text-stone-50">
         <Container className="py-[clamp(56px,9vw,112px)]">
           <div data-m-center>
             <Eyebrow>Included in every stay</Eyebrow>
