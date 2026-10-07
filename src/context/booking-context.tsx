@@ -24,6 +24,7 @@ import {
 import {
   CONFIG,
   SERVICES,
+  servicePrice,
   getApartment,
   type Apartment,
   type ApartmentId,
@@ -84,6 +85,7 @@ type BookingContextValue = TripDraft & {
   cartItems: Service[];
   toggleCartItem: (title: string) => void;
   totals: Totals;
+  extrasTotal: number;
   grandTotal: number;
   split: boolean;
   setSplit: (v: boolean) => void;
@@ -172,8 +174,9 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     () => trip.cart.map((t) => SERVICES.find((s) => s.title === t)).filter((s): s is Service => !!s),
     [trip.cart],
   );
-  // Services are "Quoted on booking", so they add nothing to the total today.
-  const grandTotal = totals.total;
+  // Picked extras are a flat fee per stay, added on top of the nights.
+  const extrasTotal = cartItems.reduce((sum, s) => sum + (s.amount ?? 0), 0);
+  const grandTotal = totals.total + extrasTotal;
   const splitOn = CONFIG.enableSplitPay && split;
   const amountDue = splitOn ? Math.round(grandTotal / 2) : grandTotal;
 
@@ -212,10 +215,10 @@ export function BookingProvider({ children }: { children: ReactNode }) {
       setTrip((t) => ({ ...t, cart: on ? t.cart.filter((x) => x !== title) : [...t.cart, title] }));
       if (!on) {
         const s = SERVICES.find((x) => x.title === title);
-        toast("ok", "Added to your trip", `${title} · ${s?.price ?? ""}`);
+        toast("ok", "Added to your trip", s ? `${title} · ${servicePrice(s, money)}` : title);
       }
     },
-    [trip.cart, toast],
+    [trip.cart, toast, money],
   );
 
   const updateForm = useCallback((patch: Partial<GuestForm>) => setForm((f) => ({ ...f, ...patch })), []);
@@ -308,6 +311,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     cartItems,
     toggleCartItem,
     totals,
+    extrasTotal,
     grandTotal,
     split,
     setSplit,

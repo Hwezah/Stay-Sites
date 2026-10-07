@@ -79,7 +79,8 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
           return (
             <label key={x.title} className="flex cursor-pointer items-center gap-3 text-[14.5px] text-stone-700">
               <input type="checkbox" checked={on} onChange={() => b.toggleCartItem(x.title)} className="size-[18px] accent-brand" />
-              {x.title}
+              <span className="flex-1">{x.title}</span>
+              <span className="text-[13.5px] text-stone-500">{b.money(x.amount ?? 0)}</span>
             </label>
           );
         })}
@@ -87,15 +88,12 @@ export function BookingCard({ apartmentId }: { apartmentId: ApartmentId }) {
 
       <div className="mt-5 flex items-baseline justify-between">
         <span className="font-display text-[24px]">Total price</span>
-        <span className="text-[20px] font-semibold">{hasDates ? b.money(b.grandTotal) : b.money(0)}</span>
+        <span className="text-[20px] font-semibold">{b.money(hasDates ? b.grandTotal : b.extrasTotal)}</span>
       </div>
-      {hasDates && (
+      {(hasDates || b.cartItems.length > 0) && (
         <div className="mt-3 grid gap-2">
           <PriceRows />
         </div>
-      )}
-      {b.cartItems.length > 0 && (
-        <p className="mt-2 text-[12.5px] text-stone-500">Extra services are priced when you book.</p>
       )}
 
       <button

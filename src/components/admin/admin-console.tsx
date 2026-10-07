@@ -1,5 +1,6 @@
 "use client";
 
+import { ReviewModeration } from "@/components/admin/review-moderation";
 import { StatusBadge } from "@/components/site/ui";
 import { useBooking } from "@/context/booking-context";
 import { fmtDate, guestsLabel } from "@/lib/booking";
@@ -79,6 +80,8 @@ export function AdminConsole() {
           </div>
         ))}
       </div>
+
+      <ReviewModeration />
     </main>
   );
 }

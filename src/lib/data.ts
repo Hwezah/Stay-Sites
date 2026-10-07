@@ -231,33 +231,44 @@ export type Service = {
   title: string;
   meta: string;
   body: string;
+  /** Label for things without a fee, e.g. "Nearby". */
   price: string;
+  /** Fee in USD for the whole stay, added to the booking total when the guest picks it. */
+  amount?: number;
   image: string;
 };
+
+/** "USD 8 per stay" for a paid extra, or the plain label (e.g. "Nearby"). */
+export function servicePrice(s: Service, money: (usd: number) => string) {
+  return s.amount ? `${money(s.amount)} per stay` : s.price;
+}
 
 export const SERVICES: Service[] = [
   {
     cat: "Services",
     title: "Laundry Services",
-    meta: "Priced by quantity",
-    body: "Keep your wardrobe fresh without the hassle during your stay. Pricing is provided when you book.",
-    price: "Quoted on booking",
+    meta: "Washed, dried and folded",
+    body: "Keep your wardrobe fresh without the hassle during your stay. Washed, dried and folded for you.",
+    price: "",
+    amount: 8,
     image: "https://images.pexels.com/photos/6492065/pexels-photo-6492065.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     cat: "Services",
     title: "Cleaning Services",
-    meta: "Priced by room size & frequency",
+    meta: "Mid-stay clean",
     body: "A fresh, tidy space throughout your stay, so your room is always comfortable and well-maintained.",
-    price: "Quoted on booking",
+    price: "",
+    amount: 8,
     image: "https://images.pexels.com/photos/29006838/pexels-photo-29006838.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     cat: "Services",
     title: "Car Wash Service",
-    meta: "Priced by vehicle size",
-    body: `Keep your vehicle spotless while you relax at ${SITE.name}. Pricing depends on the type and size of vehicle.`,
-    price: "Quoted on booking",
+    meta: "Wash and dry",
+    body: `Keep your vehicle spotless while you relax at ${SITE.name}.`,
+    price: "",
+    amount: 4,
     image: "https://images.pexels.com/photos/4870724/pexels-photo-4870724.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {

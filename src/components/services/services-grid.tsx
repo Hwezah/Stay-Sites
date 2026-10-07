@@ -7,14 +7,14 @@ import { PhotoButton } from "@/components/site/lightbox";
 import { Tabs } from "@/components/site/ui";
 import { useBooking } from "@/context/booking-context";
 import { useUI } from "@/context/ui-context";
-import { SERVICES, SERVICE_FILTERS } from "@/lib/data";
+import { SERVICES, SERVICE_FILTERS, servicePrice } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 type Filter = (typeof SERVICE_FILTERS)[number];
 
 export function ServicesGrid() {
   const [filter, setFilter] = useState<Filter>("Everything");
-  const { cart, toggleCartItem } = useBooking();
+  const { cart, toggleCartItem, money } = useBooking();
   const { openPanel } = useUI();
   const visible = SERVICES.filter((s) => filter === "Everything" || s.cat === filter);
   const album = visible.map((s) => ({ src: s.image, alt: s.title }));
@@ -46,7 +46,7 @@ export function ServicesGrid() {
                 <div className="mt-3 text-[17px] font-semibold tracking-[-.01em]">{s.title}</div>
                 <div className="mt-[7px] mb-[18px] text-sm leading-[1.55] text-stone-500">{s.body}</div>
                 <div className="mt-auto flex items-center justify-between gap-3 border-t border-stone-100 pt-4">
-                  <span className="text-sm font-semibold">{s.price}</span>
+                  <span className="text-sm font-semibold">{servicePrice(s, money)}</span>
                   <button
                     type="button"
                     data-keep-open
