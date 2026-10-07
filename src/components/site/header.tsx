@@ -343,7 +343,7 @@ function CartMenu() {
           <circle cx="17.2" cy="19.2" r="1.5" />
         </svg>
         {count > 0 && (
-          <span aria-hidden="true" className="absolute -top-px left-1/2 -translate-x-1/2 text-[13.5px] leading-none font-bold tabular-nums">
+          <span aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 text-[12px] leading-none font-semibold tabular-nums">
             {count}
           </span>
         )}
