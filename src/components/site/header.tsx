@@ -353,7 +353,7 @@ function CartMenu() {
           <div className="border-b border-stone-100 px-4 py-3.5 text-[13px] font-semibold">Your trip extras</div>
           {count === 0 && (
             <div className="px-4 py-[22px] text-[13.5px] leading-[1.55] text-stone-500">
-              Nothing added yet. Browse Services to add laundry, cleaning or a car wash to your stay.
+              Nothing added yet. Add laundry, cleaning or a car wash to your stay.
             </div>
           )}
           {cartItems.map((c) => (
@@ -375,19 +375,31 @@ function CartMenu() {
               </button>
             </div>
           ))}
-          <div className="grid gap-2.5 px-4 py-3.5">
-            <div className="flex justify-between gap-3 text-[13px] text-stone-600">
-              <span>Extras subtotal</span>
-              <span className="text-right font-semibold text-stone-900">{money(extrasTotal)}</span>
+          {count > 0 ? (
+            <div className="grid gap-2.5 px-4 py-3.5">
+              <div className="flex justify-between gap-3 text-[13px] text-stone-600">
+                <span>Extras subtotal</span>
+                <span className="text-right font-semibold text-stone-900">{money(extrasTotal)}</span>
+              </div>
+              <button
+                type="button"
+                onClick={checkout}
+                className="h-10 rounded-[10px] bg-brand text-[13.5px] font-medium text-stone-50 hover:bg-brand-hover"
+              >
+                Go to checkout
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={checkout}
-              className="h-10 rounded-[10px] bg-brand text-[13.5px] font-medium text-stone-50 hover:bg-brand-hover"
-            >
-              Go to checkout
-            </button>
-          </div>
+          ) : (
+            <div className="px-4 pb-3.5">
+              <Link
+                href="/services"
+                onClick={closePanels}
+                className="flex h-10 items-center justify-center rounded-[10px] border border-stone-300 text-[13.5px] font-medium text-stone-900 hover:border-brand hover:text-brand"
+              >
+                Browse services
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>
