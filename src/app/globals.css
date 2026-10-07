@@ -49,6 +49,8 @@
   --shadow-toast: 0 18px 40px -16px rgba(28, 25, 23, 0.28);
 
   --animate-sheet-in: sheetIn 0.16s ease-out;
+  --animate-drawer-in: drawerIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-drawer-out: drawerOut 0.42s cubic-bezier(0.55, 0, 0.7, 0.2) both;
   --animate-burger-split: burgerSplit 0.45s 0.08s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   --animate-toast-in: toastIn 0.2s ease-out;
   --animate-reveal-up: revealUp 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) both;
@@ -56,6 +58,14 @@
   @keyframes burgerSplit {
     from { gap: 7px; }
     to { gap: 13px; }
+  }
+  @keyframes drawerIn {
+    from { transform: translateX(100%); }
+    to { transform: none; }
+  }
+  @keyframes drawerOut {
+    from { transform: none; }
+    to { transform: translateX(100%); }
   }
   @keyframes sheetIn {
     from { opacity: 0; transform: translateY(-6px); }
