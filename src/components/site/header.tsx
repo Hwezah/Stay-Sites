@@ -392,11 +392,11 @@ function CartMenu() {
           ) : (
             <div className="px-4 pb-3.5">
               <Link
-                href="/services"
+                href="/stays"
                 onClick={closePanels}
                 className="flex h-10 items-center justify-center rounded-[10px] border border-stone-300 text-[13.5px] font-medium text-stone-900 hover:border-brand hover:text-brand"
               >
-                Browse services
+                See Available Rooms
               </Link>
             </div>
           )}
