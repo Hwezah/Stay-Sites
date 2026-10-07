@@ -312,7 +312,7 @@ function TripsIcon() {
 
 function CartMenu() {
   const { panel, togglePanel, closePanels, openPanel, openPanelAfterNav, toast } = useUI();
-  const { cartItems, toggleCartItem, checkIn, checkOut } = useBooking();
+  const { cartItems, toggleCartItem, checkIn, checkOut, extrasTotal, money } = useBooking();
   const router = useRouter();
   const pathname = usePathname();
   const open = panel === "cart";
@@ -364,7 +364,7 @@ function CartMenu() {
                   {c.cat} · {c.meta}
                 </div>
               </div>
-              <div className="whitespace-nowrap text-[13px] font-semibold">{c.price}</div>
+              <div className="whitespace-nowrap text-[13px] font-semibold">{money(c.amount ?? 0)}</div>
               <button
                 type="button"
                 onClick={() => toggleCartItem(c.title)}
@@ -378,7 +378,7 @@ function CartMenu() {
           <div className="grid gap-2.5 px-4 py-3.5">
             <div className="flex justify-between gap-3 text-[13px] text-stone-600">
               <span>Extras subtotal</span>
-              <span className="text-right font-semibold text-stone-900">Quoted on booking</span>
+              <span className="text-right font-semibold text-stone-900">{money(extrasTotal)}</span>
             </div>
             <button
               type="button"
