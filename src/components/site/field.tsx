@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const control =
-  "w-full min-w-0 rounded-[10px] border border-stone-200 bg-white px-3 text-sm outline-none transition-shadow focus:border-brand focus:shadow-[0_0_0_3px_rgba(27,42,74,.2)]";
+  "w-full min-w-0 rounded-[10px] border border-stone-200 bg-white px-3 text-sm outline-none transition-shadow focus:border-brand focus:shadow-[0_0_0_3px_rgba(10,20,40,.2)]";
 
 export function Field({ label, className, children }: { label: ReactNode; className?: string; children: ReactNode }) {
   return (

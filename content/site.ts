@@ -82,10 +82,10 @@ export const SITE = {
 
   // Brand colours. `brand` is the main accent (buttons, links, highlights).
   theme: {
-    brand: "#1B2A4A",
-    brandHover: "#121D35",
-    brandTint: "#E8EBF2",
-    brandSoft: "#C3CADB",
+    brand: "#0A1428",
+    brandHover: "#16233F",
+    brandTint: "#E6E9F0",
+    brandSoft: "#BCC4D6",
     page: "#F4F4F1",
     // Second, sparing accent: eyebrows, stars, active underlines and small rules.
     accent: "#B08D57",
