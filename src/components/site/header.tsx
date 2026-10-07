@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 import { displayName, useAuth } from "@/context/auth-context";
@@ -398,6 +398,9 @@ function Drawer() {
   const { panel, togglePanel, closePanels } = useUI();
   const { money } = useBooking();
   const open = panel === "drawer";
+  // Keep the panel mounted while it slides back out; it unmounts when that animation ends.
+  const [mounted, setMounted] = useState(open);
+  if (open && !mounted) setMounted(true);
 
   return (
     <div className="flex-none" data-keep-open>
@@ -421,13 +424,20 @@ function Drawer() {
           <span className="w-px bg-current" />
         </span>
       </button>
-      {open &&
+      {mounted &&
         createPortal(
         <div
           data-keep-open
           role="dialog"
           aria-label={SITE.name}
-          className="fixed top-0 right-0 z-80 h-screen w-[50vw] animate-sheet-in xl:w-[35vw] mportrait:w-screen overflow-y-auto bg-brand px-[clamp(20px,5vw,34px)] pt-[clamp(22px,5vw,36px)] pb-[100px] text-stone-50 shadow-[-24px_0_60px_-20px_rgba(28,25,23,.45)]"
+          inert={!open}
+          onAnimationEnd={(e) => {
+            if (e.target === e.currentTarget && !open) setMounted(false);
+          }}
+          className={cn(
+            "fixed top-0 right-0 z-80 h-screen w-[50vw] overflow-y-auto bg-brand px-[clamp(20px,5vw,34px)] pt-[clamp(22px,5vw,36px)] pb-[100px] text-stone-50 shadow-[-24px_0_60px_-20px_rgba(28,25,23,.45)] motion-reduce:[animation-duration:1ms] xl:w-[35vw] mportrait:w-screen",
+            open ? "animate-drawer-in" : "pointer-events-none animate-drawer-out",
+          )}
         >
           {/* Full-bleed room photo across the top (negative margins cancel the panel padding), darkened
               so the white logo and close button read on top of it. */}
