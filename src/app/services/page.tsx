@@ -19,7 +19,7 @@ export default function ServicesPage() {
             Exclusive additions &amp; the neighbourhood
           </h1>
           <p className="mt-4 max-w-[58ch] text-[16.5px] leading-[1.6] text-stone-600">
-            Enhance your stay with laundry, cleaning and car wash services — pricing is provided when you book. Then
+            Enhance your stay with laundry, cleaning and car wash services, each a flat fee added to your booking. Then
             step out and enjoy the best of {SITE.location.area}.
           </p>
         </div>

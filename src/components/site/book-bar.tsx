@@ -32,7 +32,7 @@ export function BookBar() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-85 border-t px-3.5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-300 ease-out motion-reduce:transition-none sm:hidden",
+        "fixed inset-x-0 bottom-0 z-85 border-t px-3.5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-200 ease-out motion-reduce:transition-none sm:hidden",
         onBrand ? "border-stone-50/20 bg-brand" : "border-stone-200 bg-stone-50/95",
         !shown && "pointer-events-none translate-y-full",
       )}
