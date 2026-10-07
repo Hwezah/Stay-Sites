@@ -20,7 +20,7 @@ const SOCIAL_ICONS: Record<string, string> = {
 export function SiteFooter() {
   const socials = Object.entries(SITE.socials).filter(([, url]) => url);
   return (
-    <footer className="mt-auto bg-brand text-stone-50">
+    <footer className="mt-auto max-sm:group-data-[bookbar]/shell:pb-[84px] bg-brand text-stone-50">
       <div className="mx-auto grid max-w-[1400px] gap-x-10 gap-y-12 px-[clamp(16px,4vw,24px)] pt-[clamp(56px,8vw,96px)] pb-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1.2fr_1.2fr] mportrait:text-center">
         <div>
           <Link href="/" className="inline-flex items-center gap-3 text-stone-50 hover:text-stone-50">

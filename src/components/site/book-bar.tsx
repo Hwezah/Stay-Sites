@@ -104,10 +104,15 @@ function useRoomsInView(pathname: string) {
   return inView;
 }
 
-/** Adds bottom padding so the fixed book bar never covers page content. */
+/**
+ * Page shell. On pages with the book bar it flags itself so the footer can add room at its own bottom
+ * (in the footer's colour) for the bar, instead of leaving a blank strip under the footer.
+ */
 export function ShellPadding({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   return (
-    <div className={cn("flex min-h-screen flex-col", showsBookBar(pathname) && "pb-[84px] sm:pb-0")}>{children}</div>
+    <div data-bookbar={showsBookBar(pathname) || undefined} className="group/shell flex min-h-screen flex-col">
+      {children}
+    </div>
   );
 }

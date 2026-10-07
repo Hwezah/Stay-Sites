@@ -138,9 +138,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
         </div>
       </Container>
 
-      <div className="pb-[clamp(48px,8vw,96px)]">
-        <PhotoCarousel photos={a.gallery} />
-      </div>
+      <PhotoCarousel photos={a.gallery} />
     </main>
   );
 }
