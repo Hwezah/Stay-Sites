@@ -20,14 +20,10 @@ export function HomeTop() {
 
   return (
     <>
-      {/* Full-bleed photo hero (80% of the screen on phones, full height elsewhere). */}
-      <Hero />
-
-      <section>
-        <Container>
-          <BookingBar overlap />
-        </Container>
-      </section>
+      {/* Full-screen photo hero with the booking strip along its bottom edge. */}
+      <Hero>
+        <BookingBar />
+      </Hero>
 
       <QuickFacts />
 

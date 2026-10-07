@@ -12,20 +12,28 @@ export function showsBookBar(pathname: string) {
   return !pathname.startsWith("/checkout");
 }
 
-/** Sticky bottom "Book a room" bar, mobile portrait only (< 640px). */
+/**
+ * Bottom "Book a room" bar, phones only (< 640px). It slides in once the visitor scrolls, so it doesn't take
+ * space on the first screen, and stays put while the side menu is open.
+ */
 export function BookBar() {
   const pathname = usePathname();
   const { panel, closePanels } = useUI();
   const atRooms = useRoomsInView(pathname);
+  const scrolled = useScrolled(pathname);
   if (!showsBookBar(pathname)) return null;
   const onBrand = panel === "drawer";
+  const shown = onBrand || scrolled;
 
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-85 border-t px-3.5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-md sm:hidden",
+        "fixed inset-x-0 bottom-0 z-85 border-t px-3.5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-300 ease-out motion-reduce:transition-none sm:hidden",
         onBrand ? "border-stone-50/20 bg-brand" : "border-stone-200 bg-stone-50/95",
+        !shown && "pointer-events-none translate-y-full",
       )}
+      aria-hidden={!shown || undefined}
+      inert={!shown}
       data-keep-open
     >
       <Link
@@ -42,6 +50,18 @@ export function BookBar() {
       </Link>
     </div>
   );
+}
+
+/** True once the page has scrolled a little; resets on each new page. */
+function useScrolled(pathname: string) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
+  return scrolled;
 }
 
 /**
