@@ -1,4 +1,14 @@
-import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { getSupabaseBrowser as supabaseClient } from "@/lib/supabase/client";
+
+/**
+ * Turn on once the reviews migration (supabase/migrations/*_room_reviews.sql) has been run on the site's
+ * Supabase project. Until then reviews stay in browser storage even when Supabase auth is set up.
+ */
+export const REVIEWS_IN_DATABASE = false;
+
+function getSupabaseBrowser() {
+  return REVIEWS_IN_DATABASE ? supabaseClient() : null;
+}
 
 export type Review = {
   id: string;
