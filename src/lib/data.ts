@@ -236,7 +236,7 @@ export type Service = {
   body: string;
   /** Label for things without a fee, e.g. "Nearby". */
   price: string;
-  /** Fee in USD for the whole stay, added to the booking total when the guest picks it. */
+  /** Fee for the whole stay in USD (prices are stored in USD), added to the total when the guest picks it. */
   amount?: number;
   image: string;
 };
@@ -246,6 +246,10 @@ export function servicePrice(s: Service, money: (usd: number) => string) {
   return s.amount ? `${money(s.amount)} per stay` : s.price;
 }
 
+/** Fee for each extra service, in Ugandan shillings. */
+const EXTRA_FEE_UGX = 20000;
+const extraFee = EXTRA_FEE_UGX / SITE.pricing.ugxRate;
+
 export const SERVICES: Service[] = [
   {
     cat: "Services",
@@ -253,7 +257,7 @@ export const SERVICES: Service[] = [
     meta: "Washed, dried and folded",
     body: "Keep your wardrobe fresh without the hassle during your stay. Washed, dried and folded for you.",
     price: "",
-    amount: 8,
+    amount: extraFee,
     image: "https://images.pexels.com/photos/6492065/pexels-photo-6492065.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
@@ -262,7 +266,7 @@ export const SERVICES: Service[] = [
     meta: "Mid-stay clean",
     body: "A fresh, tidy space throughout your stay, so your room is always comfortable and well-maintained.",
     price: "",
-    amount: 8,
+    amount: extraFee,
     image: "https://images.pexels.com/photos/29006838/pexels-photo-29006838.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
@@ -271,7 +275,7 @@ export const SERVICES: Service[] = [
     meta: "Wash and dry",
     body: `Keep your vehicle spotless while you relax at ${SITE.name}.`,
     price: "",
-    amount: 4,
+    amount: extraFee,
     image: "https://images.pexels.com/photos/4870724/pexels-photo-4870724.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {

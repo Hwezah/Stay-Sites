@@ -4,18 +4,16 @@ import { useEffect, useState } from "react";
 
 import { FieldLabel } from "@/components/site/ui";
 import { useUI } from "@/context/ui-context";
-import { whatsappUrl } from "@/lib/booking";
 import { fetchReviews, stars, submitReview, type Review } from "@/lib/reviews";
 import { supabaseEnabled } from "@/lib/supabase/config";
 import { cn } from "@/lib/utils";
-import { SITE } from "@site";
 
 type Sample = { quote: string; who: string };
 
 /**
  * Reviews for one space, plus a form for guests to leave their own. With the database connected a review
- * is saved and appears once an admin approves it; without it, the review goes to the host on WhatsApp.
- * The sample reviews only show until the first real one is approved.
+ * is saved and appears once an admin approves it; without it, it's kept in this browser and shows at once.
+ * The sample reviews only show until the first real one appears.
  */
 export function RoomReviews({ apartmentId, apartmentName, samples }: { apartmentId: string; apartmentName: string; samples: Sample[] }) {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -67,7 +65,14 @@ export function RoomReviews({ apartmentId, apartmentName, samples }: { apartment
       </div>
 
       {writing ? (
-        <ReviewForm apartmentId={apartmentId} apartmentName={apartmentName} onDone={() => setWriting(false)} />
+        <ReviewForm
+          apartmentId={apartmentId}
+          apartmentName={apartmentName}
+          onDone={(saved) => {
+            setWriting(false);
+            if (saved && !supabaseEnabled) fetchReviews(apartmentId).then(setReviews);
+          }}
+        />
       ) : (
         <button
           type="button"
@@ -82,7 +87,15 @@ export function RoomReviews({ apartmentId, apartmentName, samples }: { apartment
   );
 }
 
-function ReviewForm({ apartmentId, apartmentName, onDone }: { apartmentId: string; apartmentName: string; onDone: () => void }) {
+function ReviewForm({
+  apartmentId,
+  apartmentName,
+  onDone,
+}: {
+  apartmentId: string;
+  apartmentName: string;
+  onDone: (saved: boolean) => void;
+}) {
   const { toast } = useUI();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -96,23 +109,16 @@ function ReviewForm({ apartmentId, apartmentName, onDone }: { apartmentId: strin
     if (!name.trim()) return toast("warn", "Add your name", "Your first name is enough.");
     if (body.trim().length < 10) return toast("warn", "Tell us a little more", "A sentence or two about your stay.");
 
-    if (!supabaseEnabled) {
-      window.open(
-        whatsappUrl([`Review for ${apartmentName}`, `${stars(rating)} (${rating}/5)`, body.trim(), `— ${name.trim()}`]),
-        "_blank",
-        "noopener",
-      );
-      toast("ok", "Opening WhatsApp", `Send the message and ${SITE.host.firstName} will add your review.`);
-      onDone();
-      return;
-    }
-
     setSending(true);
     const ok = await submitReview({ apartment_id: apartmentId, name, rating, body });
     setSending(false);
     if (!ok) return toast("warn", "Couldn't send your review", "Please try again in a moment.");
-    toast("ok", "Thank you for your review", "It will appear here once it has been checked.");
-    onDone();
+    toast(
+      "ok",
+      "Thank you for your review",
+      supabaseEnabled ? "It will appear here once it has been checked." : `Your review of ${apartmentName} is up.`,
+    );
+    onDone(true);
   };
 
   const shown = hover || rating;
@@ -175,9 +181,9 @@ function ReviewForm({ apartmentId, apartmentName, onDone }: { apartmentId: strin
           disabled={sending}
           className="h-12 flex-1 bg-brand px-6 text-[15px] font-medium text-stone-50 hover:bg-brand-hover disabled:opacity-60"
         >
-          {sending ? "Sending…" : supabaseEnabled ? "Submit review" : "Send review on WhatsApp"}
+          {sending ? "Sending…" : "Submit review"}
         </button>
-        <button type="button" onClick={onDone} className="h-12 px-4 text-[14.5px] text-stone-600 hover:text-stone-900">
+        <button type="button" onClick={() => onDone(false)} className="h-12 px-4 text-[14.5px] text-stone-600 hover:text-stone-900">
           Cancel
         </button>
       </div>
