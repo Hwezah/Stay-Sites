@@ -101,9 +101,15 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-stone-50/15">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-[clamp(16px,4vw,24px)] py-6 text-[12.5px] text-stone-50/60 mportrait:justify-center mportrait:text-center">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-[clamp(16px,4vw,24px)] py-6 text-[12.5px] text-stone-50/60 mportrait:flex-col mportrait:justify-center mportrait:text-center">
           <span>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+          </span>
+          <span>
+            Website done by Hwezah |{" "}
+            <a href="tel:+256742696353" className="text-stone-50/60 hover:text-stone-50">
+              0742696353
+            </a>
           </span>
           <div className="flex gap-5">
             <Link href="/policies" className="text-stone-50/60 hover:text-stone-50">
