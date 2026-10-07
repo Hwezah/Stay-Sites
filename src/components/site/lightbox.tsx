@@ -136,9 +136,9 @@ function Viewer({
           type="button"
           onClick={onClose}
           aria-label="Close photo viewer"
-          className="grid size-11 flex-none place-items-center rounded-full hover:bg-stone-50/10"
+          className="grid size-14 flex-none place-items-center rounded-full bg-stone-50/10 hover:bg-stone-50/20 sm:size-16"
         >
-          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.4">
+          <svg width="34" height="34" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.6">
             <path d="M6 6 22 22" />
             <path d="M22 6 6 22" />
           </svg>
