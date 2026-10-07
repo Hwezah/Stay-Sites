@@ -9,9 +9,9 @@ export const CONFIG = {
   adminWhatsApp: SITE.contact.whatsapp.replace(/[^0-9]/g, ""),
   whatsappDisplay: SITE.contact.whatsapp,
   ugxRate: 3800,
-  cleaningFee: 10,
-  serviceFeePct: 11,
-  taxPct: 7.45,
+  cleaningFee: SITE.pricing.cleaningFee,
+  serviceFeePct: SITE.pricing.serviceFeePct,
+  taxPct: SITE.pricing.taxPct,
   enableSplitPay: true,
   // Placeholder availability until bookings live in a database.
   showBlockedDates: true,

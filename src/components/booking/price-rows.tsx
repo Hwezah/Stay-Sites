@@ -6,9 +6,10 @@ export function PriceRows() {
   const { totals: t, money, cartItems } = useBooking();
   const rows = [
     { label: `${money(t.price)} × ${t.n} ${t.n === 1 ? "night" : "nights"}`, value: money(t.stay) },
-    { label: "Cleaning fee", value: money(t.clean) },
-    { label: "Service fee", value: money(t.service) },
-    { label: "Occupancy tax", value: money(t.tax) },
+    // Fee lines only appear when a fee is set.
+    ...(t.clean ? [{ label: "Cleaning fee", value: money(t.clean) }] : []),
+    ...(t.service ? [{ label: "Service fee", value: money(t.service) }] : []),
+    ...(t.tax ? [{ label: "Occupancy tax", value: money(t.tax) }] : []),
     ...(cartItems.length ? [{ label: `Trip extras (${cartItems.length})`, value: "Quoted on booking" }] : []),
   ];
   return (

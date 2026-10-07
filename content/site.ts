@@ -56,6 +56,13 @@ export const SITE = {
     note: "Free cancellation up to 7 days before arrival. See our policies for the full terms.",
   },
 
+  // Optional charges added to every booking. Leave at 0 to show just nights × nightly rate.
+  pricing: {
+    cleaningFee: 0,
+    serviceFeePct: 0,
+    taxPct: 0,
+  },
+
   // Mobile money numbers guests pay into, and the registered name.
   payments: {
     momo: [
