@@ -336,14 +336,14 @@ function CartMenu() {
 
   return (
     <div className="relative flex-none" data-keep-open>
-      <button type="button" onClick={() => togglePanel("cart")} aria-label="Your trip extras" aria-expanded={open} className={iconBtn}>
+      <button type="button" onClick={() => togglePanel("cart")} aria-label={count ? `Your trip extras (${count})` : "Your trip extras"} aria-expanded={open} className={iconBtn}>
         <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
           <path d="M3 4h1.8l2 10.2h11L20 7H5.4" />
           <circle cx="9" cy="19.2" r="1.5" />
           <circle cx="17.2" cy="19.2" r="1.5" />
         </svg>
         {count > 0 && (
-          <span className="absolute -top-[3px] -right-1 grid h-[17px] min-w-[17px] place-items-center rounded-full border-2 border-stone-50 bg-brand px-1 text-[10.5px] font-bold text-stone-50">
+          <span aria-hidden="true" className="absolute -top-[5px] left-1/2 -translate-x-1/2 text-[12px] leading-none font-semibold tabular-nums">
             {count}
           </span>
         )}
