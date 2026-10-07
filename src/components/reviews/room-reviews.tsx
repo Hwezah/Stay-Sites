@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 
 import { FieldLabel } from "@/components/site/ui";
 import { useUI } from "@/context/ui-context";
-import { fetchReviews, stars, submitReview, type Review } from "@/lib/reviews";
-import { supabaseEnabled } from "@/lib/supabase/config";
+import { fetchReviews, REVIEWS_IN_DATABASE, stars, submitReview, type Review } from "@/lib/reviews";
 import { cn } from "@/lib/utils";
 
 type Sample = { quote: string; who: string };
@@ -70,7 +69,7 @@ export function RoomReviews({ apartmentId, apartmentName, samples }: { apartment
           apartmentName={apartmentName}
           onDone={(saved) => {
             setWriting(false);
-            if (saved && !supabaseEnabled) fetchReviews(apartmentId).then(setReviews);
+            if (saved && !REVIEWS_IN_DATABASE) fetchReviews(apartmentId).then(setReviews);
           }}
         />
       ) : (
@@ -116,7 +115,7 @@ function ReviewForm({
     toast(
       "ok",
       "Thank you for your review",
-      supabaseEnabled ? "It will appear here once it has been checked." : `Your review of ${apartmentName} is up.`,
+      REVIEWS_IN_DATABASE ? "It will appear here once it has been checked." : `Your review of ${apartmentName} is up.`,
     );
     onDone(true);
   };

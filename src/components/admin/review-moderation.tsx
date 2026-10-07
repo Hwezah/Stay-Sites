@@ -4,14 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useUI } from "@/context/ui-context";
 import { APARTMENTS } from "@/lib/data";
-import {
-  approveReview,
-  deleteReview,
-  fetchPendingReviews,
-  stars,
-  type Review,
-} from "@/lib/reviews";
-import { supabaseEnabled } from "@/lib/supabase/config";
+import { approveReview, deleteReview, fetchPendingReviews, REVIEWS_IN_DATABASE, stars, type Review } from "@/lib/reviews";
 
 /**
  * Guest reviews waiting for approval; publishing puts them on the space's page. Without Supabase it lists
@@ -52,13 +45,13 @@ export function ReviewModeration() {
         </h2>
         <div className="text-[12.5px] text-stone-500">
           {pending?.length ?? 0}{" "}
-          {supabaseEnabled ? "waiting" : "on this device"}
+          {REVIEWS_IN_DATABASE ? "waiting" : "on this device"}
         </div>
       </div>
       <div className="mt-4 grid gap-3">
         {pending?.length === 0 && (
           <div className="rounded-lg border border-stone-200 bg-white px-5 py-7 text-center text-[14.5px] text-stone-500">
-            {supabaseEnabled
+            {REVIEWS_IN_DATABASE
               ? "No reviews waiting for approval."
               : "No reviews on this device yet."}
           </div>
@@ -88,7 +81,7 @@ export function ReviewModeration() {
               {r.body}
             </p>
             <div className="flex flex-wrap gap-2.5">
-              {supabaseEnabled && (
+              {REVIEWS_IN_DATABASE && (
                 <button
                   type="button"
                   onClick={() => act(r, true)}
