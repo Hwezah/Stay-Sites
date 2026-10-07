@@ -49,19 +49,16 @@ const DESC =
   "Relax in a beautifully furnished room where every piece is chosen for comfort and style. Soft bedding, elegant furniture, and thoughtful décor create a warm, inviting atmosphere that makes you feel right at home. Modern conveniences like high-speed Wi-Fi, a flat-screen TV and air conditioning ensure a comfortable stay, while large windows fill the apartment with natural light.";
 
 const AMENITIES = [
+  "Modern kitchen",
   "Cooker with oven",
+  "Fridge and microwave",
   "Cookware",
-  "Room cooling",
-  "Cable TV",
-  "Heated water",
-  "Laundry (at a fee)",
-  "Blender",
-  "Coffee machine",
-  "Microwave",
-  "In-room refrigerator",
   "Free WiFi",
-  "Air conditioning",
-  "Secure parking space",
+  "Smart TV with Netflix",
+  "Hot water",
+  "24/7 security",
+  "Ample secure parking",
+  "Laundry (at a fee)",
 ];
 
 const SPECS = { area: "560 ft²", guests: "2 Guests", beds: "1 Bed", baths: "1 Bathroom" };
@@ -74,13 +71,13 @@ const SHARED_PHOTOS: Photo[] = [];
 export const APARTMENTS: Apartment[] = [
   {
     id: "apartment-1",
-    name: "The Linen Space",
-    kind: "Linen Space",
-    blurb: "Warm wood, a deep sofa and a bright open kitchen — an easy, unhurried base for two.",
-    loc: SITE_PLACE,
-    price: 50,
+    name: "The Kyebando Home",
+    kind: "Kyebando",
+    blurb: "A calm, fully furnished one-bed in Kyebando — open kitchen, Netflix-ready TV and secure parking at the door.",
+    loc: "Kyebando, Kampala",
+    price: 40,
     sleeps: "Sleeps 2 · 1 bedroom",
-    tag: "USD 50/night",
+    tag: "UGX 150k/night",
     desc: DESC,
     amenities: AMENITIES,
     images: ["https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6438748/pexels-photo-6438748.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600"],
@@ -95,13 +92,13 @@ export const APARTMENTS: Apartment[] = [
   },
   {
     id: "apartment-2",
-    name: "The Ember Space",
-    kind: "Ember Space",
-    blurb: "Soft neutrals, brass accents and a cosy reading corner — made for slow mornings.",
-    loc: SITE_PLACE,
-    price: 50,
+    name: "The Ntinda Home",
+    kind: "Ntinda",
+    blurb: "Soft neutrals and a cosy lounge in Ntinda — close to cafés and shops, with 24/7 security.",
+    loc: "Ntinda, Kampala",
+    price: 40,
     sleeps: "Sleeps 2 · 1 bedroom",
-    tag: "USD 50/night",
+    tag: "UGX 150k/night",
     desc: DESC,
     amenities: AMENITIES,
     images: ["https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600"],
@@ -138,8 +135,8 @@ export function getApartment(id: string | null | undefined): Apartment {
 export const HOME_PHOTOS: Photo[] = [
   { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name} living room` },
   { src: "https://images.pexels.com/photos/6143348/pexels-photo-6143348.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Living room detail" },
-  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Linen Space living room" },
-  { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Ember Space living room" },
+  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kyebando home living room" },
+  { src: "https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Ntinda home living room" },
 ];
 
 /** Home page tour video. Drop the file at public/videos/selah-tour.mp4. */
@@ -149,7 +146,7 @@ export const TOUR_VIDEO = {
   title: `A walk through ${SITE.name}`,
 };
 
-export const FILTERS = ["All spaces", "Linen Space", "Ember Space"] as const;
+export const FILTERS = ["All homes", "Kyebando", "Ntinda"] as const;
 
 export const ICONS = {
   area: ["M3.8 3.8h16.4v16.4H3.8z", "m9.6 14.4 4.8-4.8", "M9.6 11.6v2.8h2.8", "M14.4 12.4V9.6h-2.8"],
@@ -340,28 +337,28 @@ export const FAQS = [
 ];
 
 export const STATS = [
-  { n: "400", label: "Clients" },
-  { n: "4.0", label: "Years serving" },
-  { n: "1K+", label: "Nights" },
-  { n: "94%", label: "Satisfaction" },
+  { n: "3", label: "Kampala neighbourhoods: Kyebando, Ntinda and Kisasi" },
+  { n: "150k", label: "UGX per night, nothing added" },
+  { n: "24/7", label: "Security at every home" },
+  { n: "Free", label: "WiFi and Netflix" },
 ];
 
 export const TIMELINE = [
   {
-    year: "2020",
-    title: "Founded",
-    body: "With a vision to be a leading sanctuary for personal transformation, inspiring guests to rise stronger after rest and reflection.",
+    year: "What",
+    title: "Fully furnished homes",
+    body: "Modern kitchens with a cooker, oven, fridge and microwave, smart TVs with Netflix, hot water and free WiFi.",
   },
   {
     year: "Who",
     title: "Who we welcome",
-    body: "Personal retreats and spiritual renewal, guests recovering from burnout, writers, creatives and thinkers in need of solitude, and wellness travellers.",
+    body: "Business travellers, families visiting Kampala, people between homes, and anyone who wants a quiet, secure place to stay.",
   },
-  { year: "Why", title: "Life in transition", body: "Anyone navigating grief, career changes, or personal growth journeys." },
+  { year: "Where", title: "Three neighbourhoods", body: "Kyebando, Ntinda and Kisasi: residential, secure, and close to the city." },
   {
-    year: "Décor",
-    title: "Elegance with tranquillity",
-    body: "Every accent is carefully selected to foster a warm, inviting, reflective atmosphere — stylish and calming.",
+    year: "Style",
+    title: "Comfort meets elegance",
+    body: "Warm, well-kept rooms with ample secure parking and laundry available on request.",
   },
 ];
 

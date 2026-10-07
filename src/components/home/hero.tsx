@@ -11,7 +11,7 @@ import { SITE } from "@site";
 const SLIDES = [
   { src: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: `${SITE.name} living room` },
   { src: "https://images.pexels.com/photos/6523283/pexels-photo-6523283.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Lounge with sofa and TV" },
-  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Linen Space living room" },
+  { src: "https://images.pexels.com/photos/6580416/pexels-photo-6580416.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kyebando home living room" },
   { src: "https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Kitchen and dining nook" },
   { src: "https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Open kitchen" },
 ];

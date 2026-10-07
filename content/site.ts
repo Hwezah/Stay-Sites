@@ -4,31 +4,31 @@
  */
 export const SITE = {
   // Identity
-  name: "Example Lodge",
+  name: "Dukes Apartments",
   // Shown in the header and footer. Usually the same as `name`.
-  wordmark: "Example Lodge",
+  wordmark: "Dukes Apartments",
   // Square line icon, drawn in the brand colour. Rendered white over photos.
   logo: "/brand/logo.svg",
-  tagline: "Quiet, beautifully kept apartments — close to the city, far from the noise.",
+  tagline: "Where comfort meets elegance. Fully furnished homes in Kyebando, Ntinda and Kisasi.",
 
   // Home page hero: one short line, it's set very large.
   hero: {
-    headline: "Rest easy. Stay a while.",
+    headline: "Where comfort meets elegance.",
   },
 
   // Location
   location: {
-    area: "Your Neighbourhood",
-    city: "Your City",
+    area: "Kyebando, Ntinda & Kisasi",
+    city: "Kampala",
     country: "Uganda",
     // How long from the nearest centre, in plain words.
-    travel: "20 minutes from the city centre",
+    travel: "Three Kampala neighbourhoods, close to the city",
   },
 
   // Contact. All phone numbers are tap-to-call; WhatsApp goes to `whatsapp` only.
   contact: {
-    phones: ["+256 700 000 000", "+256 700 000 001"],
-    whatsapp: "+256 700 000 001",
+    phones: ["+256 700 675 952"],
+    whatsapp: "+256 700 675 952",
     email: "info@example.com",
     // Shown next to booking, checkout and payment steps.
     reservationsEmail: "info@example.com",
@@ -36,13 +36,13 @@ export const SITE = {
 
   // The person guests deal with. Their photo is optional (leave it empty to show initials).
   host: {
-    name: "Alex Morgan",
-    firstName: "Alex",
-    role: "Owner & host",
+    name: "Dukes Apartments",
+    firstName: "Dukes",
+    role: "Your hosts",
     email: "info@example.com",
     photo: "",
     quote:
-      "We built this place for travellers who want a quiet, comfortable base — somewhere that feels looked after from the moment you arrive.",
+      "Every Dukes home is fully furnished and ready to live in — modern kitchen, fast Wi-Fi, Netflix, round-the-clock security and plenty of parking. Just bring your bags.",
   },
 
   // House details shown on every apartment page under "Good to know".
@@ -59,9 +59,9 @@ export const SITE = {
   // Optional charges added to every booking. Leave at 0 to show just nights × nightly rate.
   pricing: {
     // Currency the site opens in ("USD" or "UGX"); nightly prices in src/lib/data.ts are in USD.
-    currency: "USD" as "USD" | "UGX",
+    currency: "UGX" as "USD" | "UGX",
     // Shillings per dollar, used for the UGX prices.
-    ugxRate: 3800,
+    ugxRate: 3750,
     cleaningFee: 0,
     serviceFeePct: 0,
     taxPct: 0,
@@ -70,36 +70,35 @@ export const SITE = {
   // Mobile money numbers guests pay into, and the registered name.
   payments: {
     momo: [
-      { network: "MTN", number: "0700 000000", tel: "+256700000000" },
-      { network: "Airtel", number: "0700 000001", tel: "+256700000001" },
+      { network: "Airtel", number: "0700 675952", tel: "+256700675952" },
     ],
-    momoName: "Account holder name",
-    bank: { name: "To confirm", accountName: "Example Lodge Ltd", accountNumber: "To confirm", branch: "To confirm" },
+    momoName: "Dukes Apartments",
+    bank: { name: "To confirm", accountName: "Dukes Apartments", accountNumber: "To confirm", branch: "To confirm" },
   },
 
   // Social links (leave a value empty to hide it).
   socials: {
-    instagram: "https://instagram.com/",
-    tiktok: "https://tiktok.com/",
+    instagram: "",
+    tiktok: "https://www.tiktok.com/@dukesapartments",
     facebook: "",
   },
 
   // Brand colours. `brand` is the main accent (buttons, links, highlights).
   theme: {
-    brand: "#0A1428",
-    brandHover: "#16233F",
-    brandTint: "#E6E9F0",
-    brandSoft: "#BCC4D6",
-    page: "#F4F4F1",
+    brand: "#0F1C38",
+    brandHover: "#1B2B4F",
+    brandTint: "#E7EAF1",
+    brandSoft: "#BFC7D9",
+    page: "#F6F4EF",
     // Second, sparing accent: eyebrows, stars, active underlines and small rules.
-    accent: "#B08D57",
+    accent: "#C8A45C",
   },
 
   // Search engines and link previews
   seo: {
-    title: "Example Lodge · Serviced apartments in Your City",
+    title: "Dukes Apartments · Furnished homes in Kyebando, Ntinda & Kisasi, Kampala",
     description:
-      "Quiet, fully furnished one-bed apartments with self check-in, fast Wi-Fi and a host on call — 20 minutes from the city centre.",
+      "Fully furnished homes in Kyebando, Ntinda and Kisasi with a modern kitchen, Wi-Fi, TV with Netflix, 24/7 security and ample parking. Book on WhatsApp: +256 700 675 952.",
     ogImage: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
 } as const;

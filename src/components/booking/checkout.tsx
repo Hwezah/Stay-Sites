@@ -296,7 +296,6 @@ export function Checkout() {
             <div className="min-w-0">
               <div className="text-[14.5px] font-semibold">{b.apartment.name}</div>
               <div className="mt-[3px] text-[13px] text-stone-500">{b.apartment.loc}</div>
-              <div className="mt-1.5 text-[13px] text-stone-700">94% guest satisfaction</div>
             </div>
           </div>
           <div className="my-[18px] h-px bg-stone-100" />

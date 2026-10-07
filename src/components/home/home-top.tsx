@@ -37,7 +37,7 @@ export function HomeTop() {
             <div className="min-w-0">
               <Eyebrow>Stay with us</Eyebrow>
               <h2 className="font-display mt-2.5 text-[clamp(27px,5.2vw,40px)] tracking-[-.015em] text-balance font-medium">
-                Our spaces
+                Our homes
               </h2>
             </div>
             <div data-m-center className="flex max-w-full min-w-0 flex-wrap items-center gap-3">

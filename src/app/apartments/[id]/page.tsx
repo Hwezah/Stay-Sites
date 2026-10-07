@@ -10,6 +10,13 @@ import { Container, HostAvatar } from "@/components/site/ui";
 import { APARTMENTS, CONFIG, REVIEWS, fullSpecs, listedAmenities } from "@/lib/data";
 import { SITE } from "@site";
 
+// Nightly price in the site's default currency (set in content/site.ts).
+function nightly(usd: number) {
+  return SITE.pricing.currency === "UGX"
+    ? `USh ${(usd * SITE.pricing.ugxRate).toLocaleString("en-US")}`
+    : `USD ${usd}`;
+}
+
 export function generateStaticParams() {
   return APARTMENTS.map((a) => ({ id: a.id }));
 }
@@ -22,7 +29,7 @@ export async function generateMetadata(props: PageProps<"/apartments/[id]">): Pr
   if (!a) return {};
   return {
     title: a.name,
-    description: `${a.name} in ${a.loc} — ${a.sleeps}, USD ${a.price}/night.`,
+    description: `${a.name} in ${a.loc} — ${a.sleeps}, ${nightly(a.price)}/night.`,
     openGraph: { images: [{ url: a.images[0] }] },
   };
 }
@@ -72,7 +79,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
           <div className="min-w-0">
             <div data-m-center>
               <div className="text-[15px]">
-                <span className="text-[20px] font-semibold">USD {a.price}</span>
+                <span className="text-[20px] font-semibold">{nightly(a.price)}</span>
                 <span className="text-stone-500"> / night</span>
               </div>
               <h1 className="font-display mt-1 text-[clamp(36px,4.6vw,56px)] font-medium leading-tight">{a.name}</h1>

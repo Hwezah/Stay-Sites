@@ -49,7 +49,6 @@ export default function HomePage() {
             </figure>
           ))}
           <div className="mx-auto mt-10 h-px w-16 bg-brass" />
-          <div className="mt-6 text-[13px] uppercase tracking-[.18em] text-stone-500">94% guest satisfaction · 1K+ nights hosted</div>
         </Container>
       </section>
 

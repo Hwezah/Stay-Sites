@@ -99,13 +99,12 @@ export default function PoliciesPage() {
 
       <h2 id="house-rules" className="scroll-mt-28">2. House rules</h2>
       <p>
-        This space is intentionally quiet and reflective. While we welcome all guests, this stay is best suited for
-        those who honor peace, mindfulness, and intentional living.
+        Our homes sit in quiet, secure residential compounds. Please treat them, and the neighbours, as you would
+        your own home.
       </p>
       <ul>
         <li>No parties or loud gatherings are allowed.</li>
-        <li>Guests are encouraged to enjoy a stay of calm, clarity, and space to be.</li>
-        <li>Please respect other guests and the environment.</li>
+                <li>Please respect other guests and the environment.</li>
         <li>Check-in/check-out times, pet policy, and smoking rules (if applicable) should be observed.</li>
       </ul>
 
