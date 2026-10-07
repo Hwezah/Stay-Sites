@@ -58,6 +58,10 @@ export const SITE = {
 
   // Optional charges added to every booking. Leave at 0 to show just nights × nightly rate.
   pricing: {
+    // Currency the site opens in ("USD" or "UGX"); nightly prices in src/lib/data.ts are in USD.
+    currency: "USD" as "USD" | "UGX",
+    // Shillings per dollar, used for the UGX prices.
+    ugxRate: 3800,
     cleaningFee: 0,
     serviceFeePct: 0,
     taxPct: 0,

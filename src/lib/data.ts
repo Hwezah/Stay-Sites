@@ -8,7 +8,7 @@ export const CONFIG = {
   // WhatsApp goes to this number only.
   adminWhatsApp: SITE.contact.whatsapp.replace(/[^0-9]/g, ""),
   whatsappDisplay: SITE.contact.whatsapp,
-  ugxRate: 3800,
+  ugxRate: SITE.pricing.ugxRate,
   cleaningFee: SITE.pricing.cleaningFee,
   serviceFeePct: SITE.pricing.serviceFeePct,
   taxPct: SITE.pricing.taxPct,

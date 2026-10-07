@@ -133,7 +133,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const { toast } = useUI();
   const [hydrated, setHydrated] = useState(false);
   const [trip, setTrip] = useState<TripDraft>(initialTrip);
-  const [currency, setCurrencyState] = useState<Currency>("USD");
+  const [currency, setCurrencyState] = useState<Currency>(SITE.pricing.currency);
   const [split, setSplit] = useState(false);
   const [payMethod, setPayMethod] = useState<PayMethod>("Mobile Money");
   const [form, setForm] = useState<GuestForm>({ name: "", email: "", note: "" });

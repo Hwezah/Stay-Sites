@@ -58,7 +58,7 @@ export default async function ApartmentPage(props: PageProps<"/apartments/[id]">
         album={a.gallery}
         index={0}
         label={`View photos of ${a.name}`}
-        className="relative isolate flex h-[clamp(320px,62vh,620px)] w-full items-end justify-center overflow-hidden bg-stone-900"
+        className="relative isolate flex min-h-[80svh] w-full items-end justify-center overflow-hidden bg-stone-900"
       >
         <Image src={a.images[0]} alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
         <span className="absolute inset-0 -z-10 bg-stone-900/35" />
