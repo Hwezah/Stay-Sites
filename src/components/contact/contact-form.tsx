@@ -35,7 +35,7 @@ export function ContactForm() {
     <form onSubmit={submit} noValidate className="grid gap-9">
       <fieldset>
         <legend className="text-[11.5px] font-semibold uppercase tracking-[.16em] text-stone-500">I&apos;m asking about</legend>
-        <div className="mt-3.5 flex flex-wrap gap-2">
+        <div className="mt-3.5 flex flex-wrap gap-2 mportrait:justify-center">
           {TOPICS.map((t) => (
             <button
               key={t}
