@@ -452,7 +452,7 @@ function Drawer() {
           )}
         >
           {/* Full-bleed room photo across the top (negative margins cancel the panel padding), darkened
-              so the white logo and close button read on top of it. */}
+              so the white logo, close button and contact details read on top of it. */}
           <div className="relative -mx-[clamp(20px,5vw,34px)] -mt-[clamp(22px,5vw,36px)] h-[clamp(300px,46svh,440px)] overflow-hidden bg-stone-900">
             <Image
               src="https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -463,35 +463,39 @@ function Drawer() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/45 to-stone-900/70" />
-            <button
-              type="button"
-              onClick={closePanels}
-              aria-label="Close"
-              className="absolute top-[clamp(14px,3vw,24px)] right-[clamp(12px,3vw,24px)] z-10 flex h-11 w-12 items-center justify-center text-stone-50 hover:text-brand-soft"
-            >
-              {/* The menu icon again, splitting wide as the panel opens. */}
-              <span aria-hidden="true" className="flex h-[30px] animate-burger-split items-stretch gap-[13px]">
-                <span className="w-px bg-current" />
-                <span className="w-px bg-current" />
-                <span className="w-px bg-current" />
-              </span>
-            </button>
-            {/* The mark is gold artwork, rendered white so it shows on the dark photo. */}
-            <Link
-              href="/"
-              onClick={closePanels}
-              className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-stone-50 hover:text-stone-50"
-            >
-              <Image
-                src={SITE.logo}
-                alt=""
-                width={80}
-                height={80}
-                className="size-[clamp(56px,9vw,80px)] object-contain brightness-0 invert mportrait:size-[76px]"
-              />
-              {/* The panel's width follows the screen, so the name scales with it. */}
-              <span className="font-display whitespace-nowrap text-[clamp(20px,2.6vw,30px)] mportrait:text-[30px] font-medium">{SITE.wordmark}</span>
-            </Link>
+            {/* Top row: logo at the left, close button at the right. The mark is rendered white on the photo. */}
+            <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-3 px-[clamp(16px,4vw,28px)] pt-[clamp(14px,3vw,24px)]">
+              <Link href="/" onClick={closePanels} className="flex min-w-0 items-center gap-2.5 text-stone-50 hover:text-stone-50">
+                <Image src={SITE.logo} alt="" width={28} height={28} className="size-7 flex-none object-contain brightness-0 invert" />
+                <span className="font-display truncate text-[22px] font-medium">{SITE.wordmark}</span>
+              </Link>
+              <button
+                type="button"
+                onClick={closePanels}
+                aria-label="Close"
+                className="flex h-11 w-12 flex-none items-center justify-center text-stone-50 hover:text-brand-soft"
+              >
+                {/* The menu icon again, splitting wide as the panel opens. */}
+                <span aria-hidden="true" className="flex h-[30px] animate-burger-split items-stretch gap-[13px]">
+                  <span className="w-px bg-current" />
+                  <span className="w-px bg-current" />
+                  <span className="w-px bg-current" />
+                </span>
+              </button>
+            </div>
+            {/* Centre: how to reach us and where we are. */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-6 pt-12 text-center text-stone-50">
+              <div className="text-[11px] font-semibold uppercase tracking-[.16em] text-brand-soft">Get in touch</div>
+              {CONFIG.phones.map((p) => (
+                <a key={p} href={telHref(p)} onClick={closePanels} className="font-display text-[clamp(22px,2.6vw,28px)] text-stone-50 hover:text-brand-soft">
+                  {p}
+                </a>
+              ))}
+              <a href={`mailto:${CONFIG.email}`} onClick={closePanels} className="break-all text-[15px] text-stone-50/90 hover:text-stone-50">
+                {CONFIG.email}
+              </a>
+              <div className="mt-1 text-[14px] text-stone-50/80">{SITE_PLACE}</div>
+            </div>
           </div>
 
           <nav className="mt-[30px] grid gap-0.5 xl:hidden" aria-label="Menu">
@@ -537,16 +541,6 @@ function Drawer() {
           </div>
           <div className="mt-[26px] text-[14.5px] leading-[1.7] text-brand-tint">
             {SITE.name} — {SITE.tagline.charAt(0).toLowerCase() + SITE.tagline.slice(1)}
-          </div>
-          <div className="mt-7 grid gap-1.5">
-            {CONFIG.phones.map((p) => (
-              <a key={p} href={telHref(p)} onClick={() => togglePanel("drawer")} className="text-[15px] text-stone-50">
-                {p}
-              </a>
-            ))}
-            <a href={`mailto:${CONFIG.email}`} onClick={() => togglePanel("drawer")} className="text-[15px] text-stone-50">
-              {CONFIG.email}
-            </a>
           </div>
         </div>,
           document.body,
