@@ -104,4 +104,4 @@ export const SITE = {
 } as const;
 
 /** "Your Neighbourhood, Your City" */
-export const SITE_PLACE = `${SITE.location.area}, ${SITE.location.city}`;
+export const SITE_PLACE = [SITE.location.area, SITE.location.city].filter(Boolean).join(", ");
