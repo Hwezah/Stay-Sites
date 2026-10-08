@@ -4,9 +4,9 @@
  */
 export const SITE = {
   // Identity
-  name: "Example Lodge",
+  name: "Airbnb Demo",
   // Shown in the header and footer. Usually the same as `name`.
-  wordmark: "Example Lodge",
+  wordmark: "Airbnb Demo",
   // Square line icon, drawn in the brand colour. Rendered white over photos.
   logo: "/brand/logo.svg",
   tagline: "Quiet, beautifully kept apartments — close to the city, far from the noise.",
@@ -18,8 +18,9 @@ export const SITE = {
 
   // Location
   location: {
-    area: "Your Neighbourhood",
-    city: "Your City",
+    area: "Location",
+    // Optional; leave empty to show the area alone.
+    city: "",
     country: "Uganda",
     // How long from the nearest centre, in plain words.
     travel: "20 minutes from the city centre",
@@ -27,8 +28,8 @@ export const SITE = {
 
   // Contact. All phone numbers are tap-to-call; WhatsApp goes to `whatsapp` only.
   contact: {
-    phones: ["+256 700 000 000", "+256 700 000 001"],
-    whatsapp: "+256 700 000 001",
+    phones: ["+25600000000"],
+    whatsapp: "+25600000000",
     email: "info@example.com",
     // Shown next to booking, checkout and payment steps.
     reservationsEmail: "info@example.com",
@@ -36,8 +37,8 @@ export const SITE = {
 
   // The person guests deal with. Their photo is optional (leave it empty to show initials).
   host: {
-    name: "Alex Morgan",
-    firstName: "Alex",
+    name: "Admin",
+    firstName: "Admin",
     role: "Owner & host",
     email: "info@example.com",
     photo: "",
@@ -70,11 +71,10 @@ export const SITE = {
   // Mobile money numbers guests pay into, and the registered name.
   payments: {
     momo: [
-      { network: "MTN", number: "0700 000000", tel: "+256700000000" },
-      { network: "Airtel", number: "0700 000001", tel: "+256700000001" },
+      { network: "MTN", number: "+25600000000", tel: "+25600000000" },
     ],
-    momoName: "Account holder name",
-    bank: { name: "To confirm", accountName: "Example Lodge Ltd", accountNumber: "To confirm", branch: "To confirm" },
+    momoName: "Admin",
+    bank: { name: "To confirm", accountName: "Airbnb Demo", accountNumber: "To confirm", branch: "To confirm" },
   },
 
   // Social links (leave a value empty to hide it).
@@ -97,12 +97,12 @@ export const SITE = {
 
   // Search engines and link previews
   seo: {
-    title: "Example Lodge · Serviced apartments in Your City",
+    title: "Airbnb Demo · Serviced apartments",
     description:
       "Quiet, fully furnished one-bed apartments with self check-in, fast Wi-Fi and a host on call — 20 minutes from the city centre.",
     ogImage: "https://images.pexels.com/photos/6580396/pexels-photo-6580396.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
 } as const;
 
-/** "Your Neighbourhood, Your City" */
-export const SITE_PLACE = `${SITE.location.area}, ${SITE.location.city}`;
+/** "Area, City", or just the area when no city is set. */
+export const SITE_PLACE = [SITE.location.area, SITE.location.city].filter(Boolean).join(", ");
